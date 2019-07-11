@@ -295,7 +295,7 @@ class Curl(TestAdapterLib.Adapter):
 			infile = "/tmp/req_%s" % uuid.uuid4()
 			outfile = "/tmp/rsp_%s" % uuid.uuid4()
 			
-			curl_cmd = '%s -v %s -s ' % (CURL_BIN, host)
+			curl_cmd = '%s -v -s ' % (CURL_BIN)
 			curl_cmd += ' --user-agent ExtensiveAutomation'
 			
 			if method is not None:
@@ -323,6 +323,7 @@ class Curl(TestAdapterLib.Adapter):
 					f.write(body)
 				curl_cmd += ' --data-binary "@%s"'  % infile
 				
+			curl_cmd += ' 	%s' % host
 			self.debug(curl_cmd)
 			
 			try:
