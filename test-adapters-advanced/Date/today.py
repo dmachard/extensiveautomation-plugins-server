@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 from datetime import date
 import calendar
@@ -30,7 +29,7 @@ import calendar
 __NAME__="""Today"""
 
 class Today(TestLibrary.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Return the current day, month or year as string or digits
@@ -49,7 +48,7 @@ class Today(TestLibrary.Library):
 		"""
 		TestLibrary.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
 		
-	@doc_public
+	
 	def getDayName(self, lang="en", abbreviated=False):
 		"""
 		Return the current day with the name
@@ -79,7 +78,7 @@ class Today(TestLibrary.Library):
 		else:
 			raise Exception("lang %s not supported" % lang)
 			
-	@doc_public
+	
 	def getDayNumber(self, nb=2):
 		"""
 		Return the day as number
@@ -92,7 +91,7 @@ class Today(TestLibrary.Library):
 		"""
 		return str(date.today().day).zfill(nb)
 		
-	@doc_public
+	
 	def getMonthName(self, lang="en", abbreviated=False):
 		"""
 		Return the current month as word
@@ -128,7 +127,7 @@ class Today(TestLibrary.Library):
 		else:
 			raise Exception("lang %s not supported" % lang)
 			
-	@doc_public
+	
 	def getMonthNumber(self, nb=2):
 		"""
 		Return the current month as number
@@ -140,7 +139,7 @@ class Today(TestLibrary.Library):
 		@rtype: string
 		"""
 		return str(date.today().month).zfill(nb)
-	@doc_public	
+		
 	def getYearNumber(self):
 		"""
 		Return the current year as number
@@ -150,7 +149,7 @@ class Today(TestLibrary.Library):
 		"""
 		return str(date.today().year)
 		
-	@doc_public
+	
 	def getWeekNumber(self, nb=2):
 		"""
 		Return the current week number

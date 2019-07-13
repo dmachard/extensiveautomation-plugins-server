@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 from Libs.PyXmlDict import Dict2Xml
 from Libs.PyXmlDict import Xml2Dict

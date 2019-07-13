@@ -22,7 +22,7 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
+
 from Var.SutAdapters import Hashing
 from base64lib import BASE64
 
@@ -33,7 +33,7 @@ import urllib
 __NAME__="""OAUTH"""
 
 class Oauth(TestLibrary.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Oauth authentication 1.0a
@@ -53,7 +53,7 @@ class Oauth(TestLibrary.Library):
 		TestLibrary.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
 		self.hmac1 = Hashing.HMAC_SHA1(parent=parent, debug=debug)
 		self.base64 = BASE64(parent=parent, debug=debug)
-	@doc_public
+	
 	def compute(self, parameters, url, method, tokenSecret, consumerSecret):
 		"""
 		Compute the signature
@@ -108,7 +108,7 @@ class Oauth(TestLibrary.Library):
 		sig_base64 = self.base64.encode(data=sig)
 		
 		return  urllib.quote_plus(sig_base64)
-	@doc_public	
+		
 	def decode(self, challenge):
 		"""
 		Decode the challenge present in the www-authenticate header
@@ -137,7 +137,7 @@ class Oauth(TestLibrary.Library):
 			ch[kv[0].strip()] = kv[1].strip()
 			
 		return ch
-	@doc_public	
+		
 	def encode(self, nonce, callback, method, timestamp, consumerkey, signature, version):
 		"""
 		Contructs an oauth authorization header line

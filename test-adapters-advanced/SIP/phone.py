@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -59,7 +57,7 @@ TRANSACTION_STATE_TERMINATED     = "terminated"
 AGENT_TYPE_EXPECTED='socket'
 
 class Phone(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, name=None, debug=False, sipSrc=('',0), sipDest=('127.0.0.1', 5060), rtpSrc=('',0),
 									prefTransport=AdapterUDP.PROTOCOL_UDP, enableRtp=True, enableTcp=True, enableUdp=True,
 									agentSupport=False, agent=None, shared=False):
@@ -607,7 +605,7 @@ class Phone(TestAdapterLib.Adapter):
 		"""
 		# todo: add domain
 		return SIP.CALLID()
-	@doc_public
+	
 	def plug(self, timeout=1.0):
 		"""
 		Starts the phone.
@@ -640,7 +638,7 @@ class Phone(TestAdapterLib.Adapter):
 		self.started = plugged
 		return plugged
 	
-	@doc_public
+	
 	def unplug(self, timeout=1.0, cleanup=True):
 		"""
 		Stops the phone.
@@ -682,7 +680,7 @@ class Phone(TestAdapterLib.Adapter):
 		
 		return unplugged
 			
-	@doc_public
+	
 	def register(self, headers={}):
 		"""
 		Register the phone with a proxy (automatic refresh).
@@ -701,7 +699,7 @@ class Phone(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = 'registration', tplEvt = tpl ) 
 			self.registerManager.sendRegister(state='registering', expire=self.cfg['register-interval'], headers=headers)
 	
-	@doc_public
+	
 	def unregister(self, headers={}):
 		"""
 		Unregister the phone.
@@ -721,7 +719,7 @@ class Phone(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = 'unregistration', tplEvt = templates.unregistration() ) 
 			self.registerManager.sendRegister(state='unregistering', expire=0, headers=headers)
 			
-	@doc_public
+	
 	def placeCall(self, uri, recordCall=False, playSound=AdapterRTP.SOUND_SINE_1K, codecSound=LibraryCodecs.A_G711U, headers={}):
 		"""
 		Place a new call.
@@ -754,7 +752,7 @@ class Phone(TestAdapterLib.Adapter):
 		# return session session-id
 		return sessid
 			
-	@doc_public
+	
 	def hangupCall(self, sessionid, headers={}):
 		"""
 		Hangup the call.
@@ -775,7 +773,7 @@ class Phone(TestAdapterLib.Adapter):
 				sess.cancellingDialog(headers=headers)
 			else:
 				self.debug( 'hangup is not yet supported in the state %s' % sess.getSipState() )
-	@doc_public
+	
 	def answerCall(self, sessionid, recordCall=False, playSound=AdapterRTP.SOUND_SINE_1K, headers={}):
 		"""
 		Answer to the call.
@@ -801,7 +799,7 @@ class Phone(TestAdapterLib.Adapter):
 			else:
 				self.debug( 'answer is not yet supported in the state %s' % sess.getSipState() )
 				
-	@doc_public
+	
 	def rejectCall(self, sessionid, code='603', phrase='Decline', headers={}):
 		"""
 		Reject to the call.
@@ -827,7 +825,7 @@ class Phone(TestAdapterLib.Adapter):
 			else:
 				self.debug( 'reject is not yet supported in the state %s' % sess.getSipState() )
 				
-	@doc_public
+	
 	def isRegistered(self, timeout=1.0, interval=None):
 		"""
 		Wait registered event until the end of the timeout.
@@ -849,7 +847,7 @@ class Phone(TestAdapterLib.Adapter):
 			return None
 		return evt
 	
-	@doc_public
+	
 	def isUnregistered(self, timeout=1.0):
 		"""
 		Wait unregistered event until the end of the timeout.
@@ -868,7 +866,7 @@ class Phone(TestAdapterLib.Adapter):
 			return None
 		return evt
 	
-	@doc_public
+	
 	def isRinging(self, timeout=1.0):
 		"""
 		Wait ringing event until the end of the timeout.
@@ -888,7 +886,7 @@ class Phone(TestAdapterLib.Adapter):
 		else:
 			layer_phone = evt.get('SIP-PHONE')
 			return layer_phone.get('session-id')
-	@doc_public
+	
 	def hasReceivedCall(self, timeout=1.0, cli=None, display=None, diversion=None, assertedIdentity=None):
 		"""
 		Wait incoming call event until the end of the timeout.
@@ -921,7 +919,7 @@ class Phone(TestAdapterLib.Adapter):
 			layer_phone = evt.get('SIP-PHONE')
 			return layer_phone.get('session-id')
 
-	@doc_public
+	
 	def isReceivingAudio(self, sessionid, timeout=1.0, codec=None):
 		"""
 		Wait receiving audio event until the end of the timeout.
@@ -947,7 +945,7 @@ class Phone(TestAdapterLib.Adapter):
 		else:
 			return sess.isReceivingAudio(timeout=timeout, codec=codec)
 			
-	@doc_public
+	
 	def isNoLongerReceivingAudio(self, sessionid, timeout=1.0, codec=None):
 		"""
 		Wait stop receiving audio event until the end of the timeout.
@@ -973,7 +971,7 @@ class Phone(TestAdapterLib.Adapter):
 		else:
 			return sess.isNoLongerReceivingAudio(timeout=timeout, codec=codec)
 		
-	@doc_public
+	
 	def ringbackToneReceived(self, sessionid, timeout=1.0):
 		"""
 		Wait ringbacktone event until the end of the timeout.
@@ -1000,7 +998,7 @@ class Phone(TestAdapterLib.Adapter):
 				return None
 			return evt
 		
-	@doc_public
+	
 	def hasReceivedError(self, timeout=1.0, sessionid=None, code=None, phrase=None):
 		"""
 		Wait unexpected response event until the end of the timeout.
@@ -1028,7 +1026,7 @@ class Phone(TestAdapterLib.Adapter):
 			return None
 		return evt
 
-	@doc_public
+	
 	def isConnected(self, sessionid, timeout=1.0 ):
 		"""
 		Wait connected event until the end of the timeout.
@@ -1055,7 +1053,7 @@ class Phone(TestAdapterLib.Adapter):
 				return None
 			return evt
 	
-	@doc_public
+	
 	def isDisconnected(self, sessionid, timeout=1.0, reason=None, originator=None):
 		"""
 		Wait disconnected event until the end of the timeout.
@@ -1088,7 +1086,7 @@ class Phone(TestAdapterLib.Adapter):
 				return None
 			return evt
 			
-	@doc_public
+	
 	def isCancelled(self, sessionid, timeout=1.0 ):
 		"""
 		Wait cancelled event until the end of the timeout.
@@ -1114,7 +1112,7 @@ class Phone(TestAdapterLib.Adapter):
 			if evt is None:
 				return None
 			return evt
-	@doc_public
+	
 	def isRejected(self, sessionid, timeout=1.0 ):
 		"""
 		Wait rejected event until the end of the timeout.

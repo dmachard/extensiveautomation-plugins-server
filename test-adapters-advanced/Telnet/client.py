@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -48,7 +46,7 @@ __NAME__="""TELNET"""
 AGENT_TYPE_EXPECTED='socket'
 
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, bindIp = '', bindPort=0, destIp='127.0.0.1', destPort=23, destHost='',
 									socketTimeout=10.0, socketFamily=AdapterIP.IPv4,  doEcho=True, name=None,
 									proxyType=AdapterTCP.PROXY_SOCKS4, proxyUserID='xtc', proxyIp='', proxyPort=3128, proxyHost='', proxyEnabled=False,
@@ -215,7 +213,7 @@ class Client(TestAdapterLib.Adapter):
 		Reset
 		"""
 		self.tcp.onReset()
-	@doc_public
+	
 	def connection(self, timeout=1.0):
 		"""
 		Tcp connection and wait the connection event until the end of the timeout
@@ -238,7 +236,7 @@ class Client(TestAdapterLib.Adapter):
 				ret = False
 		return ret
 		
-	@doc_public
+	
 	def disconnection(self, timeout=1.0):
 		"""
 		Tcp disconnection and wait the disconnection event until the end of the timeout
@@ -259,21 +257,21 @@ class Client(TestAdapterLib.Adapter):
 			if self.tcp.isAcceptedProxy(timeout=timeout) is None:
 				ret = False			
 		return ret
-	@doc_public
+	
 	def connect(self):
 		"""
 		Start the TCP connection
 		"""
 		self.tcp.connect()
 	
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Close the TCP connection
 		"""
 		self.tcp.disconnect()
 	
-	@doc_public
+	
 	def isAcceptedProxy(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -301,7 +299,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		return self.tcp.isAcceptedProxy(timeout=timeout, versionIp=versionIp, sourceIp=sourceIp, destinationIp=destinationIp, 
 											sourcePort=sourcePort, destinationPort=destinationPort)
-	@doc_public
+	
 	def isConnected(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -333,7 +331,7 @@ class Client(TestAdapterLib.Adapter):
 		return self.tcp.isConnected(timeout=timeout, versionIp=versionIp, sourceIp=sourceIp, destinationIp=destinationIp, 
 											sourcePort=sourcePort, destinationPort=destinationPort)
 
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0, byServer=False, versionIp=None, sourceIp=None, destinationIp=None, 
 										sourcePort=None, destinationPort=None):
 		"""
@@ -471,7 +469,7 @@ class Client(TestAdapterLib.Adapter):
 		 """
 		pass
 		
-	@doc_public
+	
 	def sendData(self, tpl, dataRaw=None, optionsRaw=None):
 		"""
 		Send telnet data
@@ -518,7 +516,7 @@ class Client(TestAdapterLib.Adapter):
 			
 		return lower	
 		
-	@doc_public
+	
 	def hasReceivedData(self, timeout=1.0, dataExpected=None):
 		"""
 		Waits to receive "data" event until the end of the timeout

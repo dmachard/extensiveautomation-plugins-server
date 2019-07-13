@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 __NAME__="""G771U"""
 
@@ -56,7 +55,7 @@ EXP_LUT_DEC = [
 ]
 
 class G711U(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		U-Law audio encoder and decoder.
@@ -83,7 +82,7 @@ class G711U(TestLibraryLib.Library):
 		@type shared:	boolean
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
-	@doc_public
+	
 	def encode(self, pcm_val, zero_trap=False):
 		"""
 		Convert a 16-bit linear PCM value to 8 bit U-law
@@ -122,7 +121,7 @@ class G711U(TestLibraryLib.Library):
 				ulawbyte = 0x02;         
 		
 		return ulawbyte
-	@doc_public
+	
 	def decode(self, u_val):
 		"""
 		Convert an U-law value to 16-bit linear PCM

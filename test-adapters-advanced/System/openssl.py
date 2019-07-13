@@ -26,8 +26,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
-# import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import subprocess
@@ -43,7 +41,7 @@ AGENT_TYPE_EXPECTED='myagent'
 OPENSSL_BIN = "openssl"
 
 class OpenSSL(TestAdapter.Adapter):
-	@doc_public	
+		
 	def __init__(self, parent, name=None, debug=False, shared=False, agentSupport=False, 
 											agent=None, logEventSent=True, logEventReceived=True):
 		"""
@@ -185,7 +183,7 @@ class OpenSSL(TestAdapter.Adapter):
 		evt = self.received( expected = tpl, timeout = timeout )
 		return evt
 		
-	@doc_public	
+		
 	def execute(self, cmd):
 		"""
 		Execute the openssl command
@@ -210,7 +208,7 @@ class OpenSSL(TestAdapter.Adapter):
 		if self.logEventReceived:
 			self.logRecvEvent( shortEvt = "openssl event", tplEvt = tpl_rsp ) # log event 		
 
-	@doc_public	
+		
 	def hasReceivedEvent(self, expected, timeout=1.0):
 		"""
 		Wait to receive "openssl event" until the end of the timeout.

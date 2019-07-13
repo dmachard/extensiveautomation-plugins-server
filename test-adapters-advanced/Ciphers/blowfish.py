@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 try:
 	import common
@@ -496,7 +495,7 @@ class CipherModeCBC(object):
 		return r
 
 class Blowfish(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, mode=MODE_ECB, padding=PAD_NONE, 
 												hexKey=None, strKey=None, shared=False):
 		"""
@@ -578,7 +577,7 @@ class Blowfish(TestLibraryLib.Library):
 #					rBytes.append( sPad[0:(4 - nPad)] )
 #			
 		pass
-	@doc_public
+	
 	def encrypt(self, strData=None, hexData=None, hexdigit=False):
 		"""
 		Encrypts a given string using the preprocessed key.
@@ -620,7 +619,7 @@ class Blowfish(TestLibraryLib.Library):
 			return binascii.hexlify(str_encrypted)
 		else:
 			return str_encrypted
-	@doc_public
+	
 	def decrypt(self, strData=None, hexData=None, hexdigit=False):
 		"""
 		Decrypts a given hexadecimal string using the preprocessed key.
@@ -661,7 +660,7 @@ class Blowfish(TestLibraryLib.Library):
 		if self.mode == MODE_CBC:
 			r = self.encryptor.decrypt(strData)
 			return "".join(r)
-	@doc_public	
+		
 	def setKey(self, hexKey=None, strKey=None):
 		"""
 		Set the key to intialize the encryption/decryption.
@@ -682,7 +681,7 @@ class Blowfish(TestLibraryLib.Library):
 			self.key = key
 		else:
 			raise Exception('No key defined')
-	@doc_public		
+			
 	def getKey(self, strKey=True, hexKey=False):
 		"""
 		Returns the key as string or hexadecimal representation

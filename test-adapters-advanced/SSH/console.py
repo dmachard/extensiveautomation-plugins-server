@@ -26,7 +26,6 @@ import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
 import TestExecutorLib.TestTemplatesLib as TestTemplates
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -53,7 +52,7 @@ from Var.SutAdapters import IP as AdapterIP
 __NAME__="""SSH_Console"""
 
 class Console(TestAdapter.Adapter):
-	@doc_public
+	
 	def __init__(self, parent,  destIp, destPort=22, bindIp = '0.0.0.0', bindPort=0,  destHost='', prompt ='~]#',
 									login='admin', password='admin', privateKey=None, verbose=True,
 									socketTimeout=10.0, socketFamily=AdapterIP.IPv4,  name=None, tcpKeepAlive=False, tcpKeepAliveInterval=30.0,
@@ -189,7 +188,7 @@ class Console(TestAdapter.Adapter):
 		"""
 		return self.ADP_SSH
 
-	@doc_public
+	
 	def doConnect(self, timeout=1.0, prompt='~]#'):
 		"""
 		Do connect with authentification
@@ -204,7 +203,7 @@ class Console(TestAdapter.Adapter):
 		@rtype: boolean	
 		"""
 		return self.ADP_SSH.doConnect(timeout=timeout,prompt=prompt)
-	@doc_public
+	
 	def doDisconnect(self, timeout=1.0):
 		"""
 		Do disconnect
@@ -217,7 +216,7 @@ class Console(TestAdapter.Adapter):
 		"""
 		return self.ADP_SSH.doDisconnect(timeout=timeout)
 
-	@doc_public
+	
 	def connect(self):
 		"""
 		Connect to the SSH server
@@ -225,14 +224,14 @@ class Console(TestAdapter.Adapter):
 		"""
 		self.ADP_SSH.connect()
 		
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Disconnect from the SCP server
 		"""
 		self.ADP_SSH.disconnect()
 
-	@doc_public
+	
 	def isNegotiated(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, sourcePort=None, destinationPort=None):
 		"""
 		Wait received is negotiated event until the end of the timeout
@@ -260,7 +259,7 @@ class Console(TestAdapter.Adapter):
 		"""
 		return self.ADP_SSH.isNegotiated(timeout=timeout, versionIp=versionIp, sourceIp=sourceIp, destinationIp=destinationIp, sourcePort=sourcePort, destinationPort=destinationPort)
 
-	@doc_public
+	
 	def isAuthenticated(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, sourcePort=None, destinationPort=None):
 		"""
 		Wait received is authenticated event until the end of the timeout
@@ -294,7 +293,7 @@ class Console(TestAdapter.Adapter):
 		"""
 		return self.ADP_SSH.getExpectedTemplate(tpl, versionIp=versionIp, sourceIp=sourceIp, destinationIp=destinationIp, sourcePort=sourcePort, destinationPort=destinationPort)
 		
-	@doc_public
+	
 	def hasReceivedData(self, timeout=1.0, dataExpected=None, delimiter = ""):
 		"""
 		Wait received data event until the end of the timeout
@@ -327,7 +326,7 @@ class Console(TestAdapter.Adapter):
 		"""
 		return self.ADP_SSH.encapsule(ip_event=ip_event, ssh_event=ssh_event)
 	
-	@doc_public
+	
 	def doSendCommandLoop(self, command, prompt='~]#'):
 		"""
 		Send a command multiple times until the method stopSendingCommand is called.
@@ -359,7 +358,7 @@ class Console(TestAdapter.Adapter):
 		except Exception as e:
 			self.error( "Error doing command loop: %s" % str(e) )
 	
-	@doc_public
+	
 	def redoCommand(self):
 		"""
 		Send a command each time the timer calls this function
@@ -375,14 +374,14 @@ class Console(TestAdapter.Adapter):
 		except Exception as e:
 			self.error( "Error doing command loop: %s" % str(e) )
 
-	@doc_public
+	
 	def stopSendingCommand(self):
 		"""
 		Stop the command loop
 		"""
 		self.TIMER_LOGS.stop()
 				
-	@doc_public
+	
 	def sendData(self, dataRaw=None):
 		"""
 		Send ssh data
@@ -399,7 +398,7 @@ class Console(TestAdapter.Adapter):
 		
 		self.ADP_SSH.sendData(dataRaw=dataRaw +"\n")
 		
-	@doc_public
+	
 	def isConnected(self,timeout=1.0):
 		"""
 		Wait Connected event until the end of the timeout
@@ -411,7 +410,7 @@ class Console(TestAdapter.Adapter):
 		@rtype: templatemessage
 		"""
 		return self.ADP_SSH.isConnected(timeout=timeout)
-	@doc_public
+	
 	def isChannelOpened(self,timeout=1.0):
 		"""
 		Wait logged event until the end of the timeout
@@ -424,7 +423,7 @@ class Console(TestAdapter.Adapter):
 		"""
 		return self.ADP_SSH.isChannelOpened(timeout=timeout)
 	
-	@doc_public
+	
 	def automaticPasswordUpdate(self, timeout=1.0, currentPassword="", newPassword="", currentRootPassword="", newRootPassword="", login=""):
 		self.info("detecting request for password change")
 		data = self.hasReceivedData( timeout=timeout, dataExpected=TestOperators.Contains(needle=["WARNING","current","password"], AND=True, OR=False) , delimiter = "password:")
@@ -530,7 +529,7 @@ class Console(TestAdapter.Adapter):
 				return
 			self.sendData( dataRaw="%s\n" % "exit")
 
-	@doc_public
+	
 	def isDisconnected(self,timeout=1.0, byServer=False, versionIp=None, sourceIp=None, destinationIp=None, 
 										sourcePort=None, destinationPort=None):
 		"""
@@ -589,7 +588,7 @@ class Console(TestAdapter.Adapter):
 		 """
 		self.alldatareceived = True
 		pass
-	@doc_public
+	
 	def doSendCommand(self, command, timeout=1.0, dataExpected=None, delimiter=""):
 		"""
 		Send ssh data

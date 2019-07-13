@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import subprocess
 import re
@@ -32,7 +31,7 @@ __NAME__="""CERTIFICATE"""
 OPENSSL_BIN = "/usr/bin/openssl"
 
 class Certificate(TestLibrary.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Certificate decoder	
@@ -78,7 +77,7 @@ class Certificate(TestLibrary.Library):
 		
 		return cert_dict
 		
-	@doc_public
+	
 	def toHuman(self, certPath=None, cert=None):
 		"""
 		Return certificate to a readable human view

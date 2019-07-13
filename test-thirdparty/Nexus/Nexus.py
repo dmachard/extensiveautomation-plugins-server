@@ -23,10 +23,8 @@
 
 try:
     import TestInteropLib
-    from TestInteropLib import doc_public
 except ImportError: # python3 support
     from . import TestInteropLib
-    from TestInteropLib.TestInteropLib import doc_public
     
 import requests
 import xml.etree.ElementTree as ET
@@ -35,7 +33,7 @@ class Nexus(TestInteropLib.InteropPlugin):
     """
     Sonatype nexus plugin
     """
-    @doc_public
+    
     def __init__(self, parent, url, verifySsl=False, proxies={}):
         """
         Sonar nexus interop
@@ -57,7 +55,7 @@ class Nexus(TestInteropLib.InteropPlugin):
         self.__nexusUrl = url
         self.__certCheck = verifySsl
         self.__proxies = proxies
-    @doc_public    
+        
     def downloadArtefact(self, destFolder, groupId, artefactId, artefactVersion="LATEST", repositoryName="snapshots", packaging="jar"):
         """
         Download artefact and put it in a specific folder

@@ -21,8 +21,6 @@
 # MA 02110-1301 USA
 # -------------------------------------------------------------------
 
-from TestExecutorLib.TestExecutorLib import doc_public
-
 try:
 	from sample import *
 except ImportError: # python3 support
@@ -93,7 +91,7 @@ SIT_FU = 7 # Future Use: Reserved for future use.
 
 # Dial tones object
 class DialTones(Sample):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, rate=8000, volume=100):
 		"""
 		Dial tones generator
@@ -114,7 +112,7 @@ class DialTones(Sample):
 		@type volume: integer
 		"""
 		Sample.__init__(self, parent=parent, debug=debug, rate=rate, amplitude=volume, bits=SIGNED_16BITS, name=name)
-	@doc_public
+	
 	def setRate(self, rate):
 		"""
 		Set the rate in Hz
@@ -123,7 +121,7 @@ class DialTones(Sample):
 		@type rate:	integer		
 		"""
 		Sample.setRate(self, rate=rate)
-	@doc_public
+	
 	def setVolume(self, volume):
 		"""
 		Set the volume in percent
@@ -132,7 +130,7 @@ class DialTones(Sample):
 		@type volume: integer		
 		"""
 		Sample.setAmplitude(self, amplitude=volume)
-	@doc_public
+	
 	def specialInformationTone(self, code=SIT_RO):
 		"""
 		Returns a special information tone, this signal consisting of three rising tones indicating a call has failed
@@ -226,7 +224,7 @@ class DialTones(Sample):
 		else:
 			raise Exception( 'code %s not supported' % code )
 		return sample
-	@doc_public
+	
 	def busyTone(self, country=UE):
 		"""
 		Returns a busy tone signal with just one ON/OFF sample
@@ -258,7 +256,7 @@ class DialTones(Sample):
 		sample = tone(f1=fl, f2=fh, duration=on, rate=self.rate, volume=self.amplitude)
 		sample.extend( tone(f1=0, f2=0, duration=off, rate=self.rate, volume=self.amplitude) )
 		return sample
-	@doc_public
+	
 	def ringbackTone(self, country=UE):
 		"""
 		Returns a ringback tone signal with just one ON/OFF sample, except for UK it is a double ON/OFF
@@ -294,7 +292,7 @@ class DialTones(Sample):
 			sample.extend( tone(f1=fl, f2=fh, duration=on, rate=self.rate, volume=self.amplitude) )
 			sample.extend( tone(f1=0, f2=0, duration=off2, rate=self.rate, volume=self.amplitude) )			
 		return sample
-	@doc_public
+	
 	def dialTone(self, country=UE):
 		"""
 		Returns a continuous dial tone signal of one second.
@@ -319,7 +317,7 @@ class DialTones(Sample):
 		
 		sample = tone(f1=fl, f2=fh, duration=1000, rate=self.rate, volume=self.amplitude)
 		return sample
-	@doc_public
+	
 	def pressKeys(self, symbols, duration=500):
 		"""
 		Returns a signal representing each pressed keys
@@ -340,7 +338,7 @@ class DialTones(Sample):
 			fl, fh = pressKey(symbol=s)
 			sample.extend( tone(f1=fl, f2=fh, duration=duration, rate=self.rate, volume=self.amplitude) )
 		return sample
-	@doc_public
+	
 	def press0(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <0>
@@ -354,7 +352,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='0')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def press1(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <1>
@@ -367,7 +365,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='1')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def press2(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <2>
@@ -380,7 +378,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='2')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def press3(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <3>
@@ -393,7 +391,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='3')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def press4(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <4>
@@ -406,7 +404,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='4')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def press5(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <5>
@@ -419,7 +417,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='5')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def press6(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <6>
@@ -432,7 +430,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='6')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def press7(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <7>
@@ -445,7 +443,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='7')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def press8(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <8>
@@ -458,7 +456,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='8')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def press9(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <9>
@@ -471,7 +469,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='9')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def pressA(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key A
@@ -484,7 +482,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='A')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def pressB(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key B
@@ -497,7 +495,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='B')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def pressC(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key C
@@ -510,7 +508,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='C')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def pressD(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key D
@@ -523,7 +521,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='D')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def pressStar(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <*>
@@ -536,7 +534,7 @@ class DialTones(Sample):
 		"""
 		f1, f2 = pressKey(symbol='*')
 		return tone(f1=f1, f2=f2, duration=duration, rate=self.rate, volume=self.amplitude)
-	@doc_public
+	
 	def pressPound(self, duration=500):
 		"""
 		Returns a continuous tone signal representing the pressing on the key <#>

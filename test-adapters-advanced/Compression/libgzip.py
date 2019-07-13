@@ -22,14 +22,13 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import zlib
 
 __NAME__="""GZIP"""
 
 class GZIP(TestLibrary.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Gzip library
@@ -47,7 +46,7 @@ class GZIP(TestLibrary.Library):
 		@type shared:	boolean
 		"""
 		TestLibrary.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
-	@doc_public
+	
 	def compress(self, data, level=6):
 		"""
 		Compress the data passed as argument
@@ -60,7 +59,7 @@ class GZIP(TestLibrary.Library):
 		"""
 		compressed =  zlib.compress(data, level)
 		return compressed
-	@doc_public
+	
 	def uncompress(self, data):
 		"""
 		Uncompress the data passed as argument

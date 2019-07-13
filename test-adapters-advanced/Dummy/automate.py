@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
-# import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -56,7 +54,7 @@ except ImportError: # python3 support
 	from . import adapter
 
 class Automate(TestAdapter.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False, agentSupport=False, agent=None):
 		"""
 		My adapter

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+##!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # ------------------------------------------------------------------
@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -68,7 +66,7 @@ class TransportSsh(object):
 		pass	
 		
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent,  destIp, destPort=22, bindIp = '0.0.0.0', bindPort=0,  destHost='',
 									login='admin', password='admin', privateKey=None, privateKeyPath=None, verbose=True,
 									socketTimeout=10.0, socketFamily=IPv4,  name=None, tcpKeepAlive=True, tcpKeepAliveInterval=30,
@@ -410,7 +408,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def connect(self):
 		"""
 		Start the TCP connection
@@ -489,7 +487,7 @@ class Client(TestAdapterLib.Adapter):
 				self.error( "connect error: %s" % str(e) )
 				self.disconnectTcp()
 
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Close the TCP connection
@@ -578,7 +576,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		self.sendNotifyToAgent(data=cfg)
 		
-	@doc_public
+	
 	def negotiation(self):
 		"""
 		Start ssh negotiation
@@ -629,7 +627,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		self.handleConnectionFailed(err=err)
 	
-	@doc_public
+	
 	def authentication(self):
 		"""
 		authentication ssh with login and password
@@ -703,7 +701,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		"""
 		pass
-	@doc_public
+	
 	def openSession(self):
 		"""
 		Open a ssh session
@@ -826,7 +824,7 @@ class Client(TestAdapterLib.Adapter):
 			tpl.addLayer(layer=layer_agent)
 		return tpl
 		
-	@doc_public
+	
 	def sendData(self, tpl=None, dataRaw=None):
 		"""
 		Send ssh data

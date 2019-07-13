@@ -21,8 +21,6 @@
 # MA 02110-1301 USA
 # -------------------------------------------------------------------
 
-from TestExecutorLib.TestExecutorLib import doc_public
-
 try:
 	from sample import *
 except ImportError: # python3 support
@@ -31,7 +29,7 @@ except ImportError: # python3 support
 import random
 
 class Noise(Sample):
-	@doc_public
+	
 	def __init__(self, rate, parent, name=None, debug=False, amplitude=100, bits=SIGNED_16BITS):
 		"""
 		Noise generator
@@ -55,7 +53,7 @@ class Noise(Sample):
 		@type bits: string		
 		"""
 		Sample.__init__(self, parent=parent, debug=debug, rate=rate, amplitude=amplitude, bits=bits, name=name)
-	@doc_public
+	
 	def setRate(self, rate):
 		"""
 		Set the rate in Hz
@@ -64,7 +62,7 @@ class Noise(Sample):
 		@type rate:	integer		
 		"""
 		Sample.setRate(self, rate=rate)
-	@doc_public
+	
 	def setAmplitude(self, amplitude):
 		"""
 		Set the amplitude of the noise in percent
@@ -73,7 +71,7 @@ class Noise(Sample):
 		@type amplitude: integer		
 		"""
 		Sample.setAmplitude(self, amplitude=amplitude)	
-	@doc_public
+	
 	def setBits(self, bits):
 		"""
 		Set the number of bits by sample
@@ -82,7 +80,7 @@ class Noise(Sample):
 		@type bits: string			
 		"""
 		Sample.setBits(self, bits=bits)
-	@doc_public
+	
 	def silence(self, duration):
 		"""
 		Returns a silence sample
@@ -99,7 +97,7 @@ class Noise(Sample):
 		for n in xrange(N):
 			ret.append( 0 )
 		return ret
-	@doc_public
+	
 	def white(self, duration):
 		"""
 		Returns a white noise sample
@@ -125,7 +123,7 @@ class Noise(Sample):
 				s = (s + scale) / 2
 			ret.append( int(s) )
 		return ret
-	@doc_public
+	
 	def vinyl(self, duration, x=0.25, y=0.02, f=10 ):
 		"""
 		Returns a vinyl noise sample

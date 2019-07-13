@@ -25,9 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
-
 import sys
 
 try:
@@ -63,7 +60,7 @@ AGENT_INITIALIZED = "AGENT_INITIALIZED"
 AGENT_TYPE_EXPECTED='command'
 
 class Windows(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, agent, name=None, node='127.0.0.1', user='', password='', debug=False, 
 								shared=False, logEventSent=True, logEventReceived=True, nodes=[] ):
 		"""
@@ -389,7 +386,7 @@ class Windows(TestAdapterLib.Adapter):
 		tpl.addLayer(layer=win_event)
 		return tpl
 		
-	@doc_public
+	
 	def hasReceivedResponse(self, timeout=60.0):
 		"""
 		Waits to receive "response" event until the end of the timeout
@@ -406,7 +403,7 @@ class Windows(TestAdapterLib.Adapter):
 		evt = self.received( expected = self.encapsule(win_event=layer_win), timeout = self.__computeTimeout(timeout) )
 		return evt
 		
-	@doc_public
+	
 	def getHostname(self, timeout=60.0):
 		"""
 		Requests the host to get the hostname
@@ -421,7 +418,7 @@ class Windows(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % GET_HOSTNAME, tplEvt = self.encapsule(win_event=layer_win) ) 
 		self.sendNotifyToAgent(data=cmd)
 		
-	@doc_public
+	
 	def getOs(self, timeout=60.0):
 		"""
 		Requests the host to get the version of the operating system
@@ -436,7 +433,7 @@ class Windows(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % GET_OS, tplEvt = self.encapsule(win_event=layer_win) ) 		
 		self.sendNotifyToAgent(data=cmd)
 	
-	@doc_public
+	
 	def getProcesses(self, timeout=60.0):
 		"""
 		Requests the host to get a list of all processes 
@@ -451,7 +448,7 @@ class Windows(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % GET_PROCESSES, tplEvt = self.encapsule(win_event=layer_win) ) 		
 		self.sendNotifyToAgent(data=cmd)
 
-	@doc_public
+	
 	def getUptime(self, timeout=60.0):
 		"""
 		Requests the host to get the uptime
@@ -466,7 +463,7 @@ class Windows(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % GET_UPTIME, tplEvt = self.encapsule(win_event=layer_win) ) 		
 		self.sendNotifyToAgent(data=cmd)
 
-	@doc_public
+	
 	def getCpuLoad(self, timeout=60.0):
 		"""
 		Requests the host to get the cpu load
@@ -482,7 +479,7 @@ class Windows(TestAdapterLib.Adapter):
 		self.sendNotifyToAgent(data=cmd)
 
 
-	@doc_public
+	
 	def getMemUsage(self, timeout=60.0):
 		"""
 		Requests the host to get the memory usage
@@ -501,7 +498,7 @@ class Windows(TestAdapterLib.Adapter):
 		self.sendNotifyToAgent(data=cmd)
 		
 
-	@doc_public
+	
 	def getDisks(self, timeout=60.0):
 		"""
 		Requests the host to get a list of all disks 
@@ -516,7 +513,7 @@ class Windows(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % GET_DISKS, tplEvt = self.encapsule(win_event=layer_win) ) 		
 		self.sendNotifyToAgent(data=cmd)
 	
-	@doc_public
+	
 	def getSystemInfo(self, timeout=60.0):
 		"""
 		Requests the host to get the complete system information
@@ -531,7 +528,7 @@ class Windows(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % GET_SYS_INFO, tplEvt = self.encapsule(win_event=layer_win) ) 		
 		self.sendNotifyToAgent(data=cmd)
 
-	@doc_public
+	
 	def execCommand(self, cmd, timeout=60.0):
 		"""
 		Execute the command passed on argument
@@ -554,7 +551,7 @@ class Windows(TestAdapterLib.Adapter):
 		p = 10
 		t = ( timeout * p ) / 100 + timeout
 		return t 
-	@doc_public
+	
 	def doCommand(self, cmd, timeout=60.0):
 		"""
 		Execute the command passed on argument and wait reponse until the end of the timeout
@@ -572,7 +569,7 @@ class Windows(TestAdapterLib.Adapter):
 		
 		self.execCommand(cmd=cmd, timeout=timeout)
 		return self.hasReceivedResponse(timeout=self.__computeTimeout(timeout) )
-	@doc_public
+	
 	def doGetSystemInfo(self, timeout=60.0):
 		"""
 		Get the complete system information and wait reponse until the end of the timeout
@@ -587,7 +584,7 @@ class Windows(TestAdapterLib.Adapter):
 		
 		self.getSystemInfo(timeout=timeout)
 		return self.hasReceivedResponse(timeout=self.__computeTimeout(timeout) )
-	@doc_public
+	
 	def doGetDisks(self, timeout=60.0):
 		"""
 		Get the list of all disks  and wait reponse until the end of the timeout
@@ -602,7 +599,7 @@ class Windows(TestAdapterLib.Adapter):
 		
 		self.getDisks(timeout=timeout)
 		return self.hasReceivedResponse(timeout=self.__computeTimeout(timeout) )
-	@doc_public
+	
 	def doGetMemUsage(self, timeout=60.0):
 		"""
 		Get the memory usage and wait reponse until the end of the timeout
@@ -617,7 +614,7 @@ class Windows(TestAdapterLib.Adapter):
 		
 		self.getMemUsage(timeout=timeout)
 		return self.hasReceivedResponse(timeout=self.__computeTimeout(timeout) )
-	@doc_public
+	
 	def doGetCpuLoad(self, timeout=60.0):
 		"""
 		Get the cpu load and wait reponse until the end of the timeout
@@ -632,7 +629,7 @@ class Windows(TestAdapterLib.Adapter):
 		
 		self.getCpuLoad(timeout=timeout)
 		return self.hasReceivedResponse(timeout=self.__computeTimeout(timeout) )
-	@doc_public
+	
 	def doGetUptime(self, timeout=60.0):
 		"""
 		Get the uptime and wait reponse until the end of the timeout
@@ -647,7 +644,7 @@ class Windows(TestAdapterLib.Adapter):
 		
 		self.getUptime(timeout=timeout)
 		return self.hasReceivedResponse(timeout=self.__computeTimeout(timeout) )
-	@doc_public
+	
 	def doGetProcesses(self, timeout=60.0):
 		"""
 		Get the list of all processes  and wait reponse until the end of the timeout
@@ -662,7 +659,7 @@ class Windows(TestAdapterLib.Adapter):
 		
 		self.getProcesses(timeout=timeout)
 		return self.hasReceivedResponse(timeout=self.__computeTimeout(timeout) )
-	@doc_public
+	
 	def doGetOs(self, timeout=60.0):
 		"""
 		Get the version of the operating system and wait reponse until the end of the timeout
@@ -677,7 +674,7 @@ class Windows(TestAdapterLib.Adapter):
 		
 		self.getOs(timeout=timeout)
 		return self.hasReceivedResponse(timeout=self.__computeTimeout(timeout) )
-	@doc_public
+	
 	def doGetHostname(self, timeout=60.0):
 		"""
 		Get the hostname and wait reponse until the end of the timeout

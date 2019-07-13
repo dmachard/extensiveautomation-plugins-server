@@ -26,7 +26,6 @@ import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
 import TestExecutorLib.TestTemplatesLib as TestTemplates
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -54,7 +53,7 @@ KEY_CTRLC = '\x03'
 KEY_ENTER = '\n'
 
 class Terminal(TestAdapter.Adapter):
-	@doc_public
+	
 	def __init__(self, parent,  destIp, destPort=22, bindIp = '0.0.0.0', bindPort=0,  
 											login='admin', password='admin', privateKey=None,  privateKeyPath=None, verbose=True, name=None,  
 											debug=False, logEventSent=True, logEventReceived=True, parentName=None, shared=False, 
@@ -227,7 +226,7 @@ class Terminal(TestAdapter.Adapter):
 		
 		return tpl
 
-	@doc_public
+	
 	def doSession(self, timeout=10.0, message=None):
 		"""
 		Open a session
@@ -247,7 +246,7 @@ class Terminal(TestAdapter.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def doClose(self, timeout=10.0):
 		"""
 		Close the session
@@ -265,7 +264,7 @@ class Terminal(TestAdapter.Adapter):
 		ret = True
 		return ret
 		
-	@doc_public
+	
 	def doText(self, text):
 		"""
 		Type text on terminal
@@ -286,7 +285,7 @@ class Terminal(TestAdapter.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def doClear(self):
 		"""
 		Clear the terminal
@@ -305,7 +304,7 @@ class Terminal(TestAdapter.Adapter):
 			ret = True
 		return ret
 
-	@doc_public
+	
 	def doShorcut(self, key):
 		"""
 		Type key on terminal
@@ -328,7 +327,7 @@ class Terminal(TestAdapter.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def connect(self):
 		"""
 		Connect to the SSH server
@@ -342,7 +341,7 @@ class Terminal(TestAdapter.Adapter):
 		
 		tpl = self.ssh().connect()
 		
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Disconnect from the SCP server
@@ -357,7 +356,7 @@ class Terminal(TestAdapter.Adapter):
 
 			tpl = self.ssh().disconnect()
 
-	@doc_public
+	
 	def isOpened(self, timeout=10.0, message=None):
 		"""
 		Waits to receive "opened" event until the end of the timeout
@@ -380,7 +379,7 @@ class Terminal(TestAdapter.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def isClosed(self, timeout=10.0):
 		"""
 		Waits to receive "closed" event until the end of the timeout
@@ -400,7 +399,7 @@ class Terminal(TestAdapter.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedScreen(self, timeout=10.0, text=None):
 		"""
 		Waits to receive "screen" event until the end of the timeout

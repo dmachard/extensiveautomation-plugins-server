@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
-# import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import threading
@@ -52,7 +50,7 @@ SMS_RECEIVED = "SMS RECEIVED"
 RESULT_OK = "OK"
 
 class Gateway(TestAdapter.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False, agent=None, 
 														agentSupport=False, gwIp='127.0.0.1', gwPort=9090, checkInterval=10):
 		"""
@@ -279,7 +277,7 @@ class Gateway(TestAdapter.Adapter):
 		tpl.addLayer(layer= layer)
 		evt = self.received( expected = tpl, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def isSmsSent(self, timeout=1.0, actionId=None):
 		"""
 		Wait to receive "sent sms" event
@@ -296,7 +294,7 @@ class Gateway(TestAdapter.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedSms(self, timeout=1.0, msg=None, phone=None):
 		"""
 		Wait to receive "sms" event

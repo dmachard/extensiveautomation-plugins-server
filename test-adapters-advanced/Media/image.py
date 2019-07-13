@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import PIL.Image as ImagePIL
 
@@ -34,7 +33,7 @@ except ImportError: # support python 3
 __NAME__="""IMAGE"""
 
 class Image(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self,  parent, name=None, debug=False, shared=False):
 		"""
 		Library to manipulate image
@@ -53,7 +52,7 @@ class Image(TestLibraryLib.Library):
 		@type shared:	boolean
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
-	@doc_public
+	
 	def mainColor(self, imgData):
 		"""
 		Return the main color of the image passed as argument

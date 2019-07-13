@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 __NAME__="""G711A"""
 
@@ -45,7 +44,7 @@ def val_seg (val):
 	return r
 	
 class G711A(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		A-Law audio encoder and decoder.
@@ -71,7 +70,7 @@ class G711A(TestLibraryLib.Library):
 		@type shared:	boolean
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
-	@doc_public	
+		
 	def encode (self, pcm_val):
 		"""
 		Convert a 16-bit linear PCM value to 8-bit A-law
@@ -96,7 +95,7 @@ class G711A(TestLibraryLib.Library):
 			seg = val_seg (pcm_val)
 			aval = (seg << 4) | ((pcm_val >> (seg + 3)) & 0x0f)
 		return aval ^ mask
-	@doc_public	
+		
 	def decode (self, a_val):
 		"""
 		Convert an A-law value to 16-bit linear PCM

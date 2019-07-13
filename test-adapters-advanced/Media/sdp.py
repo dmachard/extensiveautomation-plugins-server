@@ -23,7 +23,6 @@
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 __NAME__="""SDP"""
 
@@ -477,7 +476,7 @@ class Codec(object):
 		return tpl
 # class
 class SDP(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__ (self, parent, name=None, debug=False, sdpUsername='-', sessionName='extensivetesting', sdpVersion='0', codecsOrder=[ '8', '0' ], addrType='IP4',
 									sessVersion='1', sessId='1', unicastAddress='127.0.0.1', connectionAddress='127.0.0.1', shared=False ):
 		"""
@@ -540,7 +539,7 @@ class SDP(TestLibraryLib.Library):
 		self.__remote_sdp_offer = None
 		self.__remote_sdp_answer = None
 		self.__codec_choosed = None
-	@doc_public
+	
 	def decode(self, sdp):
 		"""
 		Decode a sdp text message in  template
@@ -552,7 +551,7 @@ class SDP(TestLibraryLib.Library):
 		@rtype:	templatelayer	
 		"""
 		return self.sdpCodec.decode(sdp=sdp)
-	@doc_public
+	
 	def encode(self, sdp):
 		"""
 		Encode dict SDP to text message
@@ -564,7 +563,7 @@ class SDP(TestLibraryLib.Library):
 		@rtype:	integer	
 		"""
 		return self.sdpCodec.encode(sdp=sdp)
-	@doc_public
+	
 	def setConnectionAddress(self, connectionAddress):
 		"""
 		Set the connection address
@@ -573,7 +572,7 @@ class SDP(TestLibraryLib.Library):
 		@type connectionAddress: string
 		"""
 		self.connectionAddress = connectionAddress
-	@doc_public
+	
 	def setUnicastAddress(self, unicastAddress):
 		"""
 		Set the unicast address
@@ -597,7 +596,7 @@ class SDP(TestLibraryLib.Library):
 		else:
 			tpl['session']['connection']['connection-address'] = self.connectionAddress		
 		return tpl 
-	@doc_public
+	
 	def reorderCodecs(self, preferedCodec):
 		"""
 		Reorders codecs, put the prefered codec at the first place
@@ -615,7 +614,7 @@ class SDP(TestLibraryLib.Library):
 			self.codecs.insert(0, str(preferedCodec) )
 		except Exception as e:
 			self.error( 'failed to reorder codecs: %s' % str(e) )
-	@doc_public
+	
 	def getOffer(self, null=False, audioPort=0):
 		"""
 		Contructs a sdp offer
@@ -656,7 +655,7 @@ class SDP(TestLibraryLib.Library):
 		except Exception as e:
 			self.error( "get offer failed: %s" % str(e) )
 		return sdp_encoded
-	@doc_public
+	
 	def getAnswer(self, null=False, audioPort=0):
 		"""
 		Contructs a sdp offer
@@ -717,7 +716,7 @@ class SDP(TestLibraryLib.Library):
 		"""
 		"""
 		return 	self.__remote_sdp_offer
-	@doc_public
+	
 	def negotiatesCodec(self, sdp):
 		"""
 		Negociate codecs

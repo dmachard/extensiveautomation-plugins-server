@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -40,7 +38,7 @@ import socket
 __NAME__="""DNS"""
 
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, debug=False, name=None, verbose=True,
 											logEventSent=True, logEventReceived=True, shared=False):
 		"""
@@ -106,7 +104,7 @@ class Client(TestAdapterLib.Adapter):
 				self.logRecvEvent( shortEvt = 'resolution failed', tplEvt = layer_dns )
 		return dstIp
 
-	@doc_public
+	
 	def isResolutionSuccess(self, timeout=1.0):
 		"""
 		Waits to receive "resolution success" event until the end of the timeout
@@ -123,7 +121,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def isResolutionFailed(self, timeout=1.0):
 		"""
 		Waits to receive "resolution failed" event until the end of the timeout

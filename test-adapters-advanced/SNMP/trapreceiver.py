@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -54,7 +52,7 @@ TRAP_V2C = "trap-v2c"
 TRAP_V3 = "trap-v3"
 
 class TrapReceiver(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, bindIp = '', bindPort=0,
 								logEventReceived=True, agentSupport=False, agent=None, shared=False,
 								):
@@ -118,14 +116,14 @@ class TrapReceiver(TestAdapterLib.Adapter):
 		"""
 		return self.ADP_UDP
 	
-	@doc_public
+	
 	def startListening(self):
 		"""
 		Start listening
 		"""
 		self.ADP_UDP.startListening()
 	
-	@doc_public
+	
 	def stopListening(self):
 		"""
 		Stop listening
@@ -219,7 +217,7 @@ class TrapReceiver(TestAdapterLib.Adapter):
 		except Exception as e:
 			self.error('Error while waiting traps: %s' % str(e))		
 			
-	@doc_public
+	
 	def isListening(self, timeout=1.0):
 		"""
 		Wait to receive "listening" event until the end of the timeout
@@ -234,7 +232,7 @@ class TrapReceiver(TestAdapterLib.Adapter):
 		
 		return self.ADP_UDP.isListening(timeout=timeout)
 
-	@doc_public
+	
 	def isStopped(self, timeout=1.0):
 		"""
 		Wait to receive "stopped" event until the end of the timeout
@@ -249,7 +247,7 @@ class TrapReceiver(TestAdapterLib.Adapter):
 		
 		return self.ADP_UDP.isStopped(timeout=timeout)
 	
-	@doc_public
+	
 	def hasReceivedTrap(self, timeout=1.0, version=None, community=None, agentAddr=None, enterprise=None, 
 												genericTrap=None, specificTrap=None, uptime=None, requestId=None, errorStatus=None, 
 												errorIndex=None):

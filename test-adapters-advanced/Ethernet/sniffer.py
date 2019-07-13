@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -47,7 +45,7 @@ AGENT_INITIALIZED = "AGENT_INITIALIZED"
 AGENT_TYPE_EXPECTED='socket'
 
 class Sniffer(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, debug=False, macResolution=True, padding=True, 
 										logEventSent=True, logEventReceived=True, name=None,
 										protocol2sniff=codec.ALL, parentName=None, agentSupport=False,
@@ -151,7 +149,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		tpl.addLayer(layer=layer_ether)
 		return tpl
 		
-	@doc_public
+	
 	def getSourceMac(self):
 		"""
 		Returns the source MAC address
@@ -176,7 +174,7 @@ class Sniffer(TestAdapterLib.Adapter):
 			
 		self.stopListening()
 		
-	@doc_public
+	
 	def stopListening(self):
 		"""
 		Stop listening
@@ -310,7 +308,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		frame_tpl = self.encapsule(layer_ether=ether_tpl)
 		self.logRecvEvent( shortEvt = "stopped", tplEvt = frame_tpl )
 		
-	@doc_public
+	
 	def startListening(self, eth, srcMac=None):
 		"""
 		Start listening 
@@ -397,7 +395,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		frame_tpl = self.encapsule(layer_ether=ether_tpl)
 		self.logRecvEvent( shortEvt = "sniffing", tplEvt = frame_tpl )
 		 
-	@doc_public
+	
 	def sendFrame(self, data, dstMac, protocolType):
 		"""
 		Send a frame, with automatic data padding support
@@ -579,7 +577,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		"""
 		pass
 	
-	@doc_public
+	
 	def hasReceivedFrame(self, timeout=1.0, dstMac=None, srcMac=None, protocolType=None, data=None):
 		"""
 		Waits to receive "frame" event until the end of the timeout
@@ -599,7 +597,7 @@ class Sniffer(TestAdapterLib.Adapter):
 			return None
 		return evt
 		
-	@doc_public
+	
 	def isSniffing(self, timeout=1.0):
 		"""
 		Waits to receive "sniffing" event until the end of the timeout
@@ -619,7 +617,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def isSniffingFailed(self, timeout=1.0):
 		"""
 		Waits to receive "sniffing failed" event until the end of the timeout
@@ -639,7 +637,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def isStopped(self, timeout=1.0):
 		"""
 		Waits to receive "stopped" event until the end of the timeout

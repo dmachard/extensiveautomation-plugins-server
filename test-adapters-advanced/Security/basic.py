@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import random
@@ -33,7 +32,7 @@ __NAME__="""RFC2617"""
 
 # RFC2617: Basic and Digest Access Authentication
 class Basic(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Basic Access Authentication
@@ -56,7 +55,7 @@ class Basic(TestLibraryLib.Library):
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
 		self.base64 = BASE64(parent=parent, debug=debug)
 		
-	@doc_public
+	
 	def decode(self, challenge):
 		"""
 		Decode the challenge present in the authentization header
@@ -86,7 +85,7 @@ class Basic(TestLibraryLib.Library):
 			ch[kv[0].strip()] = kv[1].strip()
 			
 		return ch
-	@doc_public
+	
 	def compute(self, username, password):
 		"""
 		Compute the challenge response according  to the rfc2617
@@ -103,7 +102,7 @@ class Basic(TestLibraryLib.Library):
 		userpass = "%s:%s" % (username, password)
 		return self.base64.encode(data=userpass)
 
-	@doc_public
+	
 	def encode(self, response):
 		"""
 		Contructs a basic authorization header line

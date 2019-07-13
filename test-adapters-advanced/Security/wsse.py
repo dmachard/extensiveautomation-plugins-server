@@ -22,7 +22,7 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
+
 from Var.SutAdapters import Hashing
 from base64lib import BASE64
 
@@ -33,7 +33,7 @@ import random
 __NAME__="""WSSE"""
 
 class Wsse(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Wsse Authentication
@@ -55,7 +55,7 @@ class Wsse(TestLibraryLib.Library):
 		self.sha = Hashing.SHA1(parent=parent, debug=debug)
 		self.base64 = BASE64(parent=parent, debug=debug)
 
-	@doc_public
+	
 	def compute(self, password):
 		"""
 		Compute the challenge response
@@ -78,7 +78,7 @@ class Wsse(TestLibraryLib.Library):
 		pwd_digest = self.base64.encode(pwd_digest)
 		
 		return (pwd_digest, cnonce, iso_now)
-	@doc_public	
+		
 	def decode(self, challenge):
 		"""
 		Decode the challenge present in the www-authenticate header
@@ -108,7 +108,7 @@ class Wsse(TestLibraryLib.Library):
 			
 		return ch
 		
-	@doc_public
+	
 	def encode(self, xwsse=False, username=None, password=None, nonce=None, created=None ):
 		"""
 		Contructs an authorization or X-WSSE headers

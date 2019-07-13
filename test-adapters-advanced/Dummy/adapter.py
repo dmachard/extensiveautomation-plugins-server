@@ -28,8 +28,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 from Libs.PyXmlDict import Xml2Dict
 from Libs.PyXmlDict import Dict2Xml
@@ -45,7 +43,7 @@ __NAME__="""DUMMY"""
 
 # Adapter example inherent from adapter library
 class Adapter(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, debug=False, name=None, shared=False, showEvts=True, showSentEvts=True, showRecvEvts=True):
 		"""
 		My dummy adapter.
@@ -85,7 +83,7 @@ class Adapter(TestAdapterLib.Adapter):
 		"""
 		pass
 
-	@doc_public
+	
 	def helloWorld(self, msg="hello world"):
 		"""
 		Dummy function

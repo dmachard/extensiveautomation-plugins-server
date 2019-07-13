@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -50,7 +48,7 @@ __NAME__="""SOAP"""
 AGENT_TYPE_EXPECTED='socket'
 
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, name=None, bindIp='', bindPort=0, destinationIp='127.0.0.1', destinationPort=80, 
 									debug=False, logEventSent=True, logEventReceived=True,
 									xmlns0='http://schemas.xmlsoap.org/soap/envelope/', xmlns1='', xmlns2='', xmlns3='', xmlns4='',
@@ -306,21 +304,21 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		self.ADP_HTTP.onReset()
 		
-	@doc_public
+	
 	def connect(self):
 		"""
 		Start the TCP connection
 		"""
 		self.ADP_HTTP.connect()
 	
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Close the TCP connection
 		"""
 		self.ADP_HTTP.disconnect()
 	
-	@doc_public
+	
 	def isConnected(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -352,7 +350,7 @@ class Client(TestAdapterLib.Adapter):
 		return self.ADP_HTTP.isConnected(timeout=timeout, versionIp=versionIp, sourceIp=sourceIp, destinationIp=destinationIp, 
 											sourcePort=sourcePort, destinationPort=destinationPort)
 
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0, byServer=False, versionIp=None, sourceIp=None, destinationIp=None, 
 										sourcePort=None, destinationPort=None):
 		"""
@@ -413,7 +411,7 @@ class Client(TestAdapterLib.Adapter):
 			new_xml_ns = unicode(new_xml_ns).replace('{%s}' % self.cfg['xmlns8'], '')
 		return new_xml_ns
 	
-	@doc_public
+	
 	def sendSoapRaw(self, http, soap):
 		"""
 		Send SOAP and HTTP data as raw 
@@ -453,7 +451,7 @@ class Client(TestAdapterLib.Adapter):
 			self.error( 'unable to send soap raw: %s' % str(e) )
 			
 
-	@doc_public
+	
 	def sendSoap(self, uri, host, soap, httpHeaders = {}, method='POST', login='', password='', httpVersion="HTTP/1.1"):
 		"""
 		Send SOAP data with a HTTP request, http headers can be added
@@ -548,7 +546,7 @@ class Client(TestAdapterLib.Adapter):
 		except Exception as e:
 			self.error( 'unable to send soap: %s' % str(e) )
 			
-	@doc_public
+	
 	def hasReceivedResponse(self, expected, timeout=1.0):
 		"""
 		Wait to receive "generic response" until the end of the timeout.
@@ -569,7 +567,7 @@ class Client(TestAdapterLib.Adapter):
 			return None
 		return evt
 	
-	@doc_public
+	
 	def hasReceivedSoapResponse(self, httpCode="200", httpPhrase="OK", timeout=1.0):
 		"""
 		Wait to receive "soap response" until the end of the timeout.
@@ -605,7 +603,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl.addLayer( templates.body() )
 		
 		return self.hasReceivedResponse(expected=tpl, timeout=timeout)
-	@doc_public
+	
 	def hasReceivedHttpResponse(self, httpCode="200", httpPhrase="OK", headers=None, timeout=1.0):
 		"""
 		Wait to receive "http response" until the end of the timeout.

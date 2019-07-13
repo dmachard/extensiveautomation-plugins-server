@@ -23,10 +23,8 @@
 
 try:
     import TestInteropLib
-    from TestInteropLib import doc_public
 except ImportError: # python3 support
     from . import TestInteropLib
-    from TestInteropLib.TestInteropLib import doc_public
     
 import requests
 import json
@@ -39,7 +37,7 @@ class QualityCenter(TestInteropLib.InteropPlugin):
     """
     Quality Center plugin
     """
-    @doc_public
+    
     def __init__(self, parent, qcurl, username, password, domain, project, proxies={}, verifySsl=False):
         """
         HP ALM interop
@@ -83,7 +81,7 @@ class QualityCenter(TestInteropLib.InteropPlugin):
         self.QC_SESSION = None
         self.XSRF_TOKEN = None
         
-    @doc_public
+    
     def signin(self):
         """
         Signin to QC
@@ -143,7 +141,7 @@ class QualityCenter(TestInteropLib.InteropPlugin):
 
         return ret
         
-    @doc_public
+    
     def signout(self):
         """
         Sigout from QC
@@ -190,7 +188,7 @@ class QualityCenter(TestInteropLib.InteropPlugin):
             
         return ret
     
-    @doc_public        
+            
     def createIssue(self, defectName, defectDescription, defectStatus, defectPriority, defectSeverity,
                         creationTime, detectedBy, cycleId, user01='', user02='', user03='', user04=''):
         """
@@ -426,7 +424,7 @@ class QualityCenter(TestInteropLib.InteropPlugin):
 
         return ret
            
-    @doc_public
+    
     def searchTestSetByName(self, testsetPath, testsetName):
         """
         Search test set in the testlab
@@ -503,7 +501,7 @@ class QualityCenter(TestInteropLib.InteropPlugin):
 
         return ret
      
-    @doc_public
+    
     def searchTestInstanceByName(self, instanceName, testsetId):
         """
         Search the test instance by name and testset id
@@ -559,7 +557,7 @@ class QualityCenter(TestInteropLib.InteropPlugin):
 
         return ret 
 
-    @doc_public
+    
     def stopTestById(self, runId, testStatus):
         """
         Stop test according to the run id provided
@@ -612,7 +610,7 @@ class QualityCenter(TestInteropLib.InteropPlugin):
             self.logResponse(msg="stop test exception", details=tpl )
         return ret
         
-    @doc_public
+    
     def runStepById(self, stepId, runId, stepStatus, stepActual):
         """
         Run step according the run and step id provided
@@ -668,7 +666,7 @@ class QualityCenter(TestInteropLib.InteropPlugin):
             self.logResponse(msg="run step exception", details=tpl )
         return ret
  
-    @doc_public
+    
     def runTestByName(self, testsetPath, testsetName, instanceName, testStatus, testActual, 
                       subtypeId="hp.qc.run.MANUAL", runName=""):
         """
@@ -698,7 +696,7 @@ class QualityCenter(TestInteropLib.InteropPlugin):
         
         return True
         
-    @doc_public
+    
     def startTestByName(self, testsetPath, testsetName, instanceName, testStatus="Not Completed", 
                               subtypeId="hp.qc.run.MANUAL", runName=""):
         """
@@ -719,7 +717,7 @@ class QualityCenter(TestInteropLib.InteropPlugin):
                                          subtypeId=subtypeId, runName=runName)
         return ret
         
-    @doc_public
+    
     def startTestById(self, testsetId, instanceId, testId, testStatus="Not Completed", 
                             subtypeId="hp.qc.run.MANUAL", runName=""):
         """

@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -47,7 +45,7 @@ AGENT_EVENT_INITIALIZED = "AGENT_INITIALIZED"
 AGENT_TYPE_EXPECTED='ldap'
 
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, ip, dn, password, port=389, sslSupport=False,
 											name=None, debug=False, shared=False, 
 											agentSupport=False, agent=None):
@@ -224,7 +222,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl.addLayer(layer=ldap_event)
 		return tpl
 		
-	@doc_public
+	
 	def connect(self):
 		"""
 		LDAP connection
@@ -259,7 +257,7 @@ class Client(TestAdapterLib.Adapter):
 			tpl = templates.ldap( ip=self.cfg['ip'], port=self.cfg['port'],  more=templates.ldap_connected() )
 			self.logRecvEvent( shortEvt = "connected", tplEvt = self.encapsule(ldap_event=tpl) )
 
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		LDAP disconnection
@@ -283,7 +281,7 @@ class Client(TestAdapterLib.Adapter):
 			tpl = templates.ldap( ip=self.cfg['ip'], port=self.cfg['port'], more=templates.ldap_disconnected() )
 			self.logRecvEvent( shortEvt = "disconnected", tplEvt = self.encapsule(ldap_event=tpl) )
 			
-	@doc_public
+	
 	def add(self, baseDn, record=[]):
 		"""
 		LDAP add query
@@ -317,7 +315,7 @@ class Client(TestAdapterLib.Adapter):
 			tpl = templates.ldap( ip=self.cfg['ip'], port=self.cfg['port'],  more=templates.ldap_response() )
 			self.logRecvEvent( shortEvt = "add success", tplEvt = self.encapsule(ldap_event=tpl) )
 
-	@doc_public
+	
 	def search(self, baseDn, filter="(objectClass=*)", attrs = []):
 		"""
 		LDAP search query
@@ -354,7 +352,7 @@ class Client(TestAdapterLib.Adapter):
 			tpl = templates.ldap( ip=self.cfg['ip'], port=self.cfg['port'],  more=templates.ldap_response(results=r_layer) )
 			self.logRecvEvent( shortEvt = "results (%s)" % len(res), tplEvt = self.encapsule(ldap_event=tpl) )
 
-	@doc_public
+	
 	def updateAttribute(self, baseDn, attrName, value):
 		"""
 		Update attribute
@@ -387,7 +385,7 @@ class Client(TestAdapterLib.Adapter):
 		else:
 			tpl = templates.ldap( ip=self.cfg['ip'], port=self.cfg['port'],  more=templates.ldap_response() )
 			self.logRecvEvent( shortEvt = "update attribute success", tplEvt = self.encapsule(ldap_event=tpl) )
-	@doc_public
+	
 	def addAttribute(self, baseDn, attrName, value):
 		"""
 		Add attribute
@@ -420,7 +418,7 @@ class Client(TestAdapterLib.Adapter):
 		else:
 			tpl = templates.ldap( ip=self.cfg['ip'], port=self.cfg['port'],  more=templates.ldap_response() )
 			self.logRecvEvent( shortEvt = "add attribute success", tplEvt = self.encapsule(ldap_event=tpl) )
-	@doc_public
+	
 	def deleteAttribute(self, baseDn, attrName, value):
 		"""
 		Delete attribute
@@ -454,7 +452,7 @@ class Client(TestAdapterLib.Adapter):
 			tpl = templates.ldap( ip=self.cfg['ip'], port=self.cfg['port'],  more=templates.ldap_response() )
 			self.logRecvEvent( shortEvt = "delete attribute success", tplEvt = self.encapsule(ldap_event=tpl) )
 			
-	@doc_public
+	
 	def delete(self, baseDn):
 		"""
 		Delete entry
@@ -478,7 +476,7 @@ class Client(TestAdapterLib.Adapter):
 			tpl = templates.ldap( ip=self.cfg['ip'], port=self.cfg['port'], more=templates.ldap_response() )
 			self.logRecvEvent( shortEvt = "deleted", tplEvt = self.encapsule(ldap_event=tpl) )
 
-	@doc_public
+	
 	def hasReceivedResponse(self, timeout=1.0):
 		"""
 		Wait ldap response event until the end of the timeout
@@ -503,7 +501,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def isConnected(self, timeout=1.0):
 		"""
 		Waits to receive "connected" event until the end of the timeout
@@ -519,7 +517,7 @@ class Client(TestAdapterLib.Adapter):
 		expected = templates.ldap( ip=self.cfg['ip'], port=self.cfg['port'], more=templates.ldap_connected() )
 		evt = self.received( expected = self.encapsule(ldap_event=expected), timeout = timeout )
 		return evt
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0):
 		"""
 		Waits to receive "disconnected" event until the end of the timeout

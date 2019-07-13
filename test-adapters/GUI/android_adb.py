@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import threading
@@ -196,7 +194,7 @@ class Selector(dict):
     child_selector, from_parent = child, sibling
  
 class Adb(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, agent, name=None, debug=False, verbose=True, shared=False):
 		"""
 		Android automator throught ADB (Android debug bridge)
@@ -440,7 +438,7 @@ class Adb(TestAdapterLib.Adapter):
 		
 		return cmdId
 		
-	@doc_public
+	
 	def command_adb(self, params, adb='adb'):
 		"""
 		"""
@@ -460,7 +458,7 @@ class Adb(TestAdapterLib.Adapter):
 		
 		return cmdId
 		
-	@doc_public
+	
 	def shell(self, command):
 		"""
 		Shell adb command
@@ -473,7 +471,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.command_adb(params="shell %s" % command, adb="shell")
 	
-	@doc_public
+	
 	def resetApplication(self, packageName):
 		"""
 		Reset application according to the package name 
@@ -487,7 +485,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.shell(command="pm clear %s" % packageName)
 	
-	@doc_public
+	
 	def stopApplication(self, packageName):
 		"""
 		Stop application according to the package name
@@ -500,7 +498,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.shell(command="am force-stop %s" % packageName)
 		
-	@doc_public
+	
 	def input(self, command):
 		"""
 		Input adb command 
@@ -513,7 +511,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.command_adb(params="shell input %s" % command, adb="input")
 		
-	@doc_public
+	
 	def root(self):
 		"""
 		Input adb command 
@@ -523,7 +521,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.command_adb(params="root", adb="root")
 
-	@doc_public
+	
 	def devices(self):
 		"""
 		Get all connected devices
@@ -534,7 +532,7 @@ class Adb(TestAdapterLib.Adapter):
 		return self.command_adb(params="devices", adb="devices")
 		
 
-	@doc_public
+	
 	def unlock(self):
 		"""
 		Unlock the device
@@ -543,7 +541,7 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_adb(params="shell input keyevent 82", adb="unlock")
-	@doc_public
+	
 	def lock(self):
 		"""
 		Lock the device, go to sleep before
@@ -553,7 +551,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.command_adb(params="shell input keyevent 82", adb="lock")
 
-	@doc_public
+	
 	def reboot(self):
 		"""
 		Reboot the device
@@ -563,7 +561,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.command_adb(params="reboot", adb="reboot")
 	
-	@doc_public
+	
 	def recovery(self):
 		"""
 		Reboots the device into the recovery program
@@ -573,7 +571,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.command_adb(params="reboot recovery", adb="recovery")
 	
-	@doc_public
+	
 	def bootloader(self):
 		"""
 		Reboots the device into the bootloader
@@ -583,7 +581,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.command_adb(params="reboot bootloader", adb="bootloader")
 
-	@doc_public
+	
 	def getLogs(self):
 		"""
 		Get device logs
@@ -593,7 +591,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.command_adb(params="logcat -d", adb="get logs")
 		
-	@doc_public
+	
 	def clearLogs(self):
 		"""
 		Clear device logs
@@ -603,7 +601,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.command_adb(params="logcat -c", adb="clear logs")
 		
-	@doc_public
+	
 	def install(self, apk):
 		"""
 		Install apk 
@@ -616,7 +614,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.command_adb(params="install %s" % apk, adb="install")
 		
-	@doc_public
+	
 	def uninstall(self, apk):
 		"""
 		Uninstall apk 
@@ -630,7 +628,7 @@ class Adb(TestAdapterLib.Adapter):
 		return self.command_adb(params="uninstall %s" % apk, adb="uninstall")
 		
 		
-	@doc_public	
+		
 	def push(self, fromPath, toPath):
 		"""
 		Upload file to the device
@@ -646,7 +644,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.command_adb(params="push \"%s\" %s" % (fromPath,toPath), adb="push")
 		
-	@doc_public
+	
 	def pull(self, fromPath, toPath):
 		"""
 		Pull file from the device
@@ -661,25 +659,25 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_adb(params="pull \"%s\" %s" % (fromPath,toPath), adb="pull")
-	@doc_public
+	
 	def wakeUp(self):
 		"""
 		Wake up the device
 		"""
 		return self.command_json(cmd=ADB_WAKEUP_ACTION)	
-	@doc_public
+	
 	def sleep(self):
 		"""
 		Go to sleep
 		"""
 		return self.command_json(cmd=ADB_SLEEP_ACTION)	
-	@doc_public	
+		
 	def deviceInfo(self):
 		"""
 		Get device info
 		"""
 		return self.command_json(cmd=ADB_DEVICEINFO_ACTION)	
-	@doc_public
+	
 	def typeShortcut(self, shortcut):
 		"""
 		Type shortcut on device (home, power, etc...)
@@ -691,7 +689,7 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_json(cmd='pressKey', params=[shortcut])
-	@doc_public
+	
 	def typeKeyCode(self, code):
 		"""
 		Type key code on device
@@ -703,7 +701,7 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_json(cmd='pressKeyCode', params=[code])
-	@doc_public
+	
 	def openNotification(self):
 		"""
 		Open notification
@@ -712,7 +710,7 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_json(cmd=JSON_NOTIFICATION_ACTION, params=[])
-	@doc_public
+	
 	def openQuickSettings(self):
 		"""
 		Open quick settings
@@ -721,7 +719,7 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_json(cmd=JSON_SETTINGS_ACTION, params=[])
-	@doc_public
+	
 	def clickPosition(self, x, y):
 		"""
 		Click on position x and y
@@ -736,7 +734,7 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_json(cmd=JSON_CLICK_ACTION, params=[x,y])
-	@doc_public
+	
 	def dragPosition(self, startX, startY, endX, endY):
 		"""
 		Drag from startX/startY to endX/endY
@@ -757,7 +755,7 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_json(cmd=JSON_DRAG_ACTION, params=[ startX, startY, endX, endY, 40])
-	@doc_public
+	
 	def freezeRotation(self):
 		"""
 		Freeze the rotation
@@ -766,7 +764,7 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_json(cmd=JSON_FREEZEROTATION_ACTION, params=[ True ])
-	@doc_public
+	
 	def unfreezeRotation(self):
 		"""
 		Unfreeze the rotation
@@ -775,7 +773,7 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_json(cmd=JSON_FREEZEROTATION_ACTION, params=[ False ])
-	@doc_public
+	
 	def setOrientation(self):
 		"""
 		Set orientation
@@ -784,7 +782,7 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_json(cmd=JSON_SETORIENTATION_ACTION, params=[ False ])
-	@doc_public
+	
 	def dragElement(self, endX, endY, text=None, textContains=None, textStartsWith=None, description=None, descriptionContains=None, descriptionStartsWith=None,
 																	className=None, resourceId=None, packageName=None):
 		"""
@@ -829,7 +827,7 @@ class Adb(TestAdapterLib.Adapter):
 		return self.command_json(cmd=JSON_DRAGELEMENT_ACTION, params=[ Selector(text=text, textContains=textContains, textStartsWith=textStartsWith, className=className,
 																																									resourceId=resourceId, packageName=packageName, description=description, descriptionContains=descriptionContains, 
 																																									descriptionStartsWith=descriptionStartsWith), endX, endY, 40])
-	@doc_public
+	
 	def swipePosition(self, startX, startY, endX, endY):
 		"""
 		Swipe from startX/startY to endX/endY
@@ -850,7 +848,7 @@ class Adb(TestAdapterLib.Adapter):
 		@rtype: string
 		"""
 		return self.command_json(cmd=JSON_SWIPE_ACTION, params=[ startX, startY, endX, endY, 100])
-	@doc_public
+	
 	def waitElement(self, text=None, textContains=None, textStartsWith=None, description=None, descriptionContains=None, descriptionStartsWith=None,
 																	className=None, resourceId=None, packageName=None, timeout=10.0):
 		"""
@@ -892,7 +890,7 @@ class Adb(TestAdapterLib.Adapter):
 		return self.command_json(cmd=JSON_WAITELEMENT_ACTION, params=[Selector(text=text, textContains=textContains, textStartsWith=textStartsWith, className=className,
 																																									resourceId=resourceId, packageName=packageName, description=description, descriptionContains=descriptionContains, 
 																																									descriptionStartsWith=descriptionStartsWith), self.getTimeout(timeout=timeout)])
-	@doc_public
+	
 	def clickElement(self, text=None, textContains=None, textStartsWith=None, description=None, descriptionContains=None, descriptionStartsWith=None,
 																	className=None, resourceId=None, packageName=None):
 		"""
@@ -931,7 +929,7 @@ class Adb(TestAdapterLib.Adapter):
 		return self.command_json(cmd=JSON_CLICK_ACTION, params=[Selector(text=text, textContains=textContains, textStartsWith=textStartsWith, className=className,
 																																									resourceId=resourceId, packageName=packageName, description=description, descriptionContains=descriptionContains, 
 																																									descriptionStartsWith=descriptionStartsWith) ])
-	@doc_public
+	
 	def longClickElement(self, text=None, textContains=None, textStartsWith=None, description=None, descriptionContains=None, descriptionStartsWith=None,
 																	className=None, resourceId=None, packageName=None):
 		"""
@@ -970,7 +968,7 @@ class Adb(TestAdapterLib.Adapter):
 		return self.command_json(cmd=JSON_LONGCLICK_ACTION, params=[Selector(text=text, textContains=textContains, textStartsWith=textStartsWith, className=className,
 																																									resourceId=resourceId, packageName=packageName, description=description, descriptionContains=descriptionContains, 
 																																									descriptionStartsWith=descriptionStartsWith) ])
-	@doc_public
+	
 	def existElement(self, text=None, textContains=None, textStartsWith=None, description=None, descriptionContains=None, descriptionStartsWith=None,
 																	className=None, resourceId=None, packageName=None):
 		"""
@@ -1009,7 +1007,7 @@ class Adb(TestAdapterLib.Adapter):
 		return self.command_json(cmd=JSON_EXIST_ACTION, params=[Selector(text=text, textContains=textContains, textStartsWith=textStartsWith, className=className,
 																																									resourceId=resourceId, packageName=packageName, description=description, descriptionContains=descriptionContains, 
 																																									descriptionStartsWith=descriptionStartsWith) ])
-	@doc_public
+	
 	def clearTextElement(self, text=None, textContains=None, textStartsWith=None, description=None, descriptionContains=None, descriptionStartsWith=None,
 																	className=None, resourceId=None, packageName=None):
 		"""
@@ -1048,7 +1046,7 @@ class Adb(TestAdapterLib.Adapter):
 		return self.command_json(cmd=JSON_CLEARTEXT_ACTION, params=[Selector(text=text, textContains=textContains, textStartsWith=textStartsWith, className=className,
 																																									resourceId=resourceId, packageName=packageName, description=description, descriptionContains=descriptionContains, 
 																																									descriptionStartsWith=descriptionStartsWith) ])
-	@doc_public
+	
 	def typeTextElement(self, newText, text=None, textContains=None, textStartsWith=None, description=None, descriptionContains=None, descriptionStartsWith=None,
 																	className=None, resourceId=None, packageName=None):
 		"""
@@ -1090,7 +1088,7 @@ class Adb(TestAdapterLib.Adapter):
 		return self.command_json(cmd=JSON_SETTEXT_ACTION, params=[ Selector(text=text, textContains=textContains, textStartsWith=textStartsWith, className=className,
 																																									resourceId=resourceId, packageName=packageName, description=description, descriptionContains=descriptionContains, 
 																																									descriptionStartsWith=descriptionStartsWith) , newText])
-	@doc_public
+	
 	def getTextElement(self, text=None, textContains=None, textStartsWith=None, description=None, descriptionContains=None, descriptionStartsWith=None,
 																	className=None, resourceId=None, packageName=None):
 		"""
@@ -1129,7 +1127,7 @@ class Adb(TestAdapterLib.Adapter):
 		return self.command_json(cmd=JSON_GETTEXT_ACTION, params=[Selector(text=text, textContains=textContains, textStartsWith=textStartsWith, className=className,
 																																									resourceId=resourceId, packageName=packageName, description=description, descriptionContains=descriptionContains, 
 																																									descriptionStartsWith=descriptionStartsWith) ])
-	@doc_public
+	
 	def typeText(self, text):
 		"""
 		Type text on device
@@ -1142,7 +1140,7 @@ class Adb(TestAdapterLib.Adapter):
 		"""
 		return self.input(command='text %s' % text)
 		
-	@doc_public
+	
 	def isActionAccepted(self, timeout=10.0, actionName=None, actionId=None):
 		"""
 		Waits to receive "action accepted" event until the end of the timeout
@@ -1167,7 +1165,7 @@ class Adb(TestAdapterLib.Adapter):
 		# try to match the template 
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
-	@doc_public
+	
 	def doWakeupUnlock(self, timeout=10.0):
 		"""
 		Do wake up and unlock the device
@@ -1189,7 +1187,7 @@ class Adb(TestAdapterLib.Adapter):
 			else:
 				ret = True
 		return ret
-	@doc_public
+	
 	def doWakeUp(self, timeout=10.0):
 		"""
 		Do wake up
@@ -1207,7 +1205,7 @@ class Adb(TestAdapterLib.Adapter):
 		else:
 			ret = True
 		return ret
-	@doc_public
+	
 	def doUnlock(self, timeout=10.0):
 		"""
 		Do unlock the device
@@ -1225,7 +1223,7 @@ class Adb(TestAdapterLib.Adapter):
 		else:
 			ret = True
 		return ret
-	@doc_public
+	
 	def doSleepLock(self, timeout=10.0):
 		"""
 		Do sleep and lock the device
@@ -1247,7 +1245,7 @@ class Adb(TestAdapterLib.Adapter):
 			else:
 				ret = True
 		return ret
-	@doc_public
+	
 	def doSleep(self, timeout=10.0):
 		"""
 		Do sleep the device
@@ -1265,7 +1263,7 @@ class Adb(TestAdapterLib.Adapter):
 		else:
 			ret = True
 		return ret
-	@doc_public
+	
 	def doReboot(self, timeout=10.0):
 		"""
 		Do reboot the device
@@ -1283,7 +1281,7 @@ class Adb(TestAdapterLib.Adapter):
 		else:
 			ret = True
 		return ret
-	@doc_public
+	
 	def doWaitClickElement(self, timeout=10.0, text=None, textContains=None, textStartsWith=None, description=None, descriptionContains=None, descriptionStartsWith=None,
 																	className=None, resourceId=None, packageName=None):
 		"""

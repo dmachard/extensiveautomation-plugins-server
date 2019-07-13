@@ -23,7 +23,6 @@
 
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import templates
 import yaml
@@ -36,7 +35,7 @@ class Client(TestAdapterLib.Adapter):
     __NAME__ = """ANSIBLE"""
     AGENT_INITIALIZED = "AGENT_INITIALIZED"
     AGENT_TYPE_EXPECTED = 'ansible'
-    @doc_public
+    
     def __init__(self, parent, host_group, agent, ssh_user=None, ssh_pass=None,
                  name=None, debug=False, shared=False, constants=None,
                  options=None, host_fqdns="None", host_py='python',
@@ -215,7 +214,7 @@ class Client(TestAdapterLib.Adapter):
         self.info('playbook:\n%s' % playbook, raw=True)
         return playbook
 
-    @doc_public
+    
     def doAnsibleCmd(self, options=None, constants=None, play=None, passwords={}):
         """
         @param options:

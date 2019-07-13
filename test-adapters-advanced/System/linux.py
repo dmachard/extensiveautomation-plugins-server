@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -65,7 +63,7 @@ AGENT_INITIALIZED = "AGENT_INITIALIZED"
 AGENT_TYPE_EXPECTED='command'
 
 class Linux(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, agent, name=None, debug=False, shared=False, logEventSent=True, logEventReceived=True):
 		"""
 		Linux adapter
@@ -322,7 +320,7 @@ class Linux(TestAdapterLib.Adapter):
 		tpl.addLayer(layer=layer_agent)
 		tpl.addLayer(layer=linux_event)
 		return tpl
-	@doc_public
+	
 	def hasReceivedResponse(self, timeout=1.0):
 		"""
 		Waits to receive "response" event until the end of the timeout
@@ -339,7 +337,7 @@ class Linux(TestAdapterLib.Adapter):
 		evt = self.received( expected = self.encapsule(linux_event=layer_linux), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def getHostname(self):
 		"""
 		Requests the host to get the hostname
@@ -351,7 +349,7 @@ class Linux(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % GET_HOSTNAME, tplEvt = self.encapsule(linux_event=layer_linux) ) 
 		self.sendNotifyToAgent(data=cmd)
 
-	@doc_public
+	
 	def getCpuInfo(self):
 		"""
 		Requests the host to get the cpu info
@@ -363,7 +361,7 @@ class Linux(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % GET_CPU_INFO, tplEvt = self.encapsule(linux_event=layer_linux) ) 
 		self.sendNotifyToAgent(data=cmd)
 
-	@doc_public
+	
 	def getMemUsage(self):
 		"""
 		Requests the host to get the memory usage
@@ -376,7 +374,7 @@ class Linux(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % GET_MEM_USAGE, tplEvt = self.encapsule(linux_event=layer_linux) ) 		
 		self.sendNotifyToAgent(data=cmd)
 
-	@doc_public
+	
 	def getOs(self):
 		"""
 		Requests the host to get the version of the operating system
@@ -388,7 +386,7 @@ class Linux(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % GET_OS, tplEvt = self.encapsule(linux_event=layer_linux) ) 		
 		self.sendNotifyToAgent(data=cmd)
 
-	@doc_public
+	
 	def getKernel(self):
 		"""
 		Requests the host to get the version of the kernel
@@ -400,7 +398,7 @@ class Linux(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % GET_KERNEL, tplEvt = self.encapsule(linux_event=layer_linux) ) 		
 		self.sendNotifyToAgent(data=cmd)
 	
-	@doc_public
+	
 	def execCommand(self, cmd):
 		"""
 		Execute the command passed on argument
@@ -415,7 +413,7 @@ class Linux(TestAdapterLib.Adapter):
 			self.logSentEvent( shortEvt = "%s Request" % EXEC_CMD, tplEvt = self.encapsule(linux_event=layer_linux) ) 		
 		self.sendNotifyToAgent(data=cmd)		
 		
-	@doc_public
+	
 	def doGetHostname(self, timeout=1.0):
 		"""
 		Get the hostname and wait the reponse until the end of the timeout
@@ -430,7 +428,7 @@ class Linux(TestAdapterLib.Adapter):
 		
 		self.getHostname()
 		return self.hasReceivedResponse(timeout=timeout)
-	@doc_public
+	
 	def doGetCpuInfo(self, timeout=1.0):
 		"""
 		Get the cpu info and wait the reponse until the end of the timeout
@@ -445,7 +443,7 @@ class Linux(TestAdapterLib.Adapter):
 		
 		self.getCpuInfo()
 		return self.hasReceivedResponse(timeout=timeout)
-	@doc_public
+	
 	def doGetMemUsage(self, timeout=1.0):
 		"""
 		Get the memory usage and wait the reponse until the end of the timeout
@@ -460,7 +458,7 @@ class Linux(TestAdapterLib.Adapter):
 		
 		self.getMemUsage()
 		return self.hasReceivedResponse(timeout=timeout)
-	@doc_public
+	
 	def doGetOs(self, timeout=1.0):
 		"""
 		Get the version of the operating system and wait the reponse until the end of the timeout
@@ -475,7 +473,7 @@ class Linux(TestAdapterLib.Adapter):
 		
 		self.getOs()
 		return self.hasReceivedResponse(timeout=timeout)
-	@doc_public
+	
 	def doGetKernel(self, timeout=1.0):
 		"""
 		Get the version of the kernel and wait the reponse until the end of the timeout
@@ -490,7 +488,7 @@ class Linux(TestAdapterLib.Adapter):
 		
 		self.getOs()
 		return self.hasReceivedResponse(timeout=timeout)
-	@doc_public
+	
 	def doCommand(self, cmd, timeout=1.0):
 		"""
 		Execute the command passed on argument and wait the reponse until the end of the timeout

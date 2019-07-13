@@ -26,8 +26,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import subprocess
@@ -52,7 +50,7 @@ AGENT_TYPE_EXPECTED='curl'
 CURL_BIN = "curl"
 
 class Curl(TestAdapterLib.Adapter):
-	@doc_public	
+		
 	def __init__(self, parent, name=None, debug=False, shared=False, agentSupport=False, 
 											agent=None, logEventSent=True, logEventReceived=True):
 		"""
@@ -275,7 +273,7 @@ class Curl(TestAdapterLib.Adapter):
 		return evt
 		
 
-	@doc_public	
+		
 	def sendHttp(self, host, method=None,  headers=None, body=None, more=None, 
 												proxy_host=None, timeout_connect=10, timeout_max=10):
 		"""
@@ -424,7 +422,7 @@ class Curl(TestAdapterLib.Adapter):
 			except:
 				pass
 
-	@doc_public	
+		
 	def hasReceivedHttpResponse(self, httpCode=None, httpPhrase=None, httpVersion=None, 
 																									httpHeaders=None, httpBody=None, timeout=1.0):
 		"""

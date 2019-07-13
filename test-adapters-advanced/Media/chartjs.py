@@ -22,12 +22,11 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 __NAME__="""CHARTJS"""
 
 class ChartJS(TestLibrary.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Chart.js library
@@ -95,7 +94,7 @@ class ChartJS(TestLibrary.Library):
 		tpl_opts.append( "scales: { yAxes: [{ ticks: { beginAtZero:true } }]  },")
 		tpl_opts.append( "}")
 		return tpl_opts
-	@doc_public
+	
 	def barChart(self, labelsAxes=[], datas=[],  legendDatas=[], backgroundColors=[], 
 													borderColors=[], horizontalBar=False, chartTitle="My Chart", width=400, height=400):
 		"""
@@ -162,7 +161,7 @@ class ChartJS(TestLibrary.Library):
 			barType = 'bar'
 			
 		return self.chart(type=barType,  data=tpl_data, options=self.options(), width=width, height=height, chartTitle=chartTitle)
-	@doc_public
+	
 	def lineChart(self,  labelsAxes=[], legendDatas=[], datas=[], backgroundColors=[], 
 															 borderColors=[], fills=[], chartTitle="My Chart", width=400, height=400,  ):
 		"""
@@ -233,7 +232,7 @@ class ChartJS(TestLibrary.Library):
 		tpl_data.append( "}")
 		
 		return self.chart(type="line",  data=tpl_data, options=self.options(), width=width, height=height, chartTitle=chartTitle)
-	@doc_public
+	
 	def pieChart(self,  legendData=[], data=[], backgroundColors=[], chartTitle="My Chart", width=400, height=400,  doughnut=False):
 		"""
 		Create pie chart

@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
-# import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -50,7 +48,7 @@ __NAME__="""REST"""
 AGENT_TYPE_EXPECTED='socket'
 
 class Client(TestAdapter.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, name=None, bindIp='', bindPort=0, destinationIp='127.0.0.1', destinationPort=80, debug=False,
 												logEventSent=True, logEventReceived=True, 
 												httpAgent='ExtensiveTesting',  httpVersion='HTTP/1.1', httpConnection='close',
@@ -266,21 +264,21 @@ class Client(TestAdapter.Adapter):
 		"""
 		self.ADP_HTTP.onReset()
 		
-	@doc_public
+	
 	def connect(self):
 		"""
 		Start the TCP connection
 		"""
 		self.ADP_HTTP.connect()
 	
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Close the TCP connection
 		"""
 		self.ADP_HTTP.disconnect()
 	
-	@doc_public
+	
 	def isConnected(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -312,7 +310,7 @@ class Client(TestAdapter.Adapter):
 		return self.ADP_HTTP.isConnected(timeout=timeout, versionIp=versionIp, sourceIp=sourceIp, destinationIp=destinationIp, 
 											sourcePort=sourcePort, destinationPort=destinationPort)
 
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0, byServer=False, versionIp=None, sourceIp=None, destinationIp=None, 
 										sourcePort=None, destinationPort=None):
 		"""
@@ -347,7 +345,7 @@ class Client(TestAdapter.Adapter):
 		return self.ADP_HTTP.isDisconnected(timeout=timeout, byServer=byServer, versionIp=versionIp, 
 						sourceIp=sourceIp, destinationIp=destinationIp, sourcePort=sourcePort, destinationPort=destinationPort)
 	
-	@doc_public
+	
 	def sendRestRaw(self, http, json='', timeout=1.0):
 		"""
 		Send REST and HTTP data as raw 
@@ -400,7 +398,7 @@ class Client(TestAdapter.Adapter):
 		except Exception as e:
 			self.error( 'unable to send rest raw: %s' % str(e) )
 			
-	@doc_public
+	
 	def sendRest(self, uri, host, json='', method='POST',  httpHeaders = {}, body=None, timeout=1.0):
 		"""
 		Send REST data, http headers can be added
@@ -469,7 +467,7 @@ class Client(TestAdapter.Adapter):
 		except Exception as e:
 			self.error( 'unable to send rest: %s' % str(e) )
 			
-	@doc_public
+	
 	def hasReceivedResponse(self, expected, timeout=1.0):
 		"""
 		Wait to receive "generic response" until the end of the timeout.
@@ -490,7 +488,7 @@ class Client(TestAdapter.Adapter):
 			return None
 		return evt
 	
-	@doc_public
+	
 	def hasReceivedRestResponse(self, httpCode="200", httpPhrase="OK", httpVersion='HTTP/1.1', timeout=1.0, httpHeaders={}, httpBody=None):
 		"""
 		Wait to receive "rest response" until the end of the timeout.

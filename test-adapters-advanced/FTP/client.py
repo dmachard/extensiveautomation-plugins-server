@@ -25,7 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -77,7 +76,7 @@ AGENT_INITIALIZED = "AGENT_INITIALIZED"
 AGENT_TYPE_EXPECTED='ftp'
 
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, destinationIp= '127.0.0.1',  destinationPort=21, 
 													user='anonymous', password='anonymous@',
 													agent=None, name=None, tlsSupport=False, 
@@ -392,7 +391,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl.addLayer(layer=layer_ftp)
 		return tpl
 		
-	@doc_public
+	
 	def connect(self, passiveMode=True):
 		"""
 		Connect to ftp
@@ -422,7 +421,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl = self.encapsule( ftp_event=templates.connected(), cmd=CONNECT )
 				self.logRecvEvent( shortEvt = "connected", tplEvt = tpl )
 			
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Disconnect from ftp
@@ -451,7 +450,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl = self.encapsule( ftp_event=templates.disconnected(), cmd=DISCONNECT )
 				self.logRecvEvent( shortEvt = "disconnected", tplEvt = tpl )
 		
-	@doc_public
+	
 	def login(self):
 		"""
 		Login to ftp
@@ -493,7 +492,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl = self.encapsule( ftp_event=templates.secure() )
 				self.logRecvEvent( shortEvt = "data secured", tplEvt = tpl )
 				
-	@doc_public
+	
 	def sizeOfFile(self, filename):
 		"""
 		Get the size of the file
@@ -524,7 +523,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl.addRaw( "%s" % rsp )
 				self.logRecvEvent( shortEvt = "file size returned", tplEvt = tpl )
 				
-	@doc_public
+	
 	def deleteFile(self, filename):
 		"""
 		Delete a file
@@ -554,7 +553,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl = self.encapsule( ftp_event=templates.response(rsp=rsp), cmd=DELETE_FILE )
 				tpl.addRaw( rsp )
 				self.logRecvEvent( shortEvt = "file deleted", tplEvt = tpl )
-	@doc_public
+	
 	def renameFile(self, currentFilename, newFilename):
 		"""
 		Rename a file
@@ -587,7 +586,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl = self.encapsule( ftp_event=templates.response(rsp=rsp), cmd=RENAME_FILE  )
 				tpl.addRaw( rsp )
 				self.logRecvEvent( shortEvt = "file renamed", tplEvt = tpl )
-	@doc_public
+	
 	def gotoFolder(self, path):
 		"""
 		Goto the folder
@@ -618,7 +617,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl.addRaw( rsp )
 				self.logRecvEvent( shortEvt = "changed", tplEvt = tpl )
 			
-	@doc_public
+	
 	def addFolder(self, path):
 		"""
 		Add a folder
@@ -648,7 +647,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl = self.encapsule( ftp_event=templates.response(rsp=rsp), cmd=ADD_FOLDER )
 				tpl.addRaw( rsp )
 				self.logRecvEvent( shortEvt = "added", tplEvt = tpl )
-	@doc_public
+	
 	def currentPath(self):
 		"""
 		Get the current path
@@ -674,7 +673,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl = self.encapsule( ftp_event=templates.response(rsp=rsp), cmd=CURRENT_PATH )
 				tpl.addRaw( rsp )
 				self.logRecvEvent( shortEvt = "current", tplEvt = tpl )
-	@doc_public
+	
 	def deleteFolder(self, path):
 		"""
 		Delete a folder
@@ -705,7 +704,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl.addRaw( rsp )
 				self.logRecvEvent( shortEvt = "folder deleted", tplEvt = tpl )
 				
-	@doc_public
+	
 	def renameFolder(self, currentPath, newPath):
 		"""
 		Rename a folder
@@ -739,7 +738,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl.addRaw( rsp )
 				self.logRecvEvent( shortEvt = "folder renamed", tplEvt = tpl )
 			
-	@doc_public
+	
 	def listingFolder(self, path=None, extended=False):
 		"""
 		Listing the folder
@@ -790,7 +789,7 @@ class Client(TestAdapterLib.Adapter):
 				self.logRecvEvent( shortEvt = "folder listing", tplEvt = tpl )
 			
 
-	@doc_public
+	
 	def command(self, cmd):
 		"""
 		Send a simple command string to the server and return the response string.
@@ -821,7 +820,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl.addRaw( rsp )
 				self.logRecvEvent( shortEvt = "response", tplEvt = tpl )
 			
-	@doc_public
+	
 	def getFile(self,  filename, toPrivate=False):
 		"""
 		Get file content 
@@ -867,7 +866,7 @@ class Client(TestAdapterLib.Adapter):
 						self.logRecvEvent( shortEvt = "file downloaded", tplEvt = tpl )
 			
 			
-	@doc_public
+	
 	def putFile(self, toFilename, fromFilename=None, rawContent=None):
 		"""
 		Put file  in binary transfer mode.
@@ -921,7 +920,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl.addRaw( rsp )
 				self.logRecvEvent( shortEvt = "file uploaded", tplEvt = tpl )
 
-	@doc_public
+	
 	def waitForFile(self, path, filename, timeout=1.0, watchEvery=0.5):
 		"""
 		Wait for file, regexp supported on filename
@@ -986,7 +985,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl = self.encapsule( ftp_event=templates.wait_file(path=path, filename=true_filename, result=ret), cmd=WAIT_FILE )
 				self.logRecvEvent( shortEvt = "wait file", tplEvt = tpl )
 				
-	@doc_public
+	
 	def waitForFolder(self, path, folder, timeout=1.0, watchEvery=0.5):
 		"""
 		Wait for folder, regexp supported on folder name
@@ -1051,7 +1050,7 @@ class Client(TestAdapterLib.Adapter):
 				tpl = self.encapsule( ftp_event=templates.wait_folder(path=path, folder=true_folder, result=ret), cmd=WAIT_FOLDER )
 				self.logRecvEvent( shortEvt = "wait folder", tplEvt = tpl )
 				
-	@doc_public
+	
 	def isConnected(self, timeout=1.0):
 		"""
 		Waits to receive "is connected" event
@@ -1067,7 +1066,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.connected(), cmd=CONNECT)
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def isLogged(self, timeout=1.0):
 		"""
 		Waits to receive "is logged" event
@@ -1083,7 +1082,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.logged(), cmd=LOGIN )
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def isDataSecured(self, timeout=1.0):
 		"""
 		Waits to receive "welcome response" event
@@ -1099,7 +1098,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.secure() )
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0):
 		"""
 		Waits to receive "is disconnected" event
@@ -1116,7 +1115,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def isFileRenamed(self, timeout=1.0):
 		"""
 		Waits to receive "renamed file" event
@@ -1137,7 +1136,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def isFileDeleted(self, timeout=1.0):
 		"""
 		Waits to receive "deleted file" event
@@ -1158,7 +1157,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasUploadedFile(self, timeout=1.0):
 		"""
 		Waits to receive "uploaded file" event
@@ -1179,7 +1178,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasDownloadedFile(self, timeout=1.0):
 		"""
 		Waits to receive "downloaded" event
@@ -1200,7 +1199,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def isFolderDeleted(self, timeout=1.0):
 		"""
 		Waits to receive "deleted folder" event
@@ -1220,7 +1219,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.response(), cmd=DELETE_FOLDER)
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def isFolderChanged(self, timeout=1.0):
 		"""
 		Waits to receive "changed folder" event
@@ -1241,7 +1240,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def isFolderRenamed(self, timeout=1.0):
 		"""
 		Waits to receive "folder renamed" event
@@ -1262,7 +1261,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def isFolderAdded(self, timeout=1.0):
 		"""
 		Waits to receive "added folder" event
@@ -1283,7 +1282,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasFolderListing(self, timeout=1.0):
 		"""
 		Waits to receive "listing folder" event
@@ -1304,7 +1303,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 	
-	@doc_public
+	
 	def hasFileSize(self, timeout=1.0):
 		"""
 		Waits to receive "file size" event
@@ -1324,7 +1323,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.response(), cmd=SIZE_FILE)
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasCurrentPath(self, timeout=1.0):
 		"""
 		Waits to receive "current path" event
@@ -1344,7 +1343,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.response(), cmd=CURRENT_PATH)
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasReceivedResponse(self, timeout=1.0):
 		"""
 		Waits to receive "response" event
@@ -1364,7 +1363,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.response() )
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasReceivedError(self, timeout=1.0):
 		"""
 		Waits to receive "error response" event
@@ -1384,7 +1383,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.response_error() )
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasReceivedWelcome(self, timeout=1.0):
 		"""
 		Waits to receive "welcome response" event
@@ -1404,7 +1403,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.welcome() )
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasDetectedFile(self, path=None,  filename=None, timeout=1.0):
 		"""
 		Waits to receive "detected file" event
@@ -1430,7 +1429,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.wait_file(path=path, filename=filename, result=True), cmd=WAIT_FILE)
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasDetectedFolder(self, path=None, folder=None, timeout=1.0):
 		"""
 		Waits to receive "detected folder" event
@@ -1456,7 +1455,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.wait_folder(path=path, folder=folder, result=True), cmd=WAIT_FOLDER)
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def getFolder(self, fromPath, toPath=None, overwrite=False):
 		"""
 		Get folder content with recursive mode
@@ -1554,7 +1553,7 @@ class Client(TestAdapterLib.Adapter):
 						raise Exception("os error file: %s" % e)
 				
 		return nb_file
-	@doc_public
+	
 	def putFolder(self, fromPath, toPath, overwrite=False):
 		"""
 		Put folder content with recursive mode
@@ -1624,7 +1623,7 @@ class Client(TestAdapterLib.Adapter):
 				nb_file += self.__putFolder(fromPath=itempath, toPath=destFolder, overwrite=overwrite)
 		return nb_file
 		
-	@doc_public
+	
 	def hasDownloadedFolder(self, timeout=1.0, nbFiles=None):
 		"""
 		Waiting downloaded event for folder
@@ -1645,7 +1644,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_expected = self.encapsule( ftp_event=templates.response(rsp=nbFiles), cmd=GET_FOLDER )
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasUploadedFolder(self, timeout=1.0, nbFiles=None):
 		"""
 		Waiting uploaded event for folder

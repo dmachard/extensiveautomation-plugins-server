@@ -25,7 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -48,7 +47,7 @@ except ImportError: # python3 support
 import copy
 
 class Catalyst(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent,  bindIp = '0.0.0.0', bindPort=0,  destIp='127.0.0.1', 
 													destPort=23,  name=None, debug=False,
 													shared=False, prompt='>', promptEnable='#', 
@@ -125,7 +124,7 @@ class Catalyst(TestAdapterLib.Adapter):
 		"""
 		self.ADP_TRANSPORT.onReset() 
 		
-	@doc_public
+	
 	def connect(self):
 		"""
 		TCP connection
@@ -133,7 +132,7 @@ class Catalyst(TestAdapterLib.Adapter):
 		"""
 		self.ADP_TRANSPORT.connect()
 
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		TCP connection
@@ -141,7 +140,7 @@ class Catalyst(TestAdapterLib.Adapter):
 		"""
 		self.ADP_TRANSPORT.disconnect()
 		
-	@doc_public
+	
 	def isConnected(self, timeout=1.0):
 		"""
 		Is Connected
@@ -156,7 +155,7 @@ class Catalyst(TestAdapterLib.Adapter):
 		
 		return self.ADP_TRANSPORT.isConnected(timeout=timeout)
 		
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0):
 		"""
 		Is Disconnected
@@ -196,7 +195,7 @@ class Catalyst(TestAdapterLib.Adapter):
 		lower_event.addLayer(layer=layer_catalyst)
 		return lower_event
 
-	@doc_public
+	
 	def sendCommand(self, tpl):
 		"""
 		Send command
@@ -225,7 +224,7 @@ class Catalyst(TestAdapterLib.Adapter):
 			raise Exception('Unable to send catalyst command: %s' % str(e))
 		return lower
 		
-	@doc_public
+	
 	def hasReceivedResponse(self, expected, timeout=1.0):
 		"""
 		Wait response until the end of the timeout.
@@ -259,7 +258,7 @@ class Catalyst(TestAdapterLib.Adapter):
 		
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedData(self, data="", timeout=1.0):
 		"""
 		Wait response until the end of the timeout.
@@ -297,7 +296,7 @@ class Catalyst(TestAdapterLib.Adapter):
 			ret = evt.get('TELNET', 'data')
 		return ret
 		
-	@doc_public
+	
 	def hasReceivedUsername(self, timeout=1.0):
 		"""
 		Wait prompt username until the end of the timeout
@@ -313,7 +312,7 @@ class Catalyst(TestAdapterLib.Adapter):
 		tpl = templates_catalyst.catalyst_prompt_username()
 		return self.hasReceivedResponse( expected=tpl, timeout=timeout)
 		
-	@doc_public
+	
 	def hasReceivedPassword(self, timeout=1.0):
 		"""
 		Wait prompt password until the end of the timeout
@@ -329,7 +328,7 @@ class Catalyst(TestAdapterLib.Adapter):
 		tpl = templates_catalyst.catalyst_prompt_password()
 		return self.hasReceivedResponse( expected=tpl, timeout=timeout)
 
-	@doc_public
+	
 	def hasReceivedPrompt(self, timeout=1.0):
 		"""
 		Wait general prompt until the end of the timeout
@@ -345,7 +344,7 @@ class Catalyst(TestAdapterLib.Adapter):
 		tpl = templates_catalyst.catalyst_prompt()
 		return self.hasReceivedResponse( expected=tpl , timeout=timeout)
 
-	@doc_public
+	
 	def hasReceivedPromptEnable(self, timeout=1.0):
 		"""
 		Wait prompt enable until the end of the timeout
@@ -361,7 +360,7 @@ class Catalyst(TestAdapterLib.Adapter):
 		tpl = templates_catalyst.catalyst_prompt_enable()
 		return self.hasReceivedResponse( expected=tpl , timeout=timeout)
 		
-	@doc_public
+	
 	def login(self, username, password, timeout=1.0):
 		"""
 		Login to the catalyst
@@ -402,7 +401,7 @@ class Catalyst(TestAdapterLib.Adapter):
 					ret = True
 		return ret
 	
-	@doc_public
+	
 	def writeMem(self, timeout=1.0):
 		"""
 		Write to memory
@@ -426,7 +425,7 @@ class Catalyst(TestAdapterLib.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def enable(self, password, timeout=1.0):
 		"""
 		Enable session
@@ -459,7 +458,7 @@ class Catalyst(TestAdapterLib.Adapter):
 				ret = True
 		return ret
 	
-	@doc_public
+	
 	def config(self, timeout=1.0):
 		"""
 		Enter in config mode
@@ -482,7 +481,7 @@ class Catalyst(TestAdapterLib.Adapter):
 			ret = True
 		return ret
 	
-	@doc_public
+	
 	def exit(self, timeout=1.0):
 		"""
 		Exit mode
@@ -505,7 +504,7 @@ class Catalyst(TestAdapterLib.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def command(self, cmd, timeout=1.0):
 		"""
 		Run command

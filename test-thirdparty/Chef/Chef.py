@@ -24,10 +24,8 @@
 
 try:
     import TestInteropLib
-    from TestInteropLib import doc_public
 except ImportError: # python3 support
     from . import TestInteropLib
-    from TestInteropLib.TestInteropLib import doc_public
     
 import chef
 
@@ -37,7 +35,7 @@ class Chef(TestInteropLib.InteropPlugin):
     Chef plugin
     Sample on /Samples/Tests_Interop/09_Chef
     """
-    @doc_public
+    
     def __init__(self, parent, url, login, key, port=4000, verifySsl=False):
         """
         Chef interop,
@@ -69,13 +67,13 @@ class Chef(TestInteropLib.InteropPlugin):
         self.__port = port
         self.__certCheck = verifySsl
         self.__server = None
-    @doc_public
+    
     def server(self):
         """
         Return the server instance
         """
         return self.__server
-    @doc_public    
+        
     def authenticate(self):
         """
         Authenticate to chef server

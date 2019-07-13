@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -152,7 +150,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		pass
 		
 class SnifferV4(Sniffer):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, lowerIpVersion=AdapterIP.IPv4, errorsOnly=False,
 				logEventSent=True, logEventReceived=True, agentSupport=False, agent=None, shared=False):
 		"""
@@ -196,14 +194,14 @@ class SnifferV4(Sniffer):
 		@type error: templatemessage
 		"""
 		pass
-	@doc_public
+	
 	def stopListening(self):
 		"""
 		Stop listening
 		"""
 		return Sniffer.stopListening(self)
 		
-	@doc_public
+	
 	def startListening(self, eth, srcIp, srcMac=None):
 		"""
 		Start listening
@@ -219,7 +217,7 @@ class SnifferV4(Sniffer):
 		"""
 		return Sniffer.startListening(self, eth=eth, srcIp=srcIp, srcMac=srcMac)
 		
-	@doc_public
+	
 	def isSniffing(self, timeout=1.0):
 		"""
 		Wait sniffing event until the end of the timeout
@@ -234,7 +232,7 @@ class SnifferV4(Sniffer):
 		
 		return Sniffer.isSniffing(self, timeout=timeout)
 		
-	@doc_public
+	
 	def isStopped(self, timeout=1.0):
 		"""
 		Wait stopped event until the end of the timeout
@@ -249,7 +247,7 @@ class SnifferV4(Sniffer):
 		
 		return Sniffer.isStopped(self, timeout=timeout)
 		
-	@doc_public
+	
 	def sendPacket(self, destIp, type=8, code=0, checksum=None, identifier=None, sequenceNumber=None,
 						data=None, destMac=None, timeOrig=None, timeReceive=None, timeTransmit=None, mask=None, gw=None, unused=None,
 						pointer=None):
@@ -324,7 +322,7 @@ class SnifferV4(Sniffer):
 						icmp_tpl.addRaw(raw=pkt)
 						self.logSentEvent( shortEvt = summary, tplEvt = lower ) 	
 						
-	@doc_public
+	
 	def hasReceivedPacket(self, timeout=1.0, icmpCode=None, icmpType=None, icmpId=None, icmpSeq=None, icmpData=None,
 														icmpTimeOrig=None, icmpTimeReceive=None, icmpTimeTransmit=None, icmpMask=None):			
 		"""
@@ -389,7 +387,7 @@ class SnifferV4(Sniffer):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def echoQuery(self, destIp, timeout=1.0, destMac=None, code=0, identifier="0x0001", sequence="0x0001", checksum=None, data=None):
 		"""
 		Send a echo request to the destination IP passed as argument and wait a response.
@@ -435,7 +433,7 @@ class SnifferV4(Sniffer):
 		return self.hasReceivedPacket( timeout=timeout, icmpCode=str(code), icmpType=str(codec4.ECHO_REPLY), 
 												icmpId=identifier, icmpSeq=sequence )
 
-	@doc_public
+	
 	def echoReply(self, destIp, destMac=None, code=0, identifier="0x0001", sequence="0x0001", checksum=None, data=None):
 		"""
 		Send a echo reply to the destination IP passed as argument.
@@ -470,7 +468,7 @@ class SnifferV4(Sniffer):
 		self.sendPacket(destIp=destIp, code=code, type=codec4.ECHO_REPLY, checksum=checksum, identifier=identifier, 
 										sequenceNumber=sequence, data=data, destMac=destMac)
 												
-	@doc_public
+	
 	def informationQuery(self, destIp, timeout=1.0, destMac=None, code=0, identifier="0x0001", sequence="0x0001", checksum=None):
 		"""
 		Send an information request  to the destination IP passed as argument and wait a response. The checksum is computed automatically if not provided.
@@ -514,7 +512,7 @@ class SnifferV4(Sniffer):
 		return self.hasReceivedPacket( timeout=timeout, icmpCode=code, icmpType=codec4.INFORMATION_REPLY, 
 												icmpId=identifier, icmpSeq=sequence )
 
-	@doc_public
+	
 	def informationReply(self, destIp, destMac=None, code=0, identifier="0x0001", sequence="0x0001", checksum=None):
 		"""
 		Send an information request  to the destination IP passed as argument. The checksum is computed automatically if not provided.
@@ -547,7 +545,7 @@ class SnifferV4(Sniffer):
 		self.sendPacket(destIp=destIp, code=code, type=codec4.INFORMATION_REPLY, checksum=checksum, identifier=identifier, 
 										sequenceNumber=sequence, destMac=destMac)
 												
-	@doc_public
+	
 	def timestampQuery(self, destIp, timeout=1.0, destMac=None, code=0, identifier="0x0001", sequence="0x0001", checksum=None,
 														timeOrig=None, timeReceive=None, timeTransmit=None):
 		"""
@@ -600,7 +598,7 @@ class SnifferV4(Sniffer):
 		return self.hasReceivedPacket( timeout=timeout, icmpCode=code, icmpType=codec4.TIMESTAMP_REPLY, 
 												icmpId=identifier, icmpSeq=sequence )
 
-	@doc_public
+	
 	def timestampReply(self, destIp, destMac=None, code=0, identifier="0x0001", sequence="0x0001", checksum=None,
 														timeOrig=None, timeReceive=None, timeTransmit=None):
 		"""
@@ -642,7 +640,7 @@ class SnifferV4(Sniffer):
 										sequenceNumber=sequence, destMac=destMac,
 										timeOrig=timeOrig, timeReceive=timeReceive, timeTransmit=timeTransmit)
 												
-	@doc_public
+	
 	def maskQuery(self, destIp, timeout=1.0, destMac=None, code=0, identifier="0x0001", sequence="0x0001", checksum=None,
 														mask="0.0.0.0"):
 		"""
@@ -688,7 +686,7 @@ class SnifferV4(Sniffer):
 		return self.hasReceivedPacket( timeout=timeout, icmpCode=code, icmpType=codec4.MASK_REPLY, 
 												icmpId=identifier, icmpSeq=sequence )
 
-	@doc_public
+	
 	def maskReply(self, destIp, destMac=None, code=0, identifier="0x0001", sequence="0x0001", checksum=None,
 														mask="0.0.0.0"):
 		"""
@@ -723,7 +721,7 @@ class SnifferV4(Sniffer):
 		self.sendPacket(destIp=destIp, code=code, type=codec4.MASK_REPLY, checksum=checksum, identifier=identifier, 
 										sequenceNumber=sequence, destMac=destMac, mask=mask)
 	
-	@doc_public
+	
 	def redirectError(self, destIp, destMac=None, code=0, checksum=None, gwAddr='0.0.0.0', data=None):
 		"""
 		Send a redirect error.
@@ -749,7 +747,7 @@ class SnifferV4(Sniffer):
 		"""
 		self.sendPacket(destIp=destIp, code=code, type=codec4.REDIRECT, checksum=checksum, destMac=destMac, data=data, gw=gwAddr )
 	
-	@doc_public
+	
 	def sourceQuenchError(self, destIp, destMac=None, code=0, checksum=None, unused="0x00000000", data=None):
 		"""
 		Send a source quench error.
@@ -776,7 +774,7 @@ class SnifferV4(Sniffer):
 		self.sendPacket(destIp=destIp, code=code, type=codec4.SOURCE_QUENCH, checksum=checksum, destMac=destMac, data=data, 
 										unused=unused )		
 
-	@doc_public
+	
 	def parameterProblemError(self, destIp, destMac=None, code=0, checksum=None, pointer="0x00", unused="0x000000", data=None):
 		"""
 		Send a parameter problem error.
@@ -806,7 +804,7 @@ class SnifferV4(Sniffer):
 		self.sendPacket(destIp=destIp, code=code, type=codec4.PARAMETER_PROBLEM, checksum=checksum, destMac=destMac, data=data, 
 										pointer=pointer, unused=unused )		
 
-	@doc_public
+	
 	def timeExceededError(self, destIp, destMac=None, code=0, checksum=None, unused="0x00000000", data=None):
 		"""
 		Send a time exceeded error.
@@ -833,7 +831,7 @@ class SnifferV4(Sniffer):
 		self.sendPacket(destIp=destIp, code=code, type=codec4.TIME_EXCEEDED, checksum=checksum, destMac=destMac, data=data, 
 										unused=unused )		
 
-	@doc_public
+	
 	def destinationUnreachableError(self, destIp, destMac=None, code=0, checksum=None, unused="0x00000000", data=None):
 		"""
 		Send a destination unreachable error.

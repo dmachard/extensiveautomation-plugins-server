@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
-# import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -50,7 +48,7 @@ __NAME__="""NTP"""
 AGENT_TYPE_EXPECTED='socket'
 
 class Client(TestAdapter.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False, agentSupport=False, agent=None,
 											bindIp = '', bindPort=0):
 		"""
@@ -121,14 +119,14 @@ class Client(TestAdapter.Adapter):
 		"""
 		return self.ADP_UDP
 		
-	@doc_public
+	
 	def startListening(self):
 		"""
 		Start listening
 		"""
 		self.ADP_UDP.startListening()
 	
-	@doc_public
+	
 	def stopListening(self):
 		"""
 		Stop listening
@@ -160,7 +158,7 @@ class Client(TestAdapter.Adapter):
 		# log event 	
 		self.logRecvEvent( shortEvt = "response", tplEvt = lower ) 	
 		
-	@doc_public
+	
 	def queryServer(self, serverIp, serverPort=123, ntpVersion=3, ntpMode=3, leap=0, stratum=0,
 								poll=0, precision=0, rootDelay=0, rootDispersion=0, refId=0, refTimestamp=0, origTimestamp=0,
 								recvTimestamp=0, txTimestamp=0):
@@ -226,7 +224,7 @@ class Client(TestAdapter.Adapter):
 		
 		self.logSentEvent( shortEvt = "request", tplEvt = self.encapsule(lower_event=tpl_udp, layer_ntp=layer_ntp) ) 	
 		
-	@doc_public
+	
 	def isListening(self, timeout=1.0):
 		"""
 		Wait to receive "listening" event until the end of the timeout
@@ -241,7 +239,7 @@ class Client(TestAdapter.Adapter):
 		
 		return self.ADP_UDP.isListening(timeout=timeout)
 
-	@doc_public
+	
 	def isStopped(self, timeout=1.0):
 		"""
 		Wait to receive "stopped" event until the end of the timeout
@@ -256,7 +254,7 @@ class Client(TestAdapter.Adapter):
 		
 		return self.ADP_UDP.isStopped(timeout=timeout)
 		
-	@doc_public
+	
 	def hasReceivedResponse(self, timeout=1.0, leap=None, version=None, mode=None, stratum=None, poll=None, precision=None,
 									rootDelay=None, rootDispersion=None, refId=None, refTimestamp=None,
 									origTimestamp=None, recvTimestamp=None, txTimestamp=None, destTimestamp=None,

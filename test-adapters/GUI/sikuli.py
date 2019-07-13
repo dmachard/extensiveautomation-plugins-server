@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import threading
@@ -159,7 +157,7 @@ AGENT_INITIALIZED = "AGENT_INITIALIZED"
 AGENT_TYPE_EXPECTED='sikulixserver'
 
 class Sikuli(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, agent, name=None, debug=False, shared=False, verbose=True):
 		"""
 		This class enables to control all gui throught a agent and sikuli
@@ -334,7 +332,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.parent.sendAliveToAgent(adapterId=self.getAdapterId(), agentName=self.cfg['agent-name'], agentData='')
 		self.TIMER_ALIVE_AGT.restart()
 		
-	@doc_public
+	
 	def getTimeout(self, timeout=None):
 		"""
 		"""
@@ -344,7 +342,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		else:
 			return (timeout*threshold) / 100
 		
-	@doc_public
+	
 	def takeScreenshot(self):
 		"""
 		Take a screenshot on the remote machine
@@ -364,7 +362,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		
 		return actionId
 	
-	@doc_public
+	
 	def rawAction(self, rawCode, img1=None, img2=None, description='unknown'):
 		"""
 		Send raw action to the agent
@@ -412,7 +410,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		
 		return actionId
 		
-	@doc_public
+	
 	def typeShorcut(self, key=None, modifier=None, special=None, other=None, description='unknown', repeat=0):
 		"""
 		Type shortcut with keyboard
@@ -487,7 +485,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		
 		return actionId
 		
-	@doc_public
+	
 	def typeText(self, text='', keys=[], keysModifiers=[], img=None, description='unknown', similar=0.70):
 		"""
 		Type the text on the image passed as argument
@@ -551,7 +549,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def typePath(self, text='', keys=[], keysModifiers=[], img=None, description='unknown', similar=0.70):
 		"""
 		Type the path on the image passed as argument
@@ -621,7 +619,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def getTextClipboard(self, description='unknown'):
 		"""
 		Get the text present in the clipboard
@@ -650,7 +648,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def getText(self, img, similar=0.70, description='unknown', mainImg=None):
 		"""
 		Get the text of the image passed on argument
@@ -710,7 +708,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		
 		return actionId
 		
-	@doc_public
+	
 	def getTextArround(self, img, left=True, right=False, below=False, above=False, deviationPixel=50, similar=0.70, 
 															description='unknown', mainImg=None):
 		"""
@@ -804,7 +802,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def waitImage(self, img, description='unknown', similar=0.70, timeout=10.0, mainImg=None):
 		"""
 		Wait the image passed as argument to appear on the screen
@@ -867,7 +865,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def waitClickImage(self, img, description='unknown', similar=0.70, timeout=10.0, mainImg=None, findAll=False):
 		"""
 		Find the image to appear on the screen and performs a mouse click on the image passed as argument,
@@ -942,7 +940,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def findImage(self, img, description='unknown', similar=0.70, timeout=None, mainImg=None):
 		"""
 		Find the image passed as argument on all screen
@@ -1003,7 +1001,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def dontFindImage(self, img, description='unknown', similar=0.70, timeout=None, mainImg=None):
 		"""
 		Don't find the image passed as argument on all screen
@@ -1064,7 +1062,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def findClickImage(self, img, description='unknown', similar=0.70, timeout=None, mainImg=None, findAll=False):
 		"""
 		Find the image and performs a mouse click on the image passed as argument, search the image on all screen
@@ -1136,7 +1134,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def countWord(self, word, locX=0, locY=0, locW=0, locH=0, description='unknown', all=False):
 		"""
 		Count word passed as argument, 
@@ -1193,7 +1191,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def clickWord(self, word, locX=0, locY=0, locW=0, locH=0, description='unknown', all=False):
 		"""
 		Perform a mouse click on the word passed as argument, 
@@ -1256,7 +1254,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		
 		return actionId
 		
-	@doc_public
+	
 	def doubleClickWord(self, word, locX=0, locY=0, locW=0, locH=0, description='unknown', all=False):
 		"""
 		Perform a mouse double click on the word passed as argument, 
@@ -1316,7 +1314,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def rightClickWord(self, word, locX=0, locY=0, locW=0, locH=0, description='unknown', all=False):
 		"""
 		Perform a mouse right click on the word passed as argument, 
@@ -1377,7 +1375,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		
 		return actionId
 		
-	@doc_public
+	
 	def waitWord(self, word, locX=0, locY=0, locW=0, locH=0, description='unknown', timeout=10.0 ):
 		"""
 		Perform a mouse click on the word passed as argument.
@@ -1446,7 +1444,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def waitClickWord(self, word, locX=0, locY=0, locW=0, locH=0, description='unknown', timeout=10.0 ):
 		"""
 		Perform a mouse click on the word passed as argument.
@@ -1517,7 +1515,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		
 		return actionId
 		
-	@doc_public
+	
 	def mouseWheelDown(self, steps=1,  description='unknown'):
 		"""
 		Mouse wheel down
@@ -1546,7 +1544,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def mouseWheelUp(self, steps=1,  description='unknown'):
 		"""
 		Mouse wheel up
@@ -1575,7 +1573,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def rightClickPosition(self, toX=0, toY=0,  description='unknown'):
 		"""
 		Right click on position x and y
@@ -1607,7 +1605,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def clickPosition(self, toX=0, toY=0,  description='unknown'):
 		"""
 		Click on position x and y
@@ -1639,7 +1637,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def doubleClickPosition(self, toX=0, toY=0,  description='unknown'):
 		"""
 		Double click on position x and y
@@ -1671,7 +1669,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def mouseMovePosition(self, toX=0, toY=0,  description='unknown'):
 		"""
 		Move on position x and y
@@ -1703,7 +1701,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def dragDropImage(self, img, description='unknown', toY=0, toX=0, similar=0.70, mainImg=None):
 		"""
 		Drag and drop the image passed as argument, search the image on all screen
@@ -1763,7 +1761,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		self.logSentEvent( shortEvt = action, tplEvt = tpl )
 		
 		return actionId
-	@doc_public
+	
 	def hoverImage(self, img, description='unknown', similar=0.70, mainImg=None):
 		"""
 		Perform a mouse hover on the image passed as argument, search the image on all screen
@@ -1815,7 +1813,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		
 		return actionId
 		
-	@doc_public
+	
 	def clickImage(self, img, description='unknown', similar=0.70, mainImg=None, findAll=False):
 		"""
 		Perform a mouse click on the image passed as argument, search the image on all screen
@@ -1881,7 +1879,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		
 		return actionId
 
-	@doc_public
+	
 	def doubleClickImage(self, img, description='unknown', similar=0.70, mainImg=None, findAll=False):
 		"""
 		Perform a mouse click on the image passed as argument, search the image on all screen
@@ -1947,7 +1945,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		
 		return actionId
 
-	@doc_public
+	
 	def rightClickImage(self, img, description='unknown', similar=0.70, mainImg=None, findAll=False):
 		"""
 		Perform a mouse right click on the image passed as argument, search the image on all screen
@@ -2013,7 +2011,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		
 		return actionId
 
-	@doc_public
+	
 	def countImage(self,  img, description='unknown', similar=0.70, mainImg=None):
 		"""
 		Count the image passed as argument and returns the number of occurences
@@ -2094,7 +2092,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		tpl.addLayer(layer= layer)
 		evt = self.received( expected = tpl, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasReceivedScreenshot(self, timeout=10.0, actionId=None):
 		"""
 		Wait to receive "screenshot" event until the end of the timeout
@@ -2117,7 +2115,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def hasReceivedText(self, timeout=10.0, actionId=None):
 		"""
 		Wait to receive "text" event until the end of the timeout
@@ -2139,7 +2137,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		# try to match the template 
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
-	@doc_public
+	
 	def hasReceivedCount(self, timeout=10.0, actionId=None):
 		"""
 		Wait to receive "count" event until the end of the timeout
@@ -2161,7 +2159,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		# try to match the template 
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
-	@doc_public
+	
 	def isActionAccepted(self, timeout=10.0, actionName=None, actionId=None):
 		"""
 		Wait to receive "action accepted" event until the end of the timeout
@@ -2186,7 +2184,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		# try to match the template 
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
-	@doc_public
+	
 	def doWaitImage(self, image, region=None,  similar=0.70, timeout=10.0):
 		"""
 		Wait the image passed as argument to appear on the screen
@@ -2214,7 +2212,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True		
-	@doc_public
+	
 	def doWaitClickImage(self, image, region=None,  similar=0.70, timeout=10.0, onAll=False):
 		"""
 		Wait the image passed as argument to appear on the screen and click on it
@@ -2245,7 +2243,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True
-	@doc_public
+	
 	def doFindImage(self, image, region=None,  similar=0.70, timeout=10.0):
 		"""
 		Find the image passed as argument on the screen
@@ -2274,7 +2272,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		else:
 			return True		
 			
-	@doc_public
+	
 	def doFindClickImage(self, image, region=None,  similar=0.70, timeout=10.0, onAll=False):
 		"""
 		Find the image passed as argument on the screen and click on it
@@ -2306,7 +2304,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		else:
 			return True
 
-	@doc_public
+	
 	def doClickImage(self, image, region=None,  similar=0.70, onAll=False, timeout=10.0):
 		"""
 		Do a click on the image passed as argument
@@ -2337,7 +2335,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True
-	@doc_public
+	
 	def doDoubleClickImage(self, image, region=None,  similar=0.70, onAll=False, timeout=10.0):
 		"""
 		Do a double click on the image passed as argument
@@ -2368,7 +2366,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True
-	@doc_public
+	
 	def doRightClickImage(self, image, region=None,  similar=0.70, onAll=False, timeout=10.0):
 		"""
 		Do a right click on the image passed as argument
@@ -2399,7 +2397,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True			
-	@doc_public
+	
 	def doClickWord(self, word, locX=0, locY=0, locW=0, locH=0, timeout=10.0):
 		"""
 		Do a click on the word passed as argument
@@ -2434,7 +2432,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True		
-	@doc_public
+	
 	def doDoubleClickWord(self, word, locX=0, locY=0, locW=0, locH=0, timeout=10.0):
 		"""
 		Do a double click on the word passed as argument
@@ -2469,7 +2467,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True		
-	@doc_public
+	
 	def doRightClickWord(self, word, locX=0, locY=0, locW=0, locH=0, timeout=10.0):
 		"""
 		Do a double click on the word passed as argument
@@ -2501,7 +2499,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True		
-	@doc_public
+	
 	def doWaitWord(self,  word, locX=0, locY=0, locW=0, locH=0, timeout=10.0):
 		"""
 		Wait the word passed as argument to appear on the screen
@@ -2536,7 +2534,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True		
-	@doc_public
+	
 	def doWaitClickWord(self, word, locX=0, locY=0, locW=0, locH=0, timeout=10.0):
 		"""
 		Wait the word passed as argument to appear on the screen and click on it
@@ -2574,7 +2572,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True
-	@doc_public
+	
 	def doTakeScreenshot(self, timeout=10.0):
 		"""
 		Take a screenshot of the screen
@@ -2593,7 +2591,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True					
-	@doc_public
+	
 	def doTypeText(self, text='', keys=[], keysModifiers=[], image=None, similar=0.70, timeout=10.0):
 		"""
 		Type the text on the image passed as argument
@@ -2621,7 +2619,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True			
-	@doc_public
+	
 	def doTypeShorcut(self, key=None, modifier=None, special=None, other=None, timeout=10.0):
 		"""
 		Type shortcut with keyboard
@@ -2653,7 +2651,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True			
-	@doc_public
+	
 	def doHoverImage(self, image, region=None,  similar=0.70, timeout=10.0):
 		"""
 		Do a hover on the image passed as argument
@@ -2681,7 +2679,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return True
-	@doc_public
+	
 	def doCountImage(self, image, region=None,  similar=0.70, timeout=10.0):
 		"""
 		Count the image passed as argument and returns the number of occurences
@@ -2709,7 +2707,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return actionRet.get('GUI', 'text-result')
-	@doc_public
+	
 	def doCountWord(self, word, locX=0, locY=0, locW=0, locH=0, timeout=10.0):
 		"""
 		Count the word passed as argument and returns the number of occurences
@@ -2743,7 +2741,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return actionRet.get('GUI', 'text-result')
-	@doc_public
+	
 	def doGetClipboard(self, timeout=10.0):
 		"""
 		Return the clipboard content
@@ -2762,7 +2760,7 @@ class Sikuli(TestAdapterLib.Adapter):
 			return False
 		else:
 			return actionRet.get('GUI', 'text-result')
-	@doc_public
+	
 	def doDragDropImage(self, image, region=None,  toY=0, toX=0, similar=0.70, timeout=10.0):
 		"""
 		Do a drag and drop off the image passed as argument

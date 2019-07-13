@@ -22,12 +22,11 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 __NAME__="""DUMMY"""
 
 class Library(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Just a dummy library
@@ -46,7 +45,7 @@ class Library(TestLibraryLib.Library):
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
 
-	@doc_public
+	
 	def helloWorld(self, msg="hello world"):
 		"""
 		Dummy function

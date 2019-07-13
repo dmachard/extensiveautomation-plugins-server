@@ -24,10 +24,10 @@
 try:
 	from libxml import XML
 	from libjson import JSON
-	from libexcel import EXCEL
+#	from libexcel import EXCEL
 except ImportError: # python3 support
 	from .libxml import XML
 	from .libjson import JSON
-	from .libexcel import EXCEL
+#	from .libexcel import EXCEL
 
 __DESCRIPTION__ = "Encoder and decorder for text format"

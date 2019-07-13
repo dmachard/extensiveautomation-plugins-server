@@ -22,14 +22,13 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import hashlib
 	
 __NAME__="""SHA256"""
 
 class SHA256(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		This library implements the SHA-2 256 cryptographic hash function.
@@ -47,7 +46,7 @@ class SHA256(TestLibraryLib.Library):
 		@type shared:	boolean
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
-	@doc_public
+	
 	def compute (self, data, hexdigit=True):
 		"""
 		Return the digest of the string data, the result containing  hexadecimal digits (32 octets) or string.

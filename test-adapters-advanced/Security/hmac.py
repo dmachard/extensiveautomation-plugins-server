@@ -22,7 +22,7 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
+
 from Var.SutAdapters import Hashing
 
 import sys
@@ -32,7 +32,7 @@ import random
 __NAME__="""HMAC"""
 
 class Hmac(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Hmac Digest Access Authentication
@@ -55,7 +55,7 @@ class Hmac(TestLibraryLib.Library):
 		
 		self.hmac_md5 = Hashing.HMAC_MD5(parent=parent, debug=debug)
 		self.hmac_sha1 = Hashing.HMAC_SHA1(parent=parent, debug=debug)
-	@doc_public
+	
 	def decode(self, challenge):
 		"""
 		Decode the challenge present in the www-authenticate header
@@ -85,7 +85,7 @@ class Hmac(TestLibraryLib.Library):
 			
 		return ch
 
-	@doc_public
+	
 	def compute(self, username, password, realm, method, uri, snonce, headers, salt, algo, pwalgo ):
 		"""
 		Compute the challenge response
@@ -161,7 +161,7 @@ class Hmac(TestLibraryLib.Library):
 			
 		return (req_digest, cnonce)
 		
-	@doc_public
+	
 	def encode(self, username, realm, snonce, cnonce, uri, created, response, headers):
 		"""
 		Contructs a hmacdigest authorization header line

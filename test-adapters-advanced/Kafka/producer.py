@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import copy
@@ -51,7 +49,7 @@ PARTITIONS_FOR="partitions_for"
 
 
 class ProducerClient(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, name=None, bootstrap_servers=None, 
 											debug=False, agentSupport=False, agent=None, 
 											shared=False, verbose=True, 
@@ -297,7 +295,7 @@ class ProducerClient(TestAdapterLib.Adapter):
 		logger.addHandler(logging.StreamHandler(sys.stdout))
 		logger.setLevel(logging.DEBUG)
 
-	@doc_public
+	
 	def connect(self, **kargs ):
 		"""
 		Instantiate the KafkaProducer and Fetch Kafka Cluster Metadata
@@ -336,7 +334,7 @@ class ProducerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.producerTpl,  templates.response_err(msg=e, method=CONNECT ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public			
+				
 	def send(self, topic, **kargs):
 		"""
 		Publish a message to a topic.
@@ -385,7 +383,7 @@ class ProducerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.producerTpl,  templates.response_err(msg=e, method=SEND ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public	
+		
 	def partitions_for(self, topic):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -408,7 +406,7 @@ class ProducerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.producerTpl,  templates.response_err(msg=e, method=PARTITIONS_FOR ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )				
 
-	@doc_public
+	
 	def flush(self, timeout=None):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -431,7 +429,7 @@ class ProducerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.producerTpl,  templates.response_err(msg=e, method=FLUSH ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public
+	
 	def close(self, timeout=None):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -454,7 +452,7 @@ class ProducerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.producerTpl,  templates.response_err(msg=e, method=CLOSE ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 				
-	@doc_public
+	
 	def isSend(self, timeout=2, record=None):
 		"""
 		Wait to receive response from "send" request and match returned RecordMetadata  until the end of the timeout.
@@ -482,7 +480,7 @@ class ProducerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.producerTpl ,expected ), timeout=timeout )
 		return evt
 
-	@doc_public		
+			
 	def isConnect(self, timeout=2):
 		"""
 		Wait to receive response from "connect" request until the end of the timeout
@@ -498,7 +496,7 @@ class ProducerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.producerTpl ,expected), timeout=timeout )
 		return evt	
 
-	@doc_public
+	
 	def isFlush(self, timeout=2):
 		"""
 		Wait to receive response from "flush" request until the end of the timeout
@@ -514,7 +512,7 @@ class ProducerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.producerTpl ,expected), timeout=timeout )
 		return evt		
 	
-	@doc_public    
+	    
 	def isClose(self, timeout=2):
 		"""
 		Wait to receive response from "close" request until the end of the timeout
@@ -530,7 +528,7 @@ class ProducerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.producerTpl ,expected), timeout=timeout )
 		return evt		
 		
-	@doc_public
+	
 	def isPartitions_for(self, timeout=2,partitions=None):
 		"""
 		Wait to receive response from "partitions_for" request and match returned Topics until the end of the timeout.

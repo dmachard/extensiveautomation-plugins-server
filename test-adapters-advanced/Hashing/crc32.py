@@ -22,14 +22,13 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import zlib
 
 __NAME__="""CRC32"""
 
 class CRC32(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, initialCrc=0xFFFF, shared=False):
 		"""
 		This library implements CRC-32 (Cyclic Redundancy Check) algorithm .
@@ -52,7 +51,7 @@ class CRC32(TestLibraryLib.Library):
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
 		self.initialCrc = initialCrc
-	@doc_public
+	
 	def compute (self, data, hexdigit=False):
 		"""
 		Compute CRC-32, the 32-bit (4 octets) checksum of data, starting with an initial crc.

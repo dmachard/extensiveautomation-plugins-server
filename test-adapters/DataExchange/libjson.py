@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import json
 from jsonpath_ng.ext import parse
@@ -30,7 +29,7 @@ from jsonpath_ng.ext import parse
 __NAME__="""JSON"""
 
 class JSON(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, ignoreErrors=False, shared=False):
 		"""
 		JSON Decoder/Encoder
@@ -52,7 +51,7 @@ class JSON(TestLibraryLib.Library):
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
 		self.ignoreErrors = ignoreErrors
-	@doc_public
+	
 	def encode(self, json_obj):
 		"""
 		Encode a json object to the  string json representation
@@ -70,7 +69,7 @@ class JSON(TestLibraryLib.Library):
 			if not self.ignoreErrors :
 				self.error('library - unable to encode: %s' % str(e) )
 		return ret
-	@doc_public
+	
 	def decode(self, json_str):
 		"""
 		Decode a string json to a object json
@@ -88,7 +87,7 @@ class JSON(TestLibraryLib.Library):
 			if not self.ignoreErrors :
 				self.error('library - unable to decode: %s' % str(e) )
 		return ret
-	@doc_public
+	
 	def getValue(self, jpath, json_obj):
 		"""
 		Get the value according to the jsonpath provided
@@ -109,7 +108,7 @@ class JSON(TestLibraryLib.Library):
 		except Exception as e:
 			self.error('library - unable to get json value: %s' % str(e) )
 		return None
-	@doc_public
+	
 	def getValues(self, jpath, json_obj):
 		"""
 		Get all values according to the jsonpath provided
@@ -128,7 +127,7 @@ class JSON(TestLibraryLib.Library):
 		except Exception as e:
 			self.error('library - bad jsonpath (%s) provided ? more details:\n\n %s' % (jpath, str(e)) )
 		return []
-	@doc_public
+	
 	def toHuman(self, json_obj):
 		"""
 		Return JSON data to human-readable form
@@ -141,7 +140,7 @@ class JSON(TestLibraryLib.Library):
 		"""
 		json_pretty = json.dumps(json_obj, sort_keys = False, indent = 4) 
 		return json_pretty
-	@doc_public
+	
 	def isValid(self, json_str):
 		"""
 		JSON is valid ?

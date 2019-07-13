@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import xlrd # support xls files for reading
 import xlwt # support xls files for writing
@@ -35,7 +34,7 @@ __MAXLINEBUFFER_WRITE__=10
 
 class EXCEL(TestLibraryLib.Library):
 	__INTERNAL_ROW_NB_WRITE=0
-	@doc_public
+	
 	def __init__(self, parent, debug=False, name=None, shared=False):
 		"""
 		Codec support read/write excel file 97-2003 (xls)
@@ -53,7 +52,7 @@ class EXCEL(TestLibraryLib.Library):
 		@type shared:	boolean
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
-	@doc_public
+	
 	def readCell(self, content, column, row, worksheet=None):
 		"""
 		Return cell value according the column and row id
@@ -95,7 +94,7 @@ class EXCEL(TestLibraryLib.Library):
 			
 		wb.release_resources()
 		return cell_value
-	@doc_public
+	
 	def readColumn(self, content, column, worksheet=None):
 		"""
 		Return column value 
@@ -130,7 +129,7 @@ class EXCEL(TestLibraryLib.Library):
 			cell_value = ws.col_values( int(column) )
 		wb.release_resources()
 		return cell_value
-	@doc_public
+	
 	def readRow(self, content, row, worksheet=None):
 		"""
 		Return row value
@@ -168,7 +167,7 @@ class EXCEL(TestLibraryLib.Library):
 		wb.release_resources()
 		
 		return cell_value
-	@doc_public
+	
 	def createWorkbook(self, sheetName):
 		"""
 		Create a new excellfile object 
@@ -189,7 +188,7 @@ class EXCEL(TestLibraryLib.Library):
 		else:
 			self.debug( "worksheet created" )
 			return wb
-	@doc_public
+	
 	def addRaw(self, workbook, rowid, rcontent):
 		"""
 		Add a new row into the workbook with a row id defined
@@ -261,7 +260,7 @@ class EXCEL(TestLibraryLib.Library):
 			return True
 		else:
 			return False
-	@doc_public
+	
 	def saveFile(self, workbook, filepath):
 		"""
 		Save the current  workbook 

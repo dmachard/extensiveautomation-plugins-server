@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -48,7 +46,7 @@ import time
 AGENT_TYPE_EXPECTED='socket'
 
 class Sniffer(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, debug=False, logEventSent=True, logEventReceived=True, name=None,
 								ipVersion=AdapterIP.IPv4, port2sniff=codec.ALL, parentName=None, inactivityTimeout=0.0,
 								separatorIn='0x00', separatorOut='0x00', separatorDisabled=True, agentSupport=False, 
@@ -299,7 +297,7 @@ class Sniffer(TestAdapterLib.Adapter):
 			if time.time() - self.lastActivity > self.cfg['inactivity-timeout']:
 				self.onInactivityTimeout()
 				
-	@doc_public
+	
 	def onInactivityTimeout(self):
 		"""
 		"""
@@ -323,7 +321,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		else:
 			return  ''.join( [ data, struct.pack('!B', int( self.cfg['sep-out'], 16 ) ) ] )
 
-	@doc_public
+	
 	def sendPacket(self, destIp=None, destPort=0, srcPort=0, seqNum='0x000', ackNum='0x0000', ctrlBits='0x000', 
 										checksum=None, headerSize=None, tcpWin='0x0000', urgPtr='0x0000', data=None, destMac=None,
 										options=None, optSegMax=None, optWinScale=None, optSackPermitted=None, optSack=None):
@@ -423,7 +421,7 @@ class Sniffer(TestAdapterLib.Adapter):
 					if self.logEventSent:
 						self.logSentEvent( shortEvt = summary, tplEvt = lower ) 
 						
-	@doc_public
+	
 	def SYN(self, destPort=0, srcPort=0, destIp=None, destMac=None, 
 							seqNum='0x000', ackNum='0x0000', tcpWin='0x0000', urgPtr='0x0000',
 							checksum=None, options=None, optSegMax=None, optWinScale=None, optSackPermitted=None, optSack=None):
@@ -478,7 +476,7 @@ class Sniffer(TestAdapterLib.Adapter):
 											options=options, optSegMax=optSegMax, optWinScale=optWinScale, optSackPermitted=optSackPermitted,
 											optSack=optSack)
 
-	@doc_public
+	
 	def SYN_ACK(self, destPort=0, srcPort=0, destIp=None, destMac=None, 
 							seqNum='0x000', ackNum='0x0000', tcpWin='0x0000', urgPtr='0x0000',
 							checksum=None, options=None, optSegMax=None, optWinScale=None, optSackPermitted=None, optSack=None):
@@ -533,7 +531,7 @@ class Sniffer(TestAdapterLib.Adapter):
 											options=options, optSegMax=optSegMax, optWinScale=optWinScale, optSackPermitted=optSackPermitted,
 											optSack=optSack)
 											
-	@doc_public
+	
 	def ACK(self, destPort=0, srcPort=0, destIp=None, destMac=None, 
 							seqNum='0x000', ackNum='0x0000', tcpWin='0x0000', urgPtr='0x0000',
 							checksum=None, options=None):
@@ -575,7 +573,7 @@ class Sniffer(TestAdapterLib.Adapter):
 											seqNum=seqNum, ackNum=ackNum, tcpWin=tcpWin, urgPtr=urgPtr, ctrlBits='0x010',
 											options=options)
 	
-	@doc_public
+	
 	def RST(self, destPort=0, srcPort=0, destIp=None, destMac=None, 
 							seqNum='0x000', ackNum='0x0000', tcpWin='0x0000', urgPtr='0x0000',
 							checksum=None, options=None):
@@ -616,7 +614,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		self.sendPacket(destPort=destPort, srcPort=srcPort, destIp=destIp, destMac=destMac,
 											seqNum=seqNum, ackNum=ackNum, tcpWin=tcpWin, urgPtr=urgPtr, ctrlBits='0x004', options=options)
 
-	@doc_public
+	
 	def RST_ACK(self, destPort=0, srcPort=0, destIp=None, destMac=None, 
 							seqNum='0x000', ackNum='0x0000', tcpWin='0x0000', urgPtr='0x0000',
 							checksum=None, options=None):
@@ -657,7 +655,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		self.sendPacket(destPort=destPort, srcPort=srcPort, destIp=destIp, destMac=destMac,
 											seqNum=seqNum, ackNum=ackNum, tcpWin=tcpWin, urgPtr=urgPtr, ctrlBits='0x014', options=options)
 											
-	@doc_public
+	
 	def FIN(self, destPort=0, srcPort=0, destIp=None, destMac=None, 
 							seqNum='0x000', ackNum='0x0000', tcpWin='0x0000', urgPtr='0x0000',
 							checksum=None, options=None):
@@ -699,7 +697,7 @@ class Sniffer(TestAdapterLib.Adapter):
 											seqNum=seqNum, ackNum=ackNum, tcpWin=tcpWin, urgPtr=urgPtr, ctrlBits='0x001', options=options)
 											
 
-	@doc_public
+	
 	def FIN_ACK(self, destPort=0, srcPort=0, destIp=None, destMac=None, 
 							seqNum='0x000', ackNum='0x0000', tcpWin='0x0000', urgPtr='0x0000',
 							checksum=None, options=None):
@@ -740,7 +738,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		self.sendPacket(destPort=destPort, srcPort=srcPort, destIp=destIp, destMac=destMac,
 											seqNum=seqNum, ackNum=ackNum, tcpWin=tcpWin, urgPtr=urgPtr, ctrlBits='0x011', options=options)
 											
-	@doc_public
+	
 	def PSH(self, data, destPort=0, srcPort=0, destIp=None, destMac=None, 
 							seqNum='0x000', ackNum='0x0000', tcpWin='0x0000', urgPtr='0x0000',
 							checksum=None, options=None):
@@ -782,7 +780,7 @@ class Sniffer(TestAdapterLib.Adapter):
 											seqNum=seqNum, ackNum=ackNum, tcpWin=tcpWin, urgPtr=urgPtr, ctrlBits='0x008',
 											data=data, options=options)
 		
-	@doc_public
+	
 	def PSH_ACK(self, data, destPort=0, srcPort=0, destIp=None, destMac=None, 
 							seqNum='0x000', ackNum='0x0000', tcpWin='0x0000', urgPtr='0x0000',
 							checksum=None, options=None):
@@ -825,7 +823,7 @@ class Sniffer(TestAdapterLib.Adapter):
 											data=data, options=options)
 
 
-	@doc_public
+	
 	def URG(self, destPort=0, srcPort=0, destIp=None, destMac=None, 
 							seqNum='0x000', ackNum='0x0000', tcpWin='0x0000', urgPtr='0x0000',
 							checksum=None, options=None):
@@ -866,7 +864,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		self.sendPacket(destPort=destPort, srcPort=srcPort, destIp=destIp, destMac=destMac,
 											seqNum=seqNum, ackNum=ackNum, tcpWin=tcpWin, urgPtr=urgPtr, ctrlBits='0x020', options=options)
 											
-	@doc_public
+	
 	def stopListening(self):
 		"""
 		Stop listening
@@ -877,7 +875,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		self.ip.stopListening()
 		
 	
-	@doc_public
+	
 	def startListening(self, eth, srcIp, srcMac=None ):
 		"""
 		Start listening
@@ -896,7 +894,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		self.lastActivity = time.time()
 		self.setRunning()
 		
-	@doc_public
+	
 	def isSniffing(self, timeout=1.0):
 		"""
 		Wait to receive "sniffing" event until the end of the timeout
@@ -911,7 +909,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		
 		return self.ip.isSniffing(timeout=timeout)
 		
-	@doc_public
+	
 	def isStopped(self, timeout=1.0):
 		"""
 		Wait to receive "stopped" event until the end of the timeout
@@ -926,7 +924,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		
 		return self.ip.isStopped(timeout=timeout)
 		
-	@doc_public
+	
 	def hasReceivedPacket(self, timeout=1.0, dstIp=None, srcIp=None, srcPort=None, dstPort=None, data=None, 
 												controlBits=None):
 		"""

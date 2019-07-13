@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import copy
@@ -56,7 +54,7 @@ CONN_KEEPALIVE = "keepalive"
 AGENT_TYPE_EXPECTED='socket'
 
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent,  destinationIp= '127.0.0.1', 
 								bindIp = '0.0.0.0', bindPort=0, name=None,
 								destinationPort=80,  destinationHost='', 
@@ -306,7 +304,7 @@ class Client(TestAdapterLib.Adapter):
 		# tcp disconnect
 		self.disconnect()
 
-	@doc_public
+	
 	def connect(self):
 		"""
 		Start the TCP connection
@@ -316,7 +314,7 @@ class Client(TestAdapterLib.Adapter):
 		# tcp connect
 		self.ADP_TCP.connect()
 	
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Close the TCP connection
@@ -326,7 +324,7 @@ class Client(TestAdapterLib.Adapter):
 		# tcp disconnect
 		self.ADP_TCP.disconnect()
 
-	@doc_public
+	
 	def constructTemplateRequest(self, rawHttp):
 		"""
 		Construct a template request from the raw http passed on argument
@@ -350,7 +348,7 @@ class Client(TestAdapterLib.Adapter):
 			self.error('error while constructing the template request: %s' % str(e))		
 		return decodedMessageTpl
 			
-	@doc_public
+	
 	def constructTemplateResponse(self, rawHttp):
 		"""
 		Construct a template response from the raw http passed on argument
@@ -373,7 +371,7 @@ class Client(TestAdapterLib.Adapter):
 			self.error('error while constructing the template response: %s' % str(e))		
 		return decodedMessageTpl		
 			
-	@doc_public
+	
 	def isConnected(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -404,7 +402,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		return self.ADP_TCP.isConnected(timeout=timeout, versionIp=versionIp, sourceIp=sourceIp, destinationIp=destinationIp, 
 											sourcePort=sourcePort, destinationPort=destinationPort)
-	@doc_public
+	
 	def isConnectedSsl(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None, sslVersion=None, sslCipher=None):
 		"""
@@ -442,7 +440,7 @@ class Client(TestAdapterLib.Adapter):
 		return self.ADP_TCP.isConnectedSsl(timeout=timeout, versionIp=versionIp, sourceIp=sourceIp, destinationIp=destinationIp, 
 											sourcePort=sourcePort, destinationPort=destinationPort, sslVersion=sslVersion, sslCipher=sslCipher)
 											
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0, byServer=False, versionIp=None, sourceIp=None, destinationIp=None, 
 										sourcePort=None, destinationPort=None):
 		"""
@@ -524,7 +522,7 @@ class Client(TestAdapterLib.Adapter):
 		else:	
 			self.logRecvEvent( shortEvt = "proxy error", tplEvt = lower )
 			
-	@doc_public
+	
 	def isAcceptedProxy(self, codeExpected="200", phraseExpected="Connection established", versionExpected=None, timeout=1.0 ):
 		"""
 		Wait response from proxy until the end of the timeout.
@@ -716,7 +714,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		pass
 		
-	@doc_public
+	
 	def sendRequest(self, tpl):
 		"""
 		Send a request
@@ -760,7 +758,7 @@ class Client(TestAdapterLib.Adapter):
 			raise Exception('unable to send request: %s' % str(e))
 		return lower
 
-	@doc_public
+	
 	def hasReceivedResponse(self, expected, timeout=1.0):
 		"""
 		Wait to receive "response" until the end of the timeout.
@@ -837,7 +835,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		return "%s\r\n%s\r\n0\r\n" % (len(bod), bod)
 	
-	@doc_public
+	
 	def makeAuthentication(self, uri, login, password, method, headers={}, timeout=1.0, body=None):
 		"""
 		Make authentication function (basic, digest)
@@ -925,7 +923,7 @@ class Client(TestAdapterLib.Adapter):
 		if self.cfg[u'http_connection'] == CONN_KEEPALIVE:
 			__hdrs[u'Connection'] = u'Keep-Alive'
 		return __hdrs
-	@doc_public
+	
 	def sendHttp(self, uri, host, method="GET", headers={}, body=None, timeout=1.0):
 		"""
 		Send a GET request and wait response until the end of the timeout.
@@ -964,7 +962,7 @@ class Client(TestAdapterLib.Adapter):
 			return
 		
 		self.sendRequest(tpl=tpl)
-	@doc_public
+	
 	def hasReceivedHttpResponse(self, httpCode="200", httpPhrase="OK", httpVersion='HTTP/1.1', timeout=1.0, httpHeaders={}, httpBody=None):
 		"""
 		Wait to receive "http response" until the end of the timeout.
@@ -1010,7 +1008,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		return self.hasReceivedResponse(expected=tpl, timeout=timeout)
 
-	@doc_public
+	
 	def connection(self, timeout=1.0):
 		"""
 		Tcp connection and wait connected event until the end of the timeout 
@@ -1040,7 +1038,7 @@ class Client(TestAdapterLib.Adapter):
 						ret = False
 		return ret
 
-	@doc_public
+	
 	def disconnection(self, timeout=1.0):
 		"""
 		Tcp disconnection and wait disconnected event until the end of the timeout 
@@ -1061,7 +1059,7 @@ class Client(TestAdapterLib.Adapter):
 				ret = False
 		return ret
 				
-	@doc_public
+	
 	def OPTIONS(self, uri, host, timeout=1.0, headers={}, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None):
 		"""
 		Send a OPTIONS request and wait response until the end of the timeout.
@@ -1132,7 +1130,7 @@ class Client(TestAdapterLib.Adapter):
 		return rsp
 		
 		
-	@doc_public
+	
 	def DELETE(self, uri, host, timeout=1.0, headers={}, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None):
 		"""
 		Send a DELETE request and wait response until the end of the timeout.
@@ -1202,7 +1200,7 @@ class Client(TestAdapterLib.Adapter):
 			self.disconnect()
 		return rsp
 		
-	@doc_public
+	
 	def HEAD(self, uri, host, timeout=1.0, headers={}, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None):
 		"""
 		Send a HEAD request and wait response until the end of the timeout.
@@ -1273,7 +1271,7 @@ class Client(TestAdapterLib.Adapter):
 			self.disconnect()
 		return rsp
 
-	@doc_public
+	
 	def GET(self, uri, host, timeout=1.0, headers={}, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None, bodyExpected=None):
 		"""
 		Send a GET request and wait response until the end of the timeout.
@@ -1346,7 +1344,7 @@ class Client(TestAdapterLib.Adapter):
 			self.disconnect()
 		return rsp
 
-	@doc_public
+	
 	def PUT(self, uri, host, timeout=1.0, headers={}, body=None, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None, bodyExpected=None,
 									overwriteCl=False):
 		"""
@@ -1436,7 +1434,7 @@ class Client(TestAdapterLib.Adapter):
 			self.disconnect()
 		return rsp
 
-	@doc_public
+	
 	def POST(self, uri, host, timeout=1.0, headers={}, body=None, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None, bodyExpected=None,
 									overwriteCl=False):
 		"""
@@ -1526,7 +1524,7 @@ class Client(TestAdapterLib.Adapter):
 			self.disconnect()
 		return rsp
 
-	@doc_public
+	
 	def TRACE(self, uri, host, timeout=1.0, headers={}, body=None, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None, bodyExpected=None,
 									overwriteCl=False):
 		"""
@@ -1616,7 +1614,7 @@ class Client(TestAdapterLib.Adapter):
 			self.disconnect()
 		return rsp
 
-	@doc_public
+	
 	def doGET(self, uri, host, timeout=1.0, headers={}, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None, bodyExpected=None):
 		"""
 		Send a GET request and wait response until the end of the timeout.
@@ -1660,7 +1658,7 @@ class Client(TestAdapterLib.Adapter):
 		TestAdapterLib.check_timeout(caller=TestAdapterLib.caller(), timeout=timeout)
 		
 		return self.GET(uri=uri, host=host, timeout=timeout, headers=headers, login=login, password=password, versionExpected=versionExpected, codeExpected=codeExpected, phraseExpected=phraseExpected, headersExpected=headersExpected, bodyExpected=bodyExpected)
-	@doc_public
+	
 	def doPOST(self, uri, host, timeout=1.0, headers={}, body=None, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None, bodyExpected=None,
 									overwriteCl=False):
 		"""
@@ -1713,7 +1711,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		return self.POST(uri=uri, host=host, timeout=timeout, headers=headers, body=body, login=login, password=password, versionExpected=versionExpected, codeExpected=codeExpected, phraseExpected=phraseExpected, headersExpected=headersExpected, bodyExpected=bodyExpected,
 									overwriteCl=overwriteCl)
-	@doc_public
+	
 	def doPUT(self, uri, host, timeout=1.0, headers={}, body=None, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None, bodyExpected=None,
 									overwriteCl=False):
 		"""
@@ -1766,7 +1764,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		return self.PUT(uri=uri, host=host, timeout=timeout, headers=headers, body=body, login=login, password=password, versionExpected=versionExpected, codeExpected=codeExpected, phraseExpected=phraseExpected, headersExpected=headersExpected, 
 									overwriteCl=overwriteCl)
-	@doc_public
+	
 	def doTRACE(self, uri, host, timeout=1.0, headers={}, body=None, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None, bodyExpected=None,
 									overwriteCl=False):
 		"""
@@ -1819,7 +1817,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		return self.TRACE(uri=uri, host=host, timeout=timeout, headers=headers, body=body, login=login, password=password, versionExpected=versionExpected, codeExpected=codeExpected, phraseExpected=phraseExpected, headersExpected=headersExpected, bodyExpected=bodyExpected,
 									overwriteCl=overwriteCl)		
-	@doc_public
+	
 	def doHEAD(self, uri, host, timeout=1.0, headers={}, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None):
 		"""
 		Send a HEAD request and wait response until the end of the timeout.
@@ -1861,7 +1859,7 @@ class Client(TestAdapterLib.Adapter):
 		TestAdapterLib.check_timeout(caller=TestAdapterLib.caller(), timeout=timeout)
 		
 		return self.HEAD(uri=uri, host=host, timeout=timeout, headers=headers, login=login, password=password, versionExpected=versionExpected, codeExpected=codeExpected, phraseExpected=phraseExpected, headersExpected=headersExpected)		
-	@doc_public
+	
 	def doDELETE(self, uri, host, timeout=1.0, headers={}, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None):
 		"""
 		Send a DELETE request and wait response until the end of the timeout.
@@ -1903,7 +1901,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		return self.DELETE(uri=uri, host=host, timeout=timeout, headers=headers, login=login, password=password, versionExpected=versionExpected, codeExpected=codeExpected, phraseExpected=phraseExpected, headersExpected=headersExpected)
 			
-	@doc_public
+	
 	def doOPTIONS(self, uri, host, timeout=1.0, headers={}, login='', password='', versionExpected=None, codeExpected=None, phraseExpected=None, headersExpected=None):
 		"""
 		Send a OPTIONS request and wait response until the end of the timeout.

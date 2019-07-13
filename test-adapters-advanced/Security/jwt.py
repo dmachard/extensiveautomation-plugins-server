@@ -22,7 +22,7 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
+
 from Var.SutAdapters import DataExchange
 from base64lib import BASE64
 
@@ -35,7 +35,7 @@ from Crypto.Hash import HMAC, SHA512, SHA384, SHA256
 import sys
 
 class JWT(TestLibrary.Library):
-	@doc_public	
+		
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		JWT library	
@@ -71,7 +71,7 @@ class JWT(TestLibrary.Library):
 				}
 		self.LIB_BASE64 = BASE64(parent=parent , name=None, debug=False, shared=False)
 		self.LIB_JSON = DataExchange.JSON(parent=parent, name=None, debug=False, ignoreErrors=False, shared=False)
-	@doc_public	
+		
 	def encode(self, payload, alg="RS256", key=None):
 		"""
 		Encode the provided payload and return a valid token
@@ -108,7 +108,7 @@ class JWT(TestLibrary.Library):
 		segments.append( self.LIB_BASE64.encode(signature, urlsafe=True))
 		
 		return b'.'.join(segments)
-	@doc_public	
+		
 	def decode(self, token, verify=False, key=None):
 		"""
 		Decode the provided token and check the signature 

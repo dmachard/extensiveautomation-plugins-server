@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -77,7 +75,7 @@ class TransportSsh(object):
 		pass	
 		
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent,  destIp, destPort=22, bindIp = '0.0.0.0', bindPort=0,  destHost='',
 									login='admin', password='admin', privateKey=None, privateKeyPath=None, verbose=True,
 									socketTimeout=10.0, socketFamily=AdapterIP.IPv4,  name=None, tcpKeepAlive=True, tcpKeepAliveInterval=30,
@@ -271,7 +269,7 @@ class Client(TestAdapterLib.Adapter):
 		self.cfg['bind-ip'] = bindIp
 		self.cfg['bind-port'] = bindPort
 	
-	@doc_public
+	
 	def setDestination(self, destinationIp, destinationPort,  destinationHost=''):
 		"""
 		Set the destination ip/port or host/port
@@ -503,7 +501,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		pass
 		
-	@doc_public
+	
 	def connect(self):
 		"""
 		Start the TCP connection
@@ -586,7 +584,7 @@ class Client(TestAdapterLib.Adapter):
 				self.error( "connect error: %s" % str(e) )
 				self.disconnectTcp()
 		return tpl
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Close the TCP connection
@@ -715,7 +713,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		self.sendNotifyToAgent(data=cfg)
 		
-	@doc_public
+	
 	def negotiation(self):
 		"""
 		Start ssh negotiation
@@ -780,7 +778,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		self.handleConnectionFailed(err=err)
 	
-	@doc_public
+	
 	def authentication(self):
 		"""
 		authentication ssh with login and password
@@ -868,7 +866,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		"""
 		pass
-	@doc_public
+	
 	def openSession(self):
 		"""
 		Open a ssh session
@@ -1086,7 +1084,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl.addLayer(layer=layer_ssh)
 		return tpl
 		
-	@doc_public
+	
 	def isConnected(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, sourcePort=None, destinationPort=None):
 		"""
 		Wait to receive "connected" event until the end of the timeout
@@ -1123,7 +1121,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0, byServer=False, versionIp=None, sourceIp=None, destinationIp=None, 
 										sourcePort=None, destinationPort=None):
 		"""
@@ -1167,7 +1165,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def isNegotiated(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, sourcePort=None, destinationPort=None):
 		"""
 		Waits to receive "negotiated" event until the end of the timeout
@@ -1204,7 +1202,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 	
-	@doc_public
+	
 	def isAuthenticated(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, sourcePort=None, destinationPort=None):
 		"""
 		Waits to receive "authenticated" event until the end of the timeout
@@ -1241,7 +1239,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def isChannelOpened(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, sourcePort=None, destinationPort=None):
 		"""
 		Waits to receive "channel opened" event until the end of the timeout
@@ -1278,7 +1276,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def doConnect(self, timeout=1.0, prompt='~]#'):
 		"""
 		Do connect with authentification
@@ -1308,7 +1306,7 @@ class Client(TestAdapterLib.Adapter):
 					ret = False
 		return ret
 
-	@doc_public
+	
 	def doDisconnect(self, timeout=1.0):
 		"""
 		Do disconnect
@@ -1327,7 +1325,7 @@ class Client(TestAdapterLib.Adapter):
 			ret = False
 		return ret
 		
-	@doc_public
+	
 	def sendData(self, tpl=None, dataRaw=None):
 		"""
 		Send ssh data
@@ -1385,7 +1383,7 @@ class Client(TestAdapterLib.Adapter):
 				self.error("unable to send data through ssh: %s" % str(e) )
 		return tpl_final
 		
-	@doc_public
+	
 	def hasReceivedData(self, timeout=1.0, dataExpected=None):
 		"""
 		Waits to receive "data" event until the end of the timeout
@@ -1409,7 +1407,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 	
-	@doc_public
+	
 	def searchPrompt(self, timeout=1.0, prompt='~]#'):
 		"""
 		Search prompt
@@ -1430,7 +1428,7 @@ class Client(TestAdapterLib.Adapter):
 											timeout=timeout)
 		return data
 		
-	@doc_public
+	
 	def doSendCommand(self, command,  timeout=1.0, expectedData=None, prompt='~]#'):
 		"""
 		Send command and waiting data

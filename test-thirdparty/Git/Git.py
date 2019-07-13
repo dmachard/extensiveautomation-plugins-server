@@ -23,10 +23,8 @@
 
 try:
     import TestInteropLib
-    from TestInteropLib import doc_public
 except ImportError: # python3 support
     from . import TestInteropLib
-    from TestInteropLib.TestInteropLib import doc_public
     
 import shutil
 import subprocess
@@ -110,7 +108,7 @@ class Git(TestInteropLib.InteropPlugin):
     """
     Git plugin
     """
-    @doc_public
+    
     def __init__(self, parent, local, remote, username='', password='', email='admin@extensivetesting.org'):
         """
         Git interop
@@ -143,7 +141,7 @@ class Git(TestInteropLib.InteropPlugin):
         self.repo = GitRepository(local=self.repoDir, remote=self.remoteUrl, 
                                 username=self.repoUsername, password=self.repoPassword,
                                 email=email, bin="/usr/bin/git")
-    @doc_public
+    
     def remove(self):
         """
         Remove the local repository 
@@ -173,7 +171,7 @@ class Git(TestInteropLib.InteropPlugin):
             self.logResponse(msg="remove exception", details=tpl )
         
         return ret
-    @doc_public    
+        
     def add(self, commitMsg):
         """
         Add and commit the files to the remote git repository 
@@ -214,7 +212,7 @@ class Git(TestInteropLib.InteropPlugin):
             self.logResponse(msg="add exception", details=tpl )
         
         return ret
-    @doc_public    
+        
     def push(self):
         """
         Push the changes to the remote git repository 
@@ -246,7 +244,7 @@ class Git(TestInteropLib.InteropPlugin):
             self.logResponse(msg="push exception", details=tpl )
         
         return ret
-    @doc_public    
+        
     def clone(self):
         """
         Clone the remote git repository 

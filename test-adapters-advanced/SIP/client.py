@@ -28,7 +28,6 @@ import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -145,7 +144,7 @@ def TAG():
 	
 # SIP Client
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, name=None,
 								bindIp = '', bindPort=0, destIp='127.0.0.1', destPort=5060,  proxyHost='', 
 								socketTimeout=10.0, socketFamily=AdapterIP.IPv4, transport=AdapterTCP.PROTOCOL_TCP,
@@ -452,7 +451,7 @@ class Client(TestAdapterLib.Adapter):
 		self.remoteTarget = uri
 		
 
-	@doc_public
+	
 	def configure(self, puid=None, domain=None, displayName=None):
 		"""
 		Configure settings
@@ -473,7 +472,7 @@ class Client(TestAdapterLib.Adapter):
 		if displayName is not None:
 			self.cfg['sip-display-name'] = displayName
 			
-	@doc_public
+	
 	def setSource(self, bindIp, bindPort):
 		"""
 		Set the source ip/port
@@ -489,7 +488,7 @@ class Client(TestAdapterLib.Adapter):
 		if self.transport == AdapterUDP.PROTOCOL_UDP:
 			self.udp.setSource(bindIp=bindIp, bindPort=bindPort)
 	
-	@doc_public
+	
 	def setDestination(self, destIp, destPort):
 		"""
 		Set the destination ip/port
@@ -505,14 +504,14 @@ class Client(TestAdapterLib.Adapter):
 		if self.transport == AdapterUDP.PROTOCOL_UDP:
 			self.udp.setDestination(destinationIp=destIp, destinationPort=destPort)
 			
-	@doc_public
+	
 	def setLocalTag(self):
 		"""
 		Set the local tag
 		"""
 		self.__setLocalTag()
 		
-	@doc_public
+	
 	def setRemoteTag(self, fromhdr):
 		"""
 		Set the remote tag
@@ -526,7 +525,7 @@ class Client(TestAdapterLib.Adapter):
 		except Exception as e:
 			self.error( 'unable to extract tag in from: %s' % str(e) )	
 			
-	@doc_public
+	
 	def setRemoteUri(self, fromhdr):
 		"""
 		Set the remote uri
@@ -542,7 +541,7 @@ class Client(TestAdapterLib.Adapter):
 		except Exception as e:
 			self.error( 'unable to set remote uri: %s'  % str(e))	
 		
-	@doc_public
+	
 	def getRoutesAndRequestUri(self):
 		"""
 		"""
@@ -560,7 +559,7 @@ class Client(TestAdapterLib.Adapter):
 				self.routeSet.addKey(name="%s" % self.routeSet.getLenItems(), data=self.remoteTarget)
 		return routes, requestUri	
 		
-	@doc_public
+	
 	def getRemoteUri(self):
 		"""
 		Returns the remote uri
@@ -570,7 +569,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		return self.remoteUri
 		
-	@doc_public
+	
 	def getLocalTag(self):
 		"""
 		Returns the local tag
@@ -580,7 +579,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		return self.localTag
 		
-	@doc_public
+	
 	def getLocalUri(self):
 		"""
 		Returns the local uri
@@ -590,7 +589,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		return self.localUri		
 		
-	@doc_public
+	
 	def getLocalCseq(self):
 		"""
 		Returns the local cseq
@@ -600,7 +599,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		return self.localCseq
 	
-	@doc_public
+	
 	def getLocalBranch(self):
 		"""
 		Returns the local branch
@@ -610,7 +609,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		return self.localBranch
 		
-	@doc_public
+	
 	def getSrcIP(self):
 		"""
 		Returns the source IP
@@ -620,7 +619,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		return self.cfg['sip-source-ip']
 		
-	@doc_public
+	
 	def getSrcPort(self):
 		"""
 		Returns the source port
@@ -631,7 +630,7 @@ class Client(TestAdapterLib.Adapter):
 		return self.cfg['sip-source-port']
 		
 	
-	@doc_public
+	
 	def getFromHeader(self):
 		"""
 		Returns from header
@@ -649,7 +648,7 @@ class Client(TestAdapterLib.Adapter):
 		f = self.__addDisplayName(uri=f)
 		return f
 		
-	@doc_public
+	
 	def getToHeader(self):
 		"""
 		Returns to header
@@ -776,7 +775,7 @@ class Client(TestAdapterLib.Adapter):
 		return decodedMessageTpl
 	
 			
-	@doc_public
+	
 	def sendMessage(self, tpl):
 		"""
 		Send a sip message: request or status
@@ -846,7 +845,7 @@ class Client(TestAdapterLib.Adapter):
 			raise Exception('Unable to send SIP message: %s' % str(e))
 		return lower
 
-	@doc_public
+	
 	def hasReceivedMessage(self, expected, timeout=1.0):
 		"""
 		Wait response until the end of the timeout.
@@ -867,7 +866,7 @@ class Client(TestAdapterLib.Adapter):
 			return None
 		return evt
 	
-	@doc_public
+	
 	def hasReceivedResponse(self, timeout=1.0, sipCode="200", sipPhrase='OK', sipVersion='SIP/2.0', callId=None,
 														tagFrom=None, tagTo=None, cseq=None, branchVia=None, expectedHeaders=None, body=None,
 														versionIp=None, sourceIp=None, destinationIp=None, sourcePort=None, destinationPort=None):
@@ -972,7 +971,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		# try to match
 		return self.hasReceivedMessage(expected=tpl, timeout=timeout)
-	@doc_public
+	
 	def hasReceivedRequest(self, timeout=1.0, sipMethod='INVITE', sipUri='sip:undefined', sipVersion='SIP/2.0', callId=None,
 														tagFrom=None, tagTo=None, cseq=None, branchVia=None, expectedHeaders=None, body=None,
 														versionIp=None, sourceIp=None, destinationIp=None, sourcePort=None, destinationPort=None):
@@ -1217,7 +1216,7 @@ class Client(TestAdapterLib.Adapter):
 		via.append( ';branch=%s' % branch )
 		return ''.join(via)
 
-	@doc_public
+	
 	def CANCEL(self, callId, cseq, requestUri=None, toHeader=None, fromHeader=None, via=None, headers={}, send=True ):
 		"""
 		Send CANCEL to the SUT 
@@ -1291,7 +1290,7 @@ class Client(TestAdapterLib.Adapter):
 		else:
 			return req_tpl
 			
-	@doc_public
+	
 	def ACK(self, callId, cseq, requestUri=None, toHeader=None, fromHeader=None, via=None, headers={}, sdp=None, send=True ):
 		"""
 		Send ACK to the SUT 
@@ -1372,7 +1371,7 @@ class Client(TestAdapterLib.Adapter):
 			return self.sendMessage(tpl=req_tpl)
 		else:
 			return req_tpl
-	@doc_public
+	
 	def BYE(self, callId, requestUri=None, headers={}, send=True ):
 		"""
 		Send BYE to the SUT 
@@ -1437,7 +1436,7 @@ class Client(TestAdapterLib.Adapter):
 		else:
 			return req_tpl
 		
-	@doc_public
+	
 	def INVITE(self, requestUri, callId, headers={}, sdp=None, send=True ):
 		"""
 		Send INVITE to the SUT 
@@ -1502,7 +1501,7 @@ class Client(TestAdapterLib.Adapter):
 			return self.sendMessage(tpl=req_tpl)
 		else:
 			return req_tpl
-	@doc_public
+	
 	def REGISTER(self, callId, expires=300, headers={}, send=True ):
 		"""
 		Send REGISTER to the SUT 
@@ -1560,7 +1559,7 @@ class Client(TestAdapterLib.Adapter):
 			return self.sendMessage(tpl=req_tpl)
 		else:
 			return req_tpl
-	@doc_public
+	
 	def Status(self, code, phrase, fromHeader, toHeader, callId, via, cseq, sdp=None, headers={}, send=True ):
 		"""
 		Send status response to the SUT 

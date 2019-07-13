@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -65,7 +63,7 @@ SOUND_SILENCE = 2
 AGENT_TYPE_EXPECTED='socket'
 
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, debug=False, name=None,
 						bindIp = '0.0.0.0', bindPort=0, destinationIp='', destinationHost='', destinationPort=0,
 						socketFamily=AdapterIP.IPv4, logHighLevelEvents=True, logLowLevelEvents=False,
@@ -383,7 +381,7 @@ class Client(TestAdapterLib.Adapter):
 		except Exception as e:
 			self.error( 'record rcv sound error: %s' % str(e) )
 			
-	@doc_public
+	
 	def configure(self, recordRcvSound=None, recordSndSound=None, defaultSound=None, payloadType=None):
 		"""
 		Configure settings
@@ -426,7 +424,7 @@ class Client(TestAdapterLib.Adapter):
 			self.sendingThread.stop()
 		self.stopListening()
 		
-	@doc_public
+	
 	def setCodec(self, payloadType):
 		"""
 		Set the codec to use 
@@ -488,7 +486,7 @@ class Client(TestAdapterLib.Adapter):
 			except Exception as e:
 				self.error('Error while waiting for rtp packet: %s' % str(e))		
 
-	@doc_public
+	
 	def sendPacket(self, tpl, to=None):
 		"""
 		Send RTP packet over network
@@ -532,7 +530,7 @@ class Client(TestAdapterLib.Adapter):
 			raise Exception('Unable to send rtp packet: %s' % str(e))
 		return lower		
 		
-	@doc_public
+	
 	def startSending(self):
 		"""
 		Start sending rtp.
@@ -622,7 +620,7 @@ class Client(TestAdapterLib.Adapter):
 				lower.addLayer( layer=templates.stops_receiving(en=en, ssrc=ssrc, mt=mt, sessid=self.cfg['session-id']) )
 				self.logRecvEvent( shortEvt = "stops receiving", tplEvt = lower )
 	
-	@doc_public
+	
 	def stopSending(self):
 		"""
 		Stop sending rtp.
@@ -645,7 +643,7 @@ class Client(TestAdapterLib.Adapter):
 				lower.addLayer( layer=templates.stops_sending(en=en, ssrc=ssrc, mt=mt, sessid=self.cfg['session-id']) )
 				self.logSentEvent( shortEvt = "stops sending", tplEvt = lower )
 
-	@doc_public
+	
 	def stopListening(self):
 		"""
 		"""
@@ -668,7 +666,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_msg.addLayer(layer=layer_rtp)
 		return tpl_msg
 		
-	@doc_public
+	
 	def hasStartedReceiving(self, timeout=1.0, ssrc=None, codec=None, type=None, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None, sessionid=None):
 		"""
@@ -718,7 +716,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def hasStoppedReceiving(self, timeout=1.0, ssrc=None, codec=None, type=None, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None, sessionid=None):
 		"""

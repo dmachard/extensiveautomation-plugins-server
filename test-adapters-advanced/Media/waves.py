@@ -21,7 +21,6 @@
 # MA 02110-1301 USA
 # -------------------------------------------------------------------
 
-from TestExecutorLib.TestExecutorLib import doc_public
 
 try:
 	from sample import *
@@ -31,7 +30,7 @@ except ImportError: # python3 support
 import math
 
 class Waves(Sample):
-	@doc_public
+	
 	def __init__(self, rate, parent, name=None, debug=False, amplitude=100, bits=SIGNED_16BITS):
 		"""
 		Waves generator
@@ -55,7 +54,7 @@ class Waves(Sample):
 		@type bits: string			
 		"""
 		Sample.__init__(self, parent=parent, debug=debug, rate=rate, amplitude=amplitude, bits=bits, name=name)
-	@doc_public
+	
 	def setRate(self, rate):
 		"""
 		Set the rate in Hz
@@ -64,7 +63,7 @@ class Waves(Sample):
 		@type rate:	integer		
 		"""
 		Sample.setRate(self, rate=rate)
-	@doc_public
+	
 	def setAmplitude(self, amplitude):
 		"""
 		Set the amplitude of the noise in percent
@@ -73,7 +72,7 @@ class Waves(Sample):
 		@type amplitude: integer		
 		"""
 		Sample.setAmplitude(self, amplitude=amplitude)	
-	@doc_public
+	
 	def setBits(self, bits):
 		"""
 		Set the number of bits by sample
@@ -82,7 +81,7 @@ class Waves(Sample):
 		@type bits: string			
 		"""
 		Sample.setBits(self, bits=bits)
-	@doc_public
+	
 	def sine(self, f, duration ):
 		"""
 		Return a sine wave
@@ -110,7 +109,7 @@ class Waves(Sample):
 				s = (s + scale) / 2
 			ret.append( int(s) )
 		return ret
-	@doc_public
+	
 	def square(self, f, duration ):
 		"""
 		Return a square wave
@@ -138,7 +137,7 @@ class Waves(Sample):
 				s = (s + scale) / 2
 			ret.append( int(s) )
 		return ret
-	@doc_public
+	
 	def triange(self, f, duration ):
 		"""
 		Return a triange wave
@@ -166,7 +165,7 @@ class Waves(Sample):
 				s = (s + scale) / 2
 			ret.append( int(s) )
 		return ret
-	@doc_public
+	
 	def sweep(self, duration ):
 		"""
 		Return a sweep wave 
@@ -191,7 +190,7 @@ class Waves(Sample):
 				s = (s + scale) / 2
 			ret.append( int(s) )
 		return ret
-	@doc_public
+	
 	def ping(self, f, duration ):
 		"""
 		Return a ping wave
@@ -219,7 +218,7 @@ class Waves(Sample):
 				s = (s + scale) / 2
 			ret.append( int(s) )
 		return ret
-	@doc_public
+	
 	def overload(self, f, duration ):
 		"""
 		Return an overloaded wave
@@ -247,7 +246,7 @@ class Waves(Sample):
 				s = (s + scale) / 2
 			ret.append( int(s) )
 		return ret
-	@doc_public
+	
 	def modulation(self, f, duration, x=2, y=4 ):
 		"""
 		Return a frequency modulated wave
@@ -281,7 +280,7 @@ class Waves(Sample):
 				s = (s + scale) / 2
 			ret.append( int(s) )
 		return ret
-	@doc_public
+	
 	def sonar(self, f, duration ):
 		"""
 		Return a sonar wave
@@ -309,7 +308,7 @@ class Waves(Sample):
 				s = (s + scale) / 2
 			ret.append( int(s) )
 		return ret
-	@doc_public
+	
 	def deep(self, f, duration ):
 		"""
 		Return a deep wave

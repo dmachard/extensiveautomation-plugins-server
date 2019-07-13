@@ -25,7 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -51,7 +50,7 @@ KEY_CTRLC = '\x03'
 KEY_ENTER = '\n'
 
 class SshTerminal(TestAdapter.Adapter):
-	@doc_public
+	
 	def __init__(self, parent,  destIp, destPort=22, 
 											bindIp = '0.0.0.0', bindPort=0,  
 											login='admin', password='admin', 
@@ -239,7 +238,7 @@ class SshTerminal(TestAdapter.Adapter):
 		
 		return tpl
 
-	@doc_public
+	
 	def doSession(self, timeout=10.0, message=None):
 		"""
 		Open a session
@@ -259,7 +258,7 @@ class SshTerminal(TestAdapter.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def doClose(self, timeout=10.0):
 		"""
 		Close the session
@@ -277,7 +276,7 @@ class SshTerminal(TestAdapter.Adapter):
 		ret = True
 		return ret
 		
-	@doc_public
+	
 	def doText(self, text):
 		"""
 		Type text on terminal
@@ -298,7 +297,7 @@ class SshTerminal(TestAdapter.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def doClear(self):
 		"""
 		Clear the terminal
@@ -317,7 +316,7 @@ class SshTerminal(TestAdapter.Adapter):
 			ret = True
 		return ret
 
-	@doc_public
+	
 	def doShorcut(self, key):
 		"""
 		Type key on terminal
@@ -340,7 +339,7 @@ class SshTerminal(TestAdapter.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def connect(self):
 		"""
 		Connect to the SSH server
@@ -353,7 +352,7 @@ class SshTerminal(TestAdapter.Adapter):
 		
 		tpl = self.ssh().connect()
 		
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Disconnect from the SCP server
@@ -364,7 +363,7 @@ class SshTerminal(TestAdapter.Adapter):
 
 		tpl = self.ssh().disconnect()
 
-	@doc_public
+	
 	def isOpened(self, timeout=10.0, message=None):
 		"""
 		Waits to receive "opened" event until the end of the timeout
@@ -387,7 +386,7 @@ class SshTerminal(TestAdapter.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def isClosed(self, timeout=10.0):
 		"""
 		Waits to receive "closed" event until the end of the timeout
@@ -407,7 +406,7 @@ class SshTerminal(TestAdapter.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedScreen(self, timeout=10.0, text=None):
 		"""
 		Waits to receive "screen" event until the end of the timeout

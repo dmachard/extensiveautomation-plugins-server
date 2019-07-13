@@ -26,7 +26,6 @@ import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
 import TestExecutorLib.TestTemplatesLib as TestTemplates
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -66,7 +65,7 @@ GET_FOLDER="Get Folder"
 __NAME__="""SFTP"""
 
 class Client(TestAdapter.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, destIp= '127.0.0.1',  destPort=22,  bindIp='', bindPort=0,
 													login='admin', password='admin',	privateKey=None, privateKeyPath=None, name=None, 
 													debug=False, shared=False, agent=None, agentSupport=False, verbose=True):
@@ -281,7 +280,7 @@ class Client(TestAdapter.Adapter):
 		tpl.addLayer(layer=layer_sftp)
 		return tpl
 		
-	@doc_public
+	
 	def connect(self):
 		"""
 		Connect to the SCP server
@@ -289,14 +288,14 @@ class Client(TestAdapter.Adapter):
 		"""
 		self.ADP_SSH.connect()
 		
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Disconnect from the SCP server
 		"""
 		self.ADP_SSH.disconnect()
 		
-	@doc_public
+	
 	def renameFile(self, currentFilename, newFilename):
 		"""
 		Rename a file
@@ -328,7 +327,7 @@ class Client(TestAdapter.Adapter):
 			else:
 				tpl = self.encapsule( sftp_event=templates.response(), cmd=RENAME_FILE  )
 				self.logRecvEvent( shortEvt = "file renamed", tplEvt = tpl )
-	@doc_public
+	
 	def deleteFile(self, filename):
 		"""
 		Delete a file
@@ -359,7 +358,7 @@ class Client(TestAdapter.Adapter):
 				self.logRecvEvent( shortEvt = "file deleted", tplEvt = tpl )
 
 
-	@doc_public
+	
 	def addFolder(self, path, mode=511):
 		"""
 		Add a folder
@@ -392,7 +391,7 @@ class Client(TestAdapter.Adapter):
 				tpl = self.encapsule( sftp_event=templates.response(), cmd=ADD_FOLDER )
 				self.logRecvEvent( shortEvt = "folder added", tplEvt = tpl )
 				
-	@doc_public
+	
 	def deleteFolder(self, path):
 		"""
 		Delete a folder
@@ -422,7 +421,7 @@ class Client(TestAdapter.Adapter):
 				tpl = self.encapsule( sftp_event=templates.response(), cmd=DELETE_FOLDER )
 				self.logRecvEvent( shortEvt = "folder deleted", tplEvt = tpl )
 				
-	@doc_public
+	
 	def renameFolder(self, currentPath, newPath):
 		"""
 		Rename a folder
@@ -455,7 +454,7 @@ class Client(TestAdapter.Adapter):
 				tpl = self.encapsule( sftp_event=templates.response() , cmd=RENAME_FOLDER )
 				self.logRecvEvent( shortEvt = "folder renamed", tplEvt = tpl )
 				
-	@doc_public
+	
 	def listingFolder(self, path, extended=False):
 		"""
 		Listing the folder.
@@ -495,7 +494,7 @@ class Client(TestAdapter.Adapter):
 				tpl.addRaw( '\n'.join(ret) )
 				self.logRecvEvent( shortEvt = "folder listing", tplEvt = tpl )
 
-	@doc_public
+	
 	def getFile(self,  filename, toPrivate=False):
 		"""
 		Get file content 
@@ -535,7 +534,7 @@ class Client(TestAdapter.Adapter):
 				tpl.addRaw( read_data )
 				self.logRecvEvent( shortEvt = "file downloaded", tplEvt = tpl )
 				
-	@doc_public
+	
 	def putFile(self, toFilename, fromFilename=None, rawContent=None):
 		"""
 		Put file  in binary transfer mode.
@@ -593,7 +592,7 @@ class Client(TestAdapter.Adapter):
 				tpl.addRaw( str(rsp) )
 				self.logRecvEvent( shortEvt = "file uploaded", tplEvt = tpl )
 				
-	@doc_public
+	
 	def waitForFile(self, path, filename, timeout=1.0, watchEvery=0.5):
 		"""
 		Wait for file, regexp supported on filename
@@ -650,7 +649,7 @@ class Client(TestAdapter.Adapter):
 				tpl = self.encapsule( sftp_event=templates.wait_file(path=path, filename=true_filename, result=ret), cmd=WAIT_FILE )
 				self.logRecvEvent( shortEvt = "wait file", tplEvt = tpl )
 
-	@doc_public
+	
 	def waitForFolder(self, path, folder, timeout=1.0, watchEvery=0.5):
 		"""
 		Wait for folder, regexp supported on folder name
@@ -707,7 +706,7 @@ class Client(TestAdapter.Adapter):
 				tpl = self.encapsule( sftp_event=templates.wait_folder(path=path, folder=true_folder, result=ret), cmd=WAIT_FOLDER )
 				self.logRecvEvent( shortEvt = "wait folder", tplEvt = tpl )
 
-	@doc_public
+	
 	def isConnected(self,timeout=1.0):
 		"""
 		Wait to receive "Connected" event until the end of the timeout
@@ -721,7 +720,7 @@ class Client(TestAdapter.Adapter):
 		TestAdapter.check_timeout(caller=TestAdapter.caller(), timeout=timeout)
 		
 		return self.ADP_SSH.isConnected(timeout=timeout)
-	@doc_public
+	
 	def isLogged(self,timeout=1.0):
 		"""
 		Wait to receive "logged" event until the end of the timeout
@@ -736,7 +735,7 @@ class Client(TestAdapter.Adapter):
 		
 		return self.ADP_SSH.isChannelOpened(timeout=timeout)
 		
-	@doc_public
+	
 	def isDisconnected(self,timeout=1.0):
 		"""
 		Wait to receive "disconnected" event until the end of the timeout
@@ -750,7 +749,7 @@ class Client(TestAdapter.Adapter):
 		TestAdapter.check_timeout(caller=TestAdapter.caller(), timeout=timeout)
 
 		return self.ADP_SSH.isDisconnected(timeout=timeout)
-	@doc_public
+	
 	def isFileRenamed(self, timeout=1.0):
 		"""
 		Wait to receive "renamed file" event
@@ -771,7 +770,7 @@ class Client(TestAdapter.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def isFileDeleted(self, timeout=1.0):
 		"""
 		Wait to receive "deleted file" event
@@ -792,7 +791,7 @@ class Client(TestAdapter.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasUploadedFile(self, timeout=1.0):
 		"""
 		Wait to receive "uploaded file" event
@@ -813,7 +812,7 @@ class Client(TestAdapter.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasDownloadedFile(self, timeout=1.0):
 		"""
 		Wait to receive "downloaded" event
@@ -834,7 +833,7 @@ class Client(TestAdapter.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def isFolderDeleted(self, timeout=1.0):
 		"""
 		Wait to receive "deleted folder" event
@@ -855,7 +854,7 @@ class Client(TestAdapter.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def isFolderRenamed(self, timeout=1.0):
 		"""
 		Wait to receive "folder renamed" event
@@ -876,7 +875,7 @@ class Client(TestAdapter.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def isFolderAdded(self, timeout=1.0):
 		"""
 		Wait to receive "added folder" event
@@ -897,7 +896,7 @@ class Client(TestAdapter.Adapter):
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasFolderListing(self, timeout=1.0):
 		"""
 		Wait to receive "listing folder" event
@@ -917,7 +916,7 @@ class Client(TestAdapter.Adapter):
 		tpl_expected = self.encapsule( sftp_event=templates.response(), cmd=LISTING_FOLDER)
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasDetectedFile(self, path=None,  filename=None, timeout=1.0):
 		"""
 		Wait to receive "detected file" event
@@ -943,7 +942,7 @@ class Client(TestAdapter.Adapter):
 		tpl_expected = self.encapsule( sftp_event=templates.wait_file(path=path, filename=filename, result=True), cmd=WAIT_FILE)
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasDetectedFolder(self, path=None, folder=None, timeout=1.0):
 		"""
 		Wait to receive "detected" folder event
@@ -969,7 +968,7 @@ class Client(TestAdapter.Adapter):
 		tpl_expected = self.encapsule( sftp_event=templates.wait_folder(path=path, folder=folder, result=True), cmd=WAIT_FOLDER)
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasReceivedResponse(self, timeout=1.0):
 		"""
 		Wait to receive "response" event
@@ -989,7 +988,7 @@ class Client(TestAdapter.Adapter):
 		tpl_expected = self.encapsule( sftp_event=templates.response() )
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasReceivedError(self, timeout=1.0):
 		"""
 		Wait to receive "error response" event
@@ -1009,7 +1008,7 @@ class Client(TestAdapter.Adapter):
 		tpl_expected = self.encapsule( sftp_event=templates.response_error() )
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def doConnect(self, timeout=1.0):
 		"""
 		Do connect with authentification
@@ -1029,7 +1028,7 @@ class Client(TestAdapter.Adapter):
 		if self.isLogged(timeout=timeout) is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doDisconnect(self, timeout=1.0):
 		"""
 		Do disconnect
@@ -1047,7 +1046,7 @@ class Client(TestAdapter.Adapter):
 		if self.isDisconnected(timeout=timeout) is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def getFolder(self, fromPath, toPath=None, overwrite=False):
 		"""
 		Get folder content with recursive mode
@@ -1134,7 +1133,7 @@ class Client(TestAdapter.Adapter):
 						raise Exception("os error file: %s" % e)
 				del read_data
 		return nb_file
-	@doc_public
+	
 	def hasDownloadedFolder(self, timeout=1.0, nbFiles=None):
 		"""
 		Waiting downloaded event for folder
@@ -1155,7 +1154,7 @@ class Client(TestAdapter.Adapter):
 		tpl_expected = self.encapsule( sftp_event=templates.response(rsp=nbFiles), cmd=GET_FOLDER )
 		evt = self.received( expected = tpl_expected, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def putFolder(self, fromPath, toPath, overwrite=False):
 		"""
 		Put folder content with recursive mode
@@ -1225,7 +1224,7 @@ class Client(TestAdapter.Adapter):
 				nb_file += self.__putFolder(fromPath=itempath, toPath=destFolder, overwrite=overwrite)
 		return nb_file
 		
-	@doc_public
+	
 	def hasUploadedFolder(self, timeout=1.0, nbFiles=None):
 		"""
 		Waiting uploaded event for folder

@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -63,7 +61,7 @@ class PingAgent(threading.Thread):
 			self.isup = True
 
 class HostICMP(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, name=None, nbPing=2, debug=False, shared=False):
 		"""
 		This class enable to check the status of a network element. Requests ICMP are used to do that, a node is up if an echo reply a received.
@@ -87,7 +85,7 @@ class HostICMP(TestAdapterLib.Adapter):
 		self.nbPing = nbPing
 		self.debug=debug
 
-	@doc_public
+	
 	def doIsUp(self, host, timeout=1.0):
 		"""
 		Do a test on the host to check if alive
@@ -109,7 +107,7 @@ class HostICMP(TestAdapterLib.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def doIsDown(self, host, timeout=1.0):
 		"""
 		Do a test on the host to check if down
@@ -131,7 +129,7 @@ class HostICMP(TestAdapterLib.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def isUp(self, host, timeout=1.0):
 		"""
 		Check if the host passed as argument is up. This check takes approximately 10 sec.
@@ -166,7 +164,7 @@ class HostICMP(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def isDown(self, host, timeout=1.0):
 		"""
 		Check if the host passed as argument is down. This check takes approximately 10 sec.
@@ -201,7 +199,7 @@ class HostICMP(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def doAreUp(self, hosts, timeout=1.0):
 		"""
 		Check if all hosts passed as argument are up. This check takes approximately 10 sec.
@@ -220,7 +218,7 @@ class HostICMP(TestAdapterLib.Adapter):
 		return self.areUp(hosts=hosts, timeout=timeout)
 		
 
-	@doc_public
+	
 	def doAreDown(self, hosts, timeout=1.0):
 		"""
 		Check if all hosts passed as argument are down. This check takes approximately 10 sec.
@@ -238,7 +236,7 @@ class HostICMP(TestAdapterLib.Adapter):
 		
 		return self.areDown(hosts=hosts, timeout=timeout)
 		
-	@doc_public
+	
 	def areUp(self, hosts, timeout=1.0):
 		"""
 		Check if all hosts passed as argument are up. This check takes approximately 10 sec.
@@ -283,7 +281,7 @@ class HostICMP(TestAdapterLib.Adapter):
 		return ret
 
 
-	@doc_public
+	
 	def areDown(self, hosts, timeout=1.0):
 		"""
 		Check if all hosts passed as argument are down. This check takes approximately 10 sec.

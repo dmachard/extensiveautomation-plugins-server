@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
-# import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -74,7 +72,7 @@ AGENT_INITIALIZED = "AGENT_INITIALIZED"
 AGENT_TYPE_EXPECTED='file'
 
 class File(TestAdapter.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, agent, name=None, debug=False, shared=False):
 		"""
 		File adapter
@@ -463,7 +461,7 @@ class File(TestAdapter.Adapter):
 		
 		return tpl
 		
-	@doc_public
+	
 	def sizeOfFile(self, file):
 		"""
 		Get the size of the file
@@ -486,7 +484,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 
-	@doc_public
+	
 	def sizeOfDirectory(self, path):
 		"""
 		Get the size of the directory
@@ -509,7 +507,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def listFiles(self, path):
 		"""
 		List all files in the directory
@@ -532,7 +530,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def deleteFile(self, file):
 		"""
 		Delete a file
@@ -555,7 +553,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 
-	@doc_public
+	
 	def deleteDirectory(self, path):
 		"""
 		Delete a directory
@@ -578,7 +576,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def getFile(self, file):
 		"""
 		Get file content 
@@ -601,7 +599,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def modificationDateOfFile(self, file):
 		"""
 		Get the modification date of the file
@@ -624,7 +622,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def copyFile(self, fileSrc, fileDst):
 		"""
 		Copy the file
@@ -653,7 +651,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 
-	@doc_public
+	
 	def moveFile(self, fileSrc, fileDst):
 		"""
 		Move the file 
@@ -682,7 +680,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 
-	@doc_public
+	
 	def compareFiles(self, fileSrc, fileDst):
 		"""
 		Compare two text files
@@ -711,7 +709,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def moveDirectory(self, pathSrc, pathDst):
 		"""
 		Move the directory 
@@ -740,7 +738,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 
-	@doc_public
+	
 	def copyDirectory(self, pathSrc, pathDst):
 		"""
 		Copy the directory 
@@ -769,7 +767,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def isFile(self, path):
 		"""
 		Check if path is an existing regular file
@@ -792,7 +790,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def isDirectory(self, path):
 		"""
 		Check if the path in argument is a folder
@@ -816,7 +814,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def isLink(self, path):
 		"""
 		Check if the path in argument is a link
@@ -840,7 +838,7 @@ class File(TestAdapter.Adapter):
 		
 		return requestId
 
-	@doc_public
+	
 	def existsFile(self, path):
 		"""
 		Check if the path exists
@@ -864,7 +862,7 @@ class File(TestAdapter.Adapter):
 		
 		return requestId
 
-	@doc_public
+	
 	def existsDirectory(self, path):
 		"""
 		Check if the path folder exists
@@ -888,7 +886,7 @@ class File(TestAdapter.Adapter):
 		
 		return requestId
 		
-	@doc_public
+	
 	def waitForFile(self, path, timeout=10):
 		"""
 		Wait for file
@@ -919,7 +917,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def waitForDirectory(self, path, timeout=10):
 		"""
 		Wait for directory
@@ -950,7 +948,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def checksumFile(self, file, md5=True):
 		"""
 		Compute the checksum of the file passed in argument
@@ -979,7 +977,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def startFollowFile(self, path, filter, extensions=["log"]):
 		"""
 		Start to follow a text file
@@ -1016,7 +1014,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def stopFollowFile(self, followId):
 		"""
 		Stop to follow a text file
@@ -1033,7 +1031,7 @@ class File(TestAdapter.Adapter):
 
 		return requestId
 		
-	@doc_public
+	
 	def hasStartedFollowing(self, timeout=1.0):
 		"""
 		Waits to receive "started following" event until the end of the timeout
@@ -1067,7 +1065,7 @@ class File(TestAdapter.Adapter):
 		tpl.addLayer(layer= layer)
 		evt = self.received( expected = tpl, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def hasStoppedFollowing(self, timeout=1.0):
 		"""
 		Waits to receive "stopped following" event until the end of the timeout
@@ -1085,7 +1083,7 @@ class File(TestAdapter.Adapter):
 		return evt
 		
 		
-	@doc_public
+	
 	def hasReceivedLogFile(self, timeout=1.0, content=None):
 		"""
 		Waits to receive "log file" event until the end of the timeout
@@ -1105,7 +1103,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedFile(self, timeout=1.0, requestId=None, content=None):
 		"""
 		Waits to receive "get file" event until the end of the timeout
@@ -1128,7 +1126,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedModificationDateFile(self, timeout=1.0, requestId=None, modificationDate=None):
 		"""
 		Waits to receive "modification date for file" event until the end of the timeout
@@ -1152,7 +1150,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedListFiles(self, timeout=1.0, requestId=None, listFiles=None):
 		"""
 		Waits to receive "list of files" event until the end of the timeout
@@ -1176,7 +1174,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedSizeFile(self, timeout=1.0, requestId=None, size=None, fileExists=True):
 		"""
 		Waits to receive "size file" event until the end of the timeout
@@ -1202,7 +1200,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def hasReceivedSizeDirectory(self, timeout=1.0, requestId=None, size=None, folderExists=True):
 		"""
 		Waits to receive "size directory" event until the end of the timeout
@@ -1229,7 +1227,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedIsLink(self, timeout=1.0, requestId=None,  isLink=True):
 		"""
 		Waits to receive "link" event until the end of the timeout
@@ -1252,7 +1250,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedIsFile(self, timeout=1.0, requestId=None, isFile=True):
 		"""
 		Waits to receive "file" event until the end of the timeout
@@ -1275,7 +1273,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedIsDirectory(self, timeout=1.0, requestId=None, isFolder=True):
 		"""
 		Waits to receive "directory" event until the end of the timeout
@@ -1298,7 +1296,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedWaitFile(self, timeout=1.0, requestId=None, fileExists=True):
 		"""
 		Waits to receive "file exists" event until the end of the timeout
@@ -1321,7 +1319,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedWaitDirectory(self, timeout=1.0, requestId=None, directoryExists=True):
 		"""
 		Waits to receive "folder exists" event until the end of the timeout
@@ -1344,7 +1342,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedCompareFiles(self, timeout=1.0, requestId=None, identical=True):
 		"""
 		Waits to receive "compare files" text event until the end of the timeout
@@ -1367,7 +1365,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedExistsFile(self, timeout=1.0, requestId=None, fileExists=True):
 		"""
 		Waits to receive "file exists" event until the end of the timeout
@@ -1390,7 +1388,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedExistsDirectory(self, timeout=1.0, requestId=None, directoryExists=True):
 		"""
 		Waits to receive "folder exists" event until the end of the timeout
@@ -1413,7 +1411,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def hasReceivedDeleteFile(self, timeout=1.0, requestId=None, fileDeleted=True):
 		"""
 		Waits to receive "delete file" event until the end of the timeout
@@ -1436,7 +1434,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def hasReceivedDeleteDirectory(self, timeout=1.0, requestId=None, directoryDeleted=True):
 		"""
 		Waits to receive "delete directory" event until the end of the timeout
@@ -1460,7 +1458,7 @@ class File(TestAdapter.Adapter):
 		return evt
 		
 
-	@doc_public
+	
 	def hasReceivedCopyDirectory(self, timeout=1.0, requestId=None, directoryCopied=True):
 		"""
 		Waits to receive "copy directory" event until the end of the timeout
@@ -1483,7 +1481,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedCopyFile(self, timeout=1.0, requestId=None, fileCopied=True):
 		"""
 		Waits to receive "delete directory" event until the end of the timeout
@@ -1506,7 +1504,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def hasReceivedMoveFile(self, timeout=1.0, requestId=None, fileMoved=True):
 		"""
 		Waits to receive "move file" event until the end of the timeout
@@ -1529,7 +1527,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def hasReceivedMoveDirectory(self, timeout=1.0, requestId=None, directoryMoved=True):
 		"""
 		Waits to receive "move directory" event until the end of the timeout
@@ -1552,7 +1550,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def hasReceivedChecksumFile(self, timeout=1.0, requestId=None, checksum=None, checksumType=None):
 		"""
 		Waits to receive "checksum md5 file" event until the end of the timeout
@@ -1579,7 +1577,7 @@ class File(TestAdapter.Adapter):
 		evt = self.received( expected = self.encapsule(file_event=layer_file), timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def doGetContent(self, file, timeout=1.0):
 		"""
 		Return content of the file passed as argument
@@ -1601,7 +1599,7 @@ class File(TestAdapter.Adapter):
 			return evt.getRaw()
 		return False
 		
-	@doc_public
+	
 	def doFindString(self, file, stringExpected, timeout=1.0):
 		"""
 		Search the expected string on the file content

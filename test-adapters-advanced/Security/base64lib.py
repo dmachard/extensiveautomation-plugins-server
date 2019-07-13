@@ -22,14 +22,13 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import base64 
 
 __NAME__="""BASE64"""
 
 class BASE64(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		JSON Decoder/Encoder
@@ -48,7 +47,7 @@ class BASE64(TestLibraryLib.Library):
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
 		
-	@doc_public
+	
 	def encode(self, data, urlsafe=False):
 		"""
 		Encode a string in base 64
@@ -67,7 +66,7 @@ class BASE64(TestLibraryLib.Library):
 		else:
 			return base64.b64encode( data )
 		
-	@doc_public
+	
 	def decode(self, data, urlsafe=False, padding=False):
 		"""
 		Decode a string encoded in base 64

@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import time
 from datetime import datetime, date
@@ -37,7 +36,7 @@ else:
 __NAME__="""Timestamp"""
 
 class Timestamp(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		This library returns seconds since epoch (UTC).
@@ -55,7 +54,7 @@ class Timestamp(TestLibraryLib.Library):
 		@type shared:	boolean
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
-	@doc_public
+	
 	def generate (self, fromDate=None, dateFormat="%d/%m/%Y %H:%M:%S", deltaTime=0) :
 		"""
 		Get seconds since epoch (UTC).
@@ -77,7 +76,7 @@ class Timestamp(TestLibraryLib.Library):
 			return int( mktime( dt.timetuple()) )
 		else:
 			return int(time.time()+deltaTime)
-	@doc_public
+	
 	def toHuman(self, timestamp, dateFormat="%Y-%m-%d %H:%M:%S"):
 		"""
 		Return a timestamp to a readable human view
@@ -94,7 +93,7 @@ class Timestamp(TestLibraryLib.Library):
 		pass
 		humanTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp))
 		return humanTime
-	@doc_public
+	
 	def now(self, timeFormat="%H:%M:%S"):
 		"""
 		Return the current time

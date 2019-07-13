@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 try:
 	import common
@@ -37,7 +36,7 @@ __NAME__="""OPENSSL"""
 OPENSSL_BIN = "/usr/bin/openssl"
 
 class OpenSSL(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Implementation of the openssl library
@@ -55,7 +54,7 @@ class OpenSSL(TestLibraryLib.Library):
 		@type shared:	boolean
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
-	@doc_public	
+		
 	def execute(self, cmd):
 		"""
 		Execute the openssl command
@@ -73,7 +72,7 @@ class OpenSSL(TestLibraryLib.Library):
 		if out is None:
 			self.error("unable to run openssl command: %s" % err)
 		return out
-	@doc_public
+	
 	def digest(self, digest, data, hmac=None, binary=False):
 		"""
 		Digests data
@@ -118,7 +117,7 @@ class OpenSSL(TestLibraryLib.Library):
 		else:
 			hash = digested
 		return hash
-	@doc_public
+	
 	def encrypt(self, cipher, data, key=None, iv=None, salt=None, password=None, base64=False, nopad=False, zlib=False):
 		"""
 		Encrypt data
@@ -178,7 +177,7 @@ class OpenSSL(TestLibraryLib.Library):
 		cmd.append( 	'-in %s' % infile )
 
 		return self.execute( cmd=" ".join(cmd) )
-	@doc_public
+	
 	def decrypt(self, cipher, data, key=None, iv=None, salt=None, password=None, base64=False, nopad=False, zlib=False):
 		"""
 		Decrypt data

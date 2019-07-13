@@ -22,14 +22,13 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import uuid
 
 __NAME__="""UUIDS"""
 
 class UUIDS(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		This library can be used to generate UUIDs (Universally Unique IDentifier). 
@@ -47,7 +46,7 @@ class UUIDS(TestLibraryLib.Library):
 		@type shared:	boolean
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
-	@doc_public
+	
 	def generate(self):
 		"""
 		Returns an UUID

@@ -23,10 +23,8 @@
 
 try:
     import TestInteropLib
-    from TestInteropLib import doc_public
 except ImportError: # python3 support
     from . import TestInteropLib
-    from TestInteropLib.TestInteropLib import doc_public
     
 BIN_SENDMAIL = "/usr/sbin/sendmail"
 
@@ -34,7 +32,7 @@ class Email(TestInteropLib.InteropPlugin):
     """
     Email plugin
     """
-    @doc_public
+    
     def __init__(self, parent):
         """
         Email interop
@@ -43,7 +41,7 @@ class Email(TestInteropLib.InteropPlugin):
         @type parent: testcase
         """
         TestInteropLib.InteropPlugin.__init__(self, parent)
-    @doc_public
+    
     def send(self, toAddr, subject, body='', attachment=None, attachmentName="interop.txt", fromAddr="interop@extensivetesting.org"):
         """
         Send email in html format.

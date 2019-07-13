@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -97,7 +95,7 @@ class UrlAgent(threading.Thread):
 			self.parent.trace( "[%s][ERROR] %s" % ( self.__class__.__name__, msg) )
 
 class URL(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, name=None, responseCode=200, method='GET', 
 											responseBody=None, login=None, password=None,
 											https=False, timeout=2, debug=False, shared=False ):
@@ -146,7 +144,7 @@ class URL(TestAdapterLib.Adapter):
 		self.credentials = (login,password)
 		self.debug=debug
 
-	@doc_public
+	
 	def doIsUp(self, url, timeout=1.0, codeExpected=None, bodyExpected=None):
 		"""
 		Check if the url passed as argument is up
@@ -174,7 +172,7 @@ class URL(TestAdapterLib.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def isUp(self, url, timeout=1.0, codeExpected=None, bodyExpected=None):
 		"""
 		Check if the url passed as argument is up
@@ -223,7 +221,7 @@ class URL(TestAdapterLib.Adapter):
 		return evt
 
 
-	@doc_public
+	
 	def doIsDown(self, url, timeout=1.0):
 		"""
 		Check if the url passed as argument is down
@@ -245,7 +243,7 @@ class URL(TestAdapterLib.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def isDown(self, url, timeout=1.0):
 		"""
 		Check if the url passed as argument is down
@@ -280,7 +278,7 @@ class URL(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def doAreUp(self, urls, timeout=1.0):
 		"""
 		Check if the list of urls passed as argument are all up
@@ -298,7 +296,7 @@ class URL(TestAdapterLib.Adapter):
 		
 		return self.areUp(urls=urls, timeout=timeout)
 		
-	@doc_public
+	
 	def areUp(self, urls, timeout=1.0):
 		"""
 		Check if the list of urls passed as argument are all up
@@ -343,7 +341,7 @@ class URL(TestAdapterLib.Adapter):
 		
 		return ret
 		
-	@doc_public
+	
 	def doAreDown(self, urls, timeout=1.0):
 		"""
 		Check if the list of urls passed as argument are all down
@@ -361,7 +359,7 @@ class URL(TestAdapterLib.Adapter):
 		
 		return self.areDown(urls=urls, timeout=timeout)
 		
-	@doc_public
+	
 	def areDown(self, urls, timeout=1.0):
 		"""
 		Check if the list of urls passed as argument are all down

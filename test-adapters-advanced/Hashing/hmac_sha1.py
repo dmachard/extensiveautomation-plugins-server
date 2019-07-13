@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import hmac
@@ -38,7 +37,7 @@ class Faker:
 __NAME__="""HMAC-SHA1"""
 
 class HMAC_SHA1(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, key=None, debug=False, shared=False):
 		"""
 		This library implements the HMAC algorithm with SHA1 digest. 
@@ -62,14 +61,14 @@ class HMAC_SHA1(TestLibraryLib.Library):
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
 		self.key = key
-	@doc_public
+	
 	def setKey(self, key):
 		"""
 		@param key: secret cryptographic key. 
 		@type key: string		
 		"""
 		self.key = key
-	@doc_public
+	
 	def compute (self, data, hexdigit=True):
 		"""
 		Return the digest of the string data, the result containing hexadecimal digits (20 octets) or string.

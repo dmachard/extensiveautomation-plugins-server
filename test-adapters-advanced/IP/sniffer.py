@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -259,7 +257,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		pass
 
 class SnifferV4(Sniffer):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, logEventSent=True, logEventReceived=True, protocol2sniff=common.ALL,
 								disableArp=False, parentName=None, agentSupport=False, agent=None, shared=False):
 		"""
@@ -293,7 +291,7 @@ class SnifferV4(Sniffer):
 												agentSupport=agentSupport, agent=agent, shared=shared, name=name)
 		self.last64bSent = '' # last 64 bits sent
 	
-	@doc_public
+	
 	def getLast64bSent(self):
 		"""
 		Return 64 bits of the last data datagram sent
@@ -303,7 +301,7 @@ class SnifferV4(Sniffer):
 		"""
 		return self.last64bSent
 		
-	@doc_public
+	
 	def getSourceIP(self):
 		"""
 		Return the source IP
@@ -313,14 +311,14 @@ class SnifferV4(Sniffer):
 		"""
 		return Sniffer.getSourceIP(self)
 		
-	@doc_public
+	
 	def stopListening(self):
 		"""
 		Stop listening
 		"""
 		Sniffer.stopListening(self)
 		
-	@doc_public
+	
 	def startListening(self, eth, srcIp, srcMac=None):
 		"""
 		Start listening
@@ -336,7 +334,7 @@ class SnifferV4(Sniffer):
 		"""		
 		Sniffer.startListening(self, eth=eth, srcIp=srcIp, srcMac=srcMac)
 		
-	@doc_public
+	
 	def isSniffing(self, timeout=1.0):
 		"""
 		Wait sniffing event until the end of the timeout
@@ -351,7 +349,7 @@ class SnifferV4(Sniffer):
 		
 		return Sniffer.isSniffing(self, timeout=timeout)
 		
-	@doc_public
+	
 	def isStopped(self, timeout=1.0):
 		"""
 		Wait stopped event until the end of the timeout
@@ -366,7 +364,7 @@ class SnifferV4(Sniffer):
 		
 		return Sniffer.isStopped(self, timeout=timeout)
 		
-	@doc_public
+	
 	def sendDatagram(self, dstIp, data, dstMac=None, protocol=common.ICMP, ttl=64, headerLength=None, checksum=None,
 										totalLength=None, identification="0x0000", flags="0x00", typeService=None,  fragmentOffset=None,
 										version=None):
@@ -474,7 +472,7 @@ class SnifferV4(Sniffer):
 					
 		return lower
 		
-	@doc_public
+	
 	def hasReceivedDatagram(self, timeout=1.0, dstIp=None, srcIp=None, protocolIp=None):
 		"""
 		Waits to receive "data" event until the end of the timeout

@@ -23,10 +23,8 @@
 
 try:
     import TestInteropLib
-    from TestInteropLib import doc_public
 except ImportError: # python3 support
     from . import TestInteropLib
-    from TestInteropLib.TestInteropLib import doc_public
     
 from jenkinsapi.jenkins import Jenkins
 
@@ -35,7 +33,7 @@ class Jenkins(TestInteropLib.InteropPlugin):
     Jenkins plugin
     Sample on /Samples/Tests_Interop/06_Jenkins
     """
-    @doc_public
+    
     def __init__(self, parent, url, login, password, port=8080, verifySsl=False):
         """
         Jenkins interop
@@ -66,13 +64,13 @@ class Jenkins(TestInteropLib.InteropPlugin):
         self.__port = port
         self.__certCheck = verifySsl
         self.__server = None
-    @doc_public
+    
     def server(self):
         """
         Return the server instance
         """
         return self.__server
-    @doc_public    
+        
     def authenticate(self):
         """
         Authenticate to jenkins server
@@ -102,7 +100,7 @@ class Jenkins(TestInteropLib.InteropPlugin):
             self.logResponse(msg="authenticate error", details=tpl )
 
         return ret
-    @doc_public
+    
     def disableJob(self, jobName):
         """
         Disable job according to the name passed in argument
@@ -138,7 +136,7 @@ class Jenkins(TestInteropLib.InteropPlugin):
             self.logResponse(msg="disable job error", details=tpl )
 
         return ret
-    @doc_public
+    
     def enableJob(self, jobName):
         """
         Enable job according to the name passed in argument
@@ -174,7 +172,7 @@ class Jenkins(TestInteropLib.InteropPlugin):
             self.logResponse(msg="enable job error", details=tpl )
 
         return ret
-    @doc_public        
+            
     def runningJob(self, jobName):
         """
         Check if the job according to the name passed in argument is running
@@ -212,7 +210,7 @@ class Jenkins(TestInteropLib.InteropPlugin):
             self.logResponse(msg="running job error", details=tpl )
 
         return ret
-    @doc_public    
+        
     def buildJob(self, jobName, jobParams={}):
         """
         Build the job according to the name passed in argument
@@ -251,7 +249,7 @@ class Jenkins(TestInteropLib.InteropPlugin):
             self.logResponse(msg="build job error", details=tpl )
 
         return ret
-    @doc_public    
+        
     def runJob(self, jobName, jobParams={}):
         """
         Run the job according to the name passed in argument and wait until the build is finished

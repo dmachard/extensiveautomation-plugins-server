@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -49,7 +47,7 @@ import time
 AGENT_TYPE_EXPECTED='socket'
 
 class Sniffer(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, debug=False, logEventSent=True, logEventReceived=True,
 								ipVersion=AdapterIP.IPv4, port2sniff=codec.ALL,  name=None,
 								separatorIn='0x00', separatorOut='0x00', separatorDisabled=True, inactivityTimeout=0.0,
@@ -165,7 +163,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		"""
 		self.stopListening()
 	
-	@doc_public
+	
 	def stopListening(self):
 		"""
 		Stop listening
@@ -177,7 +175,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		self.ip.stopListening()
 		
 	
-	@doc_public
+	
 	def startListening(self, eth, srcIp, srcMac=None ):
 		"""
 		Start listening
@@ -197,7 +195,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		self.lastActivity = time.time()
 		self.setRunning()
 			
-	@doc_public
+	
 	def isSniffing(self, timeout=1.0):
 		"""
 		Wait sniffing event until the end of the timeout
@@ -220,7 +218,7 @@ class Sniffer(TestAdapterLib.Adapter):
 
 		return snifferReady
 		
-	@doc_public
+	
 	def isStopped(self, timeout=1.0):
 		"""
 		Wait stopped event until the end of the timeout
@@ -419,7 +417,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		else:
 			return  ''.join( [ data, struct.pack('!B', int( self.cfg['sep-out'], 16 ) ) ] )
 			
-	@doc_public
+	
 	def sendData(self, data, destIp=None, destPort=0, srcPort=0, totalLength=None, checksum=None, destMac=None):
 		"""
 		Send data to the ip/port passed as argument
@@ -480,7 +478,7 @@ class Sniffer(TestAdapterLib.Adapter):
 						
 		return lower	
 	
-	@doc_public
+	
 	def hasReceivedIcmpError(self, timeout=1.0):
 		"""
 		Waits to receive "icmp error" event until the end of the timeout
@@ -510,7 +508,7 @@ class Sniffer(TestAdapterLib.Adapter):
 			return None
 		return evt
 	
-	@doc_public
+	
 	def hasReceivedData(self, timeout=1.0, dstIp=None, srcIp=None, srcPort=None, dstPort=None, data=None):
 		"""
 		Waits to receive "data" event until the end of the timeout

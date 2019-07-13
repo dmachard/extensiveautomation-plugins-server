@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import struct
 import array
@@ -30,7 +29,7 @@ import array
 __NAME__="""SUM"""
 
 class Checksum(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Computing checksum: 16 bit one's complement of the one's complement sum of all 16 bit words
@@ -50,7 +49,7 @@ class Checksum(TestLibraryLib.Library):
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
 		self.pad_byte = '0x00'
-	@doc_public
+	
 	def compute (self, data, checksum_offset=0, hexdigit=False):
 		"""
 		Returns the checksum  of the data passed as argument

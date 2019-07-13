@@ -26,8 +26,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import subprocess
@@ -43,7 +41,7 @@ AGENT_TYPE_EXPECTED='myagent'
 DIG_BIN = "dig"
 
 class Dig(TestAdapterLib.Adapter):
-	@doc_public	
+		
 	def __init__(self, parent, name=None, debug=False, shared=False, agentSupport=False, 
 											agent=None, logEventSent=True, logEventReceived=True):
 		"""
@@ -186,7 +184,7 @@ class Dig(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl, timeout = timeout )
 		return evt
 		
-	@doc_public	
+		
 	def execute(self, cmd):
 		"""
 		Execute the dig command
@@ -211,7 +209,7 @@ class Dig(TestAdapterLib.Adapter):
 		if self.logEventReceived:
 			self.logRecvEvent( shortEvt = "dig event", tplEvt = tpl_rsp ) # log event 		
 
-	@doc_public	
+		
 	def hasReceivedEvent(self, expected, timeout=1.0):
 		"""
 		Wait to receive "dig event" until the end of the timeout.

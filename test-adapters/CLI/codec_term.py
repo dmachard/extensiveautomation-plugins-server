@@ -149,6 +149,8 @@ class Codec(object):
 		if not self.connected: self.obs.watch()
 		self.debug("%s" % data)
 		self.stream.feed(data)
+		
+#		self.onWatchScreen()
 
 
 

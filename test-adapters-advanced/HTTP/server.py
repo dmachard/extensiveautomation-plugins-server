@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibrary
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import time
@@ -211,7 +209,7 @@ class ClientObj(object):
 		self.buf = ''	
 		
 class Server(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False, agentSupport=False, agent=None,
 														 bindIp = '', bindPort=0,  sslSupport=False,  strictMode=False, octetStreamSupport=True, 
 														 manStreamSupport=True, websocketMode=False, truncateBody=False,
@@ -314,7 +312,7 @@ class Server(TestAdapterLib.Adapter):
 		pass
 
 	# specific functions
-	@doc_public
+	
 	def activateAutoAnswer(self, eventsExpected=[]):
 		"""
 		Activate the auto answer mode
@@ -333,7 +331,7 @@ class Server(TestAdapterLib.Adapter):
 		self.eventsExpected = evtsTpl
 		self.warning("auto answer mode activated")
 		self.setRunning()
-	@doc_public
+	
 	def stopAutoAnswer(self):
 		"""
 		Stop the auto answer mode
@@ -371,21 +369,21 @@ class Server(TestAdapterLib.Adapter):
 		except Exception as e:
 			self.error("%s" % e)
 
-	@doc_public
+	
 	def startListening(self):
 		"""
 		Start to listen
 		"""
 		self.ADP_TCP.startListening()
 		
-	@doc_public
+	
 	def stopListening(self):
 		"""
 		Stop to listen
 		"""
 		self.ADP_TCP.stopListening()
 		
-	@doc_public
+	
 	def isListening(self, timeout=10.0):
 		"""
 		Wait to receive "listening" until the end of the timeout.
@@ -398,7 +396,7 @@ class Server(TestAdapterLib.Adapter):
 		"""
 		return self.ADP_TCP.isListening(timeout=timeout)
 		
-	@doc_public
+	
 	def isStopped(self, timeout=10.0):
 		"""
 		Wait to receive "stopped" until the end of the timeout.
@@ -449,7 +447,7 @@ class Server(TestAdapterLib.Adapter):
 			if lenBod > 0:
 				hdrs[ u'Content-Length'] = '%s' % unicode(lenBod)
 
-	@doc_public
+	
 	def sendResponse(self, clientId, tpl):
 		"""
 		Send a response
@@ -506,7 +504,7 @@ class Server(TestAdapterLib.Adapter):
 		"""
 		return {}
 		
-	@doc_public
+	
 	def sendHttp(self, clientId, code="200", phrase="OK", version="HTTP/1.1", headers={}, body=None, overwriteCl=False):
 		"""
 		Send a response.
@@ -543,7 +541,7 @@ class Server(TestAdapterLib.Adapter):
 		tpl = templates.response(version=version, code=code, phrase=phrase, headers=__hdrs, body=body)
 
 		self.sendResponse(clientId=clientId, tpl=tpl)
-	@doc_public
+	
 	def hasReceivedRequest(self, expected, timeout=1.0):
 		"""
 		Wait to receive "response" until the end of the timeout.
@@ -581,7 +579,7 @@ class Server(TestAdapterLib.Adapter):
 		if evt is None:
 			return None
 		return evt
-	@doc_public
+	
 	def hasReceivedHttpRequest(self, httpMethod="GET", httpUri="/", httpVersion='HTTP/1.1', timeout=1.0, 
 																											httpHeaders={}, httpBody=None):
 		"""
@@ -627,7 +625,7 @@ class Server(TestAdapterLib.Adapter):
 		tpl.addLayer( templates.request( method=httpMethod, uri=httpUri, version=httpVersion, headers=headers, body=httpBody) )
 		
 		return self.hasReceivedRequest(expected=tpl, timeout=timeout)
-	@doc_public
+	
 	def getTemplateResponse(self, code="200", phrase="OK", version="HTTP/1.1", headers={}, body=None, overwriteCl=False):
 		"""
 		"""
@@ -645,7 +643,7 @@ class Server(TestAdapterLib.Adapter):
 		tpl = templates.response(version=version, code=code, phrase=phrase, headers=__hdrs, body=body)
 		return tpl
 		
-	@doc_public
+	
 	def getTemplateRequest(self, httpMethod="GET", httpUri="/", httpVersion='HTTP/1.1',  httpHeaders={}, httpBody=None):
 		"""
 		"""
@@ -668,7 +666,7 @@ class Server(TestAdapterLib.Adapter):
 		
 		return tpl
 	
-	@doc_public
+	
 	def waitRequests(self, count=1, timeout=1.0):
 		"""
 		Wait to received requests according to the counter provided

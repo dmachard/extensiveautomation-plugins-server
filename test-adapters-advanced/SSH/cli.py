@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -40,7 +38,7 @@ from Libs import pexpect
 __NAME__="""CLI"""
 
 class Cli(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, host, username, password, name=None, port=22, timeout=10.0, prompt="~]#", 
 										debug=False, shared=False ):
 		"""
@@ -99,7 +97,7 @@ class Cli(TestAdapterLib.Adapter):
 			raise TestAdapterLib.AdapterException(TestAdapterLib.caller(), "config ssh: wrong destination port type: %s" % str(self.port) )
 
 
-	@doc_public
+	
 	def login(self):
 		"""
 		Login to the server
@@ -247,7 +245,7 @@ class Cli(TestAdapterLib.Adapter):
 		else:
 			self.error( 'send data: unknown error' )
 			
-	@doc_public
+	
 	def logout(self):
 		"""
 		Disconnect from the server
@@ -308,7 +306,7 @@ class Cli(TestAdapterLib.Adapter):
 		# cleanup
 		self.cleanProcess()
 	
-	@doc_public
+	
 	def hasReceivedData(self, timeout=1.0, data=None):
 		"""
 		Waits to receive "data" event until the end of the timeout
@@ -328,7 +326,7 @@ class Cli(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 	
-	@doc_public
+	
 	def isConnected(self, timeout=1.0):
 		"""
 		Waits to receive "connected" event until the end of the timeout
@@ -345,7 +343,7 @@ class Cli(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 	
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0):
 		"""
 		Waits to receive "disconnected" event until the end of the timeout
@@ -362,7 +360,7 @@ class Cli(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def isLoginFailed(self, timeout=1.0):
 		"""
 		Waits to receive "login failed" event until the end of the timeout
@@ -379,7 +377,7 @@ class Cli(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def isError(self, timeout=1.0, errReason=None):
 		"""
 		Waits to receive "error" event until the end of the timeout

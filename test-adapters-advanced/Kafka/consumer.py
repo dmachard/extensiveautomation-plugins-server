@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import copy
@@ -73,7 +71,7 @@ CLOSE="close"
 BEGINNING_OFFSETS="beginning_offsets"
 
 class ConsumerClient(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, name=None, bootstrap_servers=None,  
 											debug=False, agentSupport=False, agent=None, 
 											shared=False, verbose=True, 
@@ -401,7 +399,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		logger.addHandler(logging.StreamHandler(sys.stdout))
 		logger.setLevel(logging.DEBUG)
 
-	@doc_public
+	
 	def connect(self, *topics,**kargs ):
 		"""
 		Instantiate the KafkaConsumer
@@ -437,7 +435,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=CONNECT ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public
+	
 	def close(self, autocommit=True):
 		tpl = templates.kafka_ops(method=DISCONNECT,autocommit=autocommit)
 		self.logSentEvent( shortEvt = "req close", tplEvt = self.encapsule(self.consumerTpl ,tpl) )
@@ -457,7 +455,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=DISCONNECT ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 	
-	@doc_public
+	
 	def consume(self):
 		"""
 		Consum message of assigned/subscribed topic.
@@ -488,7 +486,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=CONSUME ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 		
-	@doc_public	
+		
 	def assign(self, partitions):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -511,7 +509,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=ASSIGN))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public	
+		
 	def assignment(self):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -533,7 +531,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=ASSIGNMENT))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 				
-	@doc_public
+	
 	def beginning_offsets(self, partitions):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -556,7 +554,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=BEGINNING_OFFSETS))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 				
-	@doc_public
+	
 	def commit(self, offsets=None):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -579,7 +577,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=COMMIT))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public			
+				
 	def commit_async(self, offsets=None, callback=None):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -603,7 +601,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=COMMIT_ASYNC))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 		
-	@doc_public
+	
 	def committed(self, topicpartition):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -626,7 +624,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=COMMITTED))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public	
+		
 	def end_offsets(self, *topicpartitions):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -649,7 +647,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=END_OFFSETS))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public
+	
 	def highwater(self, topicpartition):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -672,7 +670,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=HIGHWATER ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public
+	
 	def offsets_for_times(self, timestamps):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -696,7 +694,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl.addRaw( str(e) )
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 				
-	@doc_public	
+		
 	def partitions_for_topic(self, topic):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -720,7 +718,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=PARTITIONS_FOR_TOPIC ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 	
-	@doc_public	
+		
 	def pause(self, partitions):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -743,7 +741,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=PAUSE ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public
+	
 	def paused(self):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -767,7 +765,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl.addRaw( str(e) )
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 	
-	@doc_public	
+		
 	def poll(self, timeout_ms=None, max_records=None):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -791,7 +789,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=POLL ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 		
-	@doc_public
+	
 	def position(self, topicpartition):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -814,7 +812,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=POSITION))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public      
+	      
 	def resume(self,partitions):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -837,7 +835,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=RESUME ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public
+	
 	def seek(self,partition, offset):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -861,7 +859,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=OFFSETS_FOR_TIMES ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public
+	
 	def seek_to_beginning(self,*partitions):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -884,7 +882,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=SEEK_TO_BEGINNING ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 		
-	@doc_public
+	
 	def seek_to_end(self,*partitions):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -907,7 +905,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl = self.encapsule(self.consumerTpl ,templates.response_err(msg=e, method=SEEK_TO_END ))
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 		
-	@doc_public
+	
 	def subscribe(self,topics=(), pattern=None, listener=None):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -933,7 +931,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl.addRaw( str(e) )
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public	
+		
 	def subscription(self):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -957,7 +955,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl.addRaw( str(e) )
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 		
-	@doc_public	
+		
 	def topics(self):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -981,7 +979,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl.addRaw( str(e) )
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 
-	@doc_public
+	
 	def unsubscribe(self):
 		"""
 		All fonction documentation available on http://kafka-python.readthedocs.io.
@@ -1004,7 +1002,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 				tpl.addRaw( str(e) )
 				self.logRecvEvent( shortEvt = "response error", tplEvt = tpl )
 		
-	@doc_public
+	
 	def isConnected(self, timeout=2):
 		"""
 		Wait to receive response from "connect" request until the end of the timeout
@@ -1020,7 +1018,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected), timeout=timeout )
 		return evt	
 
-	@doc_public
+	
 	def isPosition(self, timeout=2,offset=None):
 		"""
 		Wait to receive "connected" event until the end of the timeout
@@ -1037,7 +1035,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 		
-	@doc_public
+	
 	def isPartitions_for_topic(self, timeout=2,partitions=None):
 		"""
 		Wait to receive "connected" event until the end of the timeout
@@ -1055,7 +1053,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule(self.consumerTpl , expected ), timeout=timeout )
 		return evt	
 
-	@doc_public
+	
 	def isConsumed(self, timeout=2,record=None):
 		"""
 		Wait to receive "connected" event until the end of the timeout
@@ -1080,7 +1078,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 		
-	@doc_public
+	
 	def isTopics(self, timeout=2, topics=None):
 		"""
 		Wait to receive "connected" event until the end of the timeout
@@ -1097,7 +1095,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 	
-	@doc_public
+	
 	def isSubscribe(self, timeout=2):
 		"""
 		Wait to receive response from "subscribe" request until the end of the timeout
@@ -1112,7 +1110,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt		
 		
-	@doc_public
+	
 	def isSubscription(self, timeout=2,topics=None):
 		"""
 		Wait to receive response from "subscription" request and match returned TopicPartitions  until the end of the timeout.
@@ -1132,7 +1130,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 
-	@doc_public
+	
 	def isUnsubscribe(self, timeout=2):
 		"""
 		Wait to receive response from "unsubscribe" request until the end of the timeout
@@ -1147,7 +1145,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 		
-	@doc_public
+	
 	def isClosed(self, timeout=2):
 		"""
 		Wait to receive response from "closed" request until the end of the timeout
@@ -1162,7 +1160,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 		
-	@doc_public
+	
 	def isOffsets_for_times(self, timeout=2, offsets=None):
 		"""
 		Wait to receive response from "offsets_for_times" request and match returned TopicPartitions  until the end of the timeout.
@@ -1182,7 +1180,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 
-	@doc_public
+	
 	def isAssigned(self, timeout=2):
 		"""
 		Wait to receive response from "assigned" request until the end of the timeout
@@ -1197,7 +1195,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 
-	@doc_public
+	
 	def isAssignment(self, timeout=2,topicpartitions=None):
 		"""
 		Wait to receive response from "assignement" request and match returned TopicPartitions  until the end of the timeout.
@@ -1217,7 +1215,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 		
-	@doc_public
+	
 	def isSeek(self, timeout=2):
 		"""
 		Wait to receive response from "seek" request until the end of the timeout
@@ -1231,7 +1229,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 		
-	@doc_public
+	
 	def isSeek_to_beginning(self, timeout=2):
 		"""
 		Wait to receive response from "seek_to_beginning" request until the end of the timeout
@@ -1246,7 +1244,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 
-	@doc_public
+	
 	def isSeek_to_end(self, timeout=2):
 		"""
 		Wait to receive response from "seek_to_end" request until the end of the timeout
@@ -1261,7 +1259,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 
-	@doc_public
+	
 	def isHighwater(self, timeout=2, offset=None):
 		"""
 		Wait to receive response from "highwater" request and match returned offset until the end of the timeout.
@@ -1281,7 +1279,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 
-	@doc_public
+	
 	def isEnd_offsets(self, timeout=2, partitions=None):
 		"""
 		Wait to receive response from "end_offset" request and match returned TopicPartiton with offset until the end of the timeout.
@@ -1301,7 +1299,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 
-	@doc_public
+	
 	def isPoll(self, timeout=2, records=None):
 		"""
 		Wait to receive response from "poll" request and match returned Records with offset until the end of the timeout.
@@ -1321,7 +1319,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 		
-	@doc_public
+	
 	def isCommit(self, timeout=2):
 		"""
 		Wait to receive response from "commit" request until the end of the timeout
@@ -1336,7 +1334,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 		
-	@doc_public
+	
 	def isCommit_async(self, timeout=2):
 		"""
 		Wait to receive response from "commit_async" request until the end of the timeout
@@ -1351,7 +1349,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 		
-	@doc_public
+	
 	def isCommitted(self, timeout=2, offsets=None):
 		"""
 		Wait to receive response from "comitted" request and match returned TopicPartiton with offset until the end of the timeout.
@@ -1371,7 +1369,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 		
-	@doc_public
+	
 	def isBeginning_offsets(self, timeout=2, topicpartitions=None):
 		"""
 		Wait to receive response from "beginning_offsets" request and match returned list of TopicPartiton with offset until the end of the timeout.
@@ -1391,7 +1389,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt	
 
-	@doc_public
+	
 	def isPause(self, timeout=2):
 		"""
 		Wait to receive response from "pause" request until the end of the timeout
@@ -1406,7 +1404,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt		
 	
-	@doc_public	
+		
 	def isPaused(self, timeout=2, topicpartitions=None):
 		"""
 		Wait to receive response from "pause" request and match returned partition until the end of the timeout.
@@ -1426,7 +1424,7 @@ class ConsumerClient(TestAdapterLib.Adapter):
 		evt = self.received( expected=self.encapsule( self.consumerTpl ,expected ), timeout=timeout )
 		return evt		
 		
-	@doc_public
+	
 	def isResume(self, timeout=2):
 		"""
 		Wait to receive response from "resume" request until the end of the timeout

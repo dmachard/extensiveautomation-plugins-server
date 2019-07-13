@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import base64 
 import uuid
@@ -30,7 +29,7 @@ import uuid
 __NAME__="""SessionID"""
 
 class SessionID(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		This library can be used to generate session ID. 
@@ -48,7 +47,7 @@ class SessionID(TestLibraryLib.Library):
 		@type shared:	boolean
 		"""
 		TestLibraryLib.Library.__init__(self, name = __NAME__, parent = parent, debug=debug, realname=name, shared=shared)
-	@doc_public
+	
 	def generate(self):
 		"""
 		Returns a random, 45-character session ID.

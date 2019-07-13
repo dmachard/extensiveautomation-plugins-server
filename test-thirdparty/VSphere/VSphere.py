@@ -23,10 +23,8 @@
 
 try:
     import TestInteropLib
-    from TestInteropLib import doc_public
 except ImportError: # python3 support
     from . import TestInteropLib
-    from TestInteropLib.TestInteropLib import doc_public
     
 from pysphere import * 
 from pysphere.resources import VimService_services as VI
@@ -36,7 +34,7 @@ class VSphere(TestInteropLib.InteropPlugin):
     VSphere plugin
     Sample on /Samples/Tests_Interop/05_VSphere
     """
-    @doc_public
+    
     def __init__(self, parent, host, login, password ):
         """
         VSphere interop
@@ -60,13 +58,13 @@ class VSphere(TestInteropLib.InteropPlugin):
         self.__password = password
         self.__connected = False
         self.__server = VIServer()
-    @doc_public
+    
     def server(self):
         """
         Return the server instance
         """
         return self.__server
-    @doc_public    
+        
     def connect(self):
         """
         Connect to the vsphere server
@@ -101,7 +99,7 @@ class VSphere(TestInteropLib.InteropPlugin):
             self.logResponse(msg="connect error", details=tpl )
 
         return ret
-    @doc_public    
+        
     def disconnect(self):
         """
         Disconnect from the vsphere server
@@ -134,7 +132,7 @@ class VSphere(TestInteropLib.InteropPlugin):
             self.logResponse(msg="disconnect error", details=tpl )
             
         return ret
-    @doc_public    
+        
     def cloneVm(self, fromVm, toVm, toFolder, datastore=None):
         """
         Clone a vm
@@ -190,7 +188,7 @@ class VSphere(TestInteropLib.InteropPlugin):
             tpl = self.template(name=self.__class__.__name__.upper(), content=content )
             self.logResponse(msg="clone vm error", details=tpl )
         return ret
-    @doc_public    
+        
     def deleteVm(self, vmName):
         """
         Delete the vm from disk according to the name passed as argument
@@ -238,7 +236,7 @@ class VSphere(TestInteropLib.InteropPlugin):
             tpl = self.template(name=self.__class__.__name__.upper(), content=content )
             self.logResponse(msg="delete vm error", details=tpl )
         return ret
-    @doc_public
+    
     def statusVm(self, vmName):
         """
         Get the status of a vm according to the name passed as argument
@@ -274,7 +272,7 @@ class VSphere(TestInteropLib.InteropPlugin):
             tpl = self.template(name=self.__class__.__name__.upper(), content=content )
             self.logResponse(msg="status vm error", details=tpl )
         return state
-    @doc_public    
+        
     def powerOn(self, vmName, timeoutTools=120):
         """
         Start the vm according to the name passed as argument
@@ -317,7 +315,7 @@ class VSphere(TestInteropLib.InteropPlugin):
             tpl = self.template(name=self.__class__.__name__.upper(), content=content )
             self.logResponse(msg="start vm error", details=tpl )
         return ret
-    @doc_public   
+       
     def powerOff(self, vmName):
         """
         Stop the vm according to the name passed as argument
@@ -354,7 +352,7 @@ class VSphere(TestInteropLib.InteropPlugin):
             tpl = self.template(name=self.__class__.__name__.upper(), content=content )
             self.logResponse(msg="stop vm error", details=tpl )
         return ret
-    @doc_public    
+        
     def updateName(self, vmName, newName):
         """
         Configure the name of the vm
@@ -408,7 +406,7 @@ class VSphere(TestInteropLib.InteropPlugin):
             tpl = self.template(name=self.__class__.__name__.upper(), content=content )
             self.logResponse(msg="configure name error", details=tpl )
         return ret
-    @doc_public    
+        
     def updateMem(self, vmName, vmMem):
         """
         Configure the memory of the vitual machine name passed as argument
@@ -462,7 +460,7 @@ class VSphere(TestInteropLib.InteropPlugin):
             tpl = self.template(name=self.__class__.__name__.upper(), content=content )
             self.logResponse(msg="configure mem error", details=tpl )
         return ret
-    @doc_public
+    
     def updateCpu(self, vmName, nbCpu):
         """
         Configure the number of cpu for the virtual machine name passed as argument
@@ -516,7 +514,7 @@ class VSphere(TestInteropLib.InteropPlugin):
             tpl = self.template(name=self.__class__.__name__.upper(), content=content )
             self.logResponse(msg="configure cpu error", details=tpl )
         return ret
-    @doc_public
+    
     def runCmd(self, vmName, vmLogin, vmPwd, cmd, args=[]):
         """
         Run system command on the virtual machine name passed as argument

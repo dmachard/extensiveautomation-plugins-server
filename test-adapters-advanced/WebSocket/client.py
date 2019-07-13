@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -61,7 +59,7 @@ __NAME__="""WEBSOCKET"""
 AGENT_TYPE_EXPECTED='socket'
 
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, bindIp='', bindPort=0, destinationIp='127.0.0.1', 
 								proxyIp='', proxyPort=3128, proxyHost='', proxyEnabled=False,
 									destinationPort=80, destinationHost='', name=None, debug=False,
@@ -169,14 +167,14 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		self.debug("config: %s" % self.cfg)	
 
-	@doc_public
+	
 	def connect(self):
 		"""
 		Connect tcp
 		"""
 		self.buf = ''
 		self.ADP_HTTP.connect()
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Disconnect tcp
@@ -190,7 +188,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		self.disconnect()
 	
-	@doc_public
+	
 	def isAcceptedProxy(self, timeout=1.0, codeExpected="200", phraseExpected="Connection established", versionExpected=None):
 		"""
 		Wait response from proxy until the end of the timeout.
@@ -215,7 +213,7 @@ class Client(TestAdapterLib.Adapter):
 		return self.ADP_HTTP.isAcceptedProxy(timeout=timeout, codeExpected=codeExpected, phraseExpected=phraseExpected, 
 																														versionExpected=versionExpected)
 		
-	@doc_public
+	
 	def handshake(self, resource, origin):
 		"""
 		Do hanshake
@@ -332,7 +330,7 @@ class Client(TestAdapterLib.Adapter):
 			if len(self.buf) >= 2:
 				self.onWebsocketIncomingData(data='', lower=lower)
 
-	@doc_public
+	
 	def sendRaw(self, opcode=0, fin=1, mask=0, rsv1=0, rsv2=0, rsv3=0, data=''):
 		"""
 		Send raw data
@@ -357,7 +355,7 @@ class Client(TestAdapterLib.Adapter):
 		if self.logEventSent:
 			lower.addRaw(raw=wsdata)
 			self.logSentEvent( shortEvt = codec.WEBSOCKET_OPCODE_TEXT_STR, tplEvt = lower ) 
-	@doc_public
+	
 	def sendText(self, text):
 		"""
 		Send text
@@ -391,7 +389,7 @@ class Client(TestAdapterLib.Adapter):
 				lower.addRaw(raw=wsdata)
 				self.logSentEvent( shortEvt = codec.WEBSOCKET_OPCODE_TEXT_STR, tplEvt = lower ) 
 
-	@doc_public
+	
 	def sendBinary(self, data):
 		"""
 		Send binary data
@@ -424,7 +422,7 @@ class Client(TestAdapterLib.Adapter):
 			if self.logEventSent:
 				lower.addRaw(raw=wsdata)
 				self.logSentEvent( shortEvt = codec.WEBSOCKET_OPCODE_BINARY_STR, tplEvt = lower ) 
-	@doc_public
+	
 	def sendPing(self, data=None):
 		"""
 		Send ping
@@ -455,7 +453,7 @@ class Client(TestAdapterLib.Adapter):
 			lower.addRaw(raw=wsdata)
 			self.logSentEvent( shortEvt = codec.WEBSOCKET_OPCODE_PING_STR, tplEvt = lower ) 
 
-	@doc_public
+	
 	def sendClose(self, data=None):
 		"""
 		Send close 
@@ -485,7 +483,7 @@ class Client(TestAdapterLib.Adapter):
 		if self.logEventSent:
 			lower.addRaw(raw=wsdata)
 			self.logSentEvent( shortEvt = codec.WEBSOCKET_OPCODE_CLOSE_STR, tplEvt = lower ) 
-	@doc_public
+	
 	def sendPong(self, data=None):
 		"""
 		Send pong 
@@ -516,7 +514,7 @@ class Client(TestAdapterLib.Adapter):
 			lower.addRaw(raw=wsdata)
 			self.logSentEvent( shortEvt = codec.WEBSOCKET_OPCODE_PONG_STR, tplEvt = lower ) 
 		
-	@doc_public
+	
 	def isHandshakeSuccessful(self, timeout=1.0):
 		"""
 		Wait to receive "handshake successful" event until the end of the timeout.
@@ -545,7 +543,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_rsp.addLayer( templates.ws(more=templates.handshake_ok()) )
 		return self.received(expected=tpl_rsp, timeout=timeout)
 		
-	@doc_public
+	
 	def isConnected(self, timeout=1.0):
 		"""
 		Wait to receive "connected" event until the end of the timeout.
@@ -560,7 +558,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		return self.ADP_HTTP.isConnected(timeout=timeout)
 
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0):
 		"""
 		Wait to receive "disconnected" event until the end of the timeout.
@@ -575,7 +573,7 @@ class Client(TestAdapterLib.Adapter):
 		
 		return self.ADP_HTTP.isDisconnected(timeout=timeout)
 		
-	@doc_public
+	
 	def hasReceivedData(self, timeout=1.0, opcode=None):
 		"""
 		Waits to receive "data" event until the end of the timeout.
@@ -606,7 +604,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_rsp.addLayer( templates.ws(opcode=opcode, more=templates.received()) )
 		return self.received(expected=tpl_rsp, timeout=timeout)
 
-	@doc_public
+	
 	def hasReceivedText(self, timeout=1.0):
 		"""
 		Waits to receive "text" event until the end of the timeout.
@@ -634,7 +632,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_rsp.addLayer( templates.ws(opcode=codec.WEBSOCKET_OPCODE_TEXT, more=templates.received()) )
 		return self.received(expected=tpl_rsp, timeout=timeout)
 
-	@doc_public
+	
 	def hasReceivedBinary(self, timeout=1.0):
 		"""
 		Waits to receive "binary" event until the end of the timeout.
@@ -662,7 +660,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_rsp.addLayer( templates.ws(opcode=codec.WEBSOCKET_OPCODE_BINARY, more=templates.received()) )
 		return self.received(expected=tpl_rsp, timeout=timeout)
 
-	@doc_public
+	
 	def hasReceivedPong(self, timeout=1.0):
 		"""
 		Waits to receive "pong" event until the end of the timeout.
@@ -690,7 +688,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl_rsp.addLayer( templates.ws(opcode=codec.WEBSOCKET_OPCODE_PONG, more=templates.received()) )
 		return self.received(expected=tpl_rsp, timeout=timeout)
 
-	@doc_public
+	
 	def hasReceivedPing(self, timeout=1.0):
 		"""
 		Waits to receive "ping" event until the end of the timeout.

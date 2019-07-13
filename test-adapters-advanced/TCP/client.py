@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -61,7 +59,7 @@ AGENT_INITIALIZED = "AGENT_INITIALIZED"
 AGENT_TYPE_EXPECTED='socket'
 
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, bindIp = '', bindPort=0, name=None,
 								destinationIp='127.0.0.1', destinationPort=0,  destinationHost='', 
 								proxyType=PROXY_SOCKS4, proxyUserID='xtc', proxyIp='', proxyPort=3128, proxyHost='', proxyEnabled=False,
@@ -525,7 +523,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl.addLayer(layer= layer)
 		evt = self.received( expected = tpl, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def connect(self):
 		"""
 		Start the TCP connection
@@ -647,7 +645,7 @@ class Client(TestAdapterLib.Adapter):
 				self.error( "connect error: %s" % str(e) )
 				self.disconnect()
 	
-	@doc_public
+	
 	def startSsl(self):
 		"""
 		"""
@@ -662,7 +660,7 @@ class Client(TestAdapterLib.Adapter):
 			else:
 				self.onSslConnection()
 				
-	@doc_public
+	
 	def connection(self, timeout=1.0):
 		"""
 		Tcp connection and wait the connection event until the end of the timeout
@@ -686,7 +684,7 @@ class Client(TestAdapterLib.Adapter):
 				
 		return ret
 		
-	@doc_public
+	
 	def disconnection(self, timeout=1.0):
 		"""
 		Tcp disconnection and wait the disconnection event until the end of the timeout
@@ -705,7 +703,7 @@ class Client(TestAdapterLib.Adapter):
 			ret = False
 		return ret
 		
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Close the TCP connection
@@ -760,14 +758,14 @@ class Client(TestAdapterLib.Adapter):
 			remote_cfg = {'cmd': 'disconnect'}
 			self.sendNotifyToAgent(data=remote_cfg)
 			
-	@doc_public
+	
 	def startRead(self):
 		"""
 		Start read data from the socket
 		"""
 		self.isreading = True
 	
-	@doc_public
+	
 	def stopRead(self):
 		"""
 		Stop read data on the socket
@@ -1052,7 +1050,7 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		self.disconnect()
 	
-	@doc_public
+	
 	def sendData(self, data):
 		"""
 		Send data over the tcp channel
@@ -1257,7 +1255,7 @@ class Client(TestAdapterLib.Adapter):
 			
 		return tpl
 		
-	@doc_public
+	
 	def isAcceptedProxy(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -1307,7 +1305,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def isConnected(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -1344,7 +1342,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def isConnectionRefused(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -1381,7 +1379,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def isConnectionTimeout(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -1418,7 +1416,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def isConnectionFailed(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None, errNo=None, errStr=None):
 		"""
@@ -1461,7 +1459,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def isConnectedSsl(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None, sslVersion=None, sslCipher=None):
 		"""
@@ -1504,7 +1502,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.ssl.isConnected(tpl=expected, timeout=timeout,sslVersion=sslVersion,sslCipher=sslCipher)
 		return evt
 		
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0, byServer=False, versionIp=None, sourceIp=None, destinationIp=None, sourcePort=None, destinationPort=None):
 		"""
 		Wait to receive "disconnected" event until the end of the timeout
@@ -1549,7 +1547,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 
-	@doc_public
+	
 	def hasReceivedData(self, timeout=1.0, data=None, versionIp=None, sourceIp=None, destinationIp=None, 
 													sourcePort=None, destinationPort=None, sslVersion=None, sslCipher=None):
 		"""

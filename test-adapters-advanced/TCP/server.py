@@ -25,9 +25,7 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
 import TestExecutorLib.TestExecutorLib as TestExecutorLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -247,7 +245,7 @@ class ClientThread(threading.Thread):
 
 
 class Server(TestAdapterLib.Adapter):
-    @doc_public
+    
     def __init__ (self, parent, bindIp = '', bindPort=0, name=None,
                                 socketTimeout=1, socketFamily=AdapterIP.IPv4, inactivityTimeout=30.0,
                                 tcpKeepAlive=False, tcpKeepAliveInterval=30.0,
@@ -569,7 +567,7 @@ class Server(TestAdapterLib.Adapter):
         tpl.addLayer(layer=layer_tcp)
         return tpl
     
-    @doc_public
+    
     def startListening(self):
         """
         Start to listen
@@ -637,7 +635,7 @@ class Server(TestAdapterLib.Adapter):
             except Exception as e:
                 self.error( "listening error: %s" % str(e) )
             
-    @doc_public
+    
     def stopListening(self):
         """
         Close the TCP connection
@@ -911,7 +909,7 @@ class Server(TestAdapterLib.Adapter):
         tpl.addLayer(layer=layer_tcp)
         return tpl
         
-    @doc_public
+    
     def sendData(self, clientId, data):
         """
         Send data
@@ -968,7 +966,7 @@ class Server(TestAdapterLib.Adapter):
         else:
             client.queueTcp.put( pdu )
         return tpl  
-    @doc_public
+    
     def isListening(self, timeout=1.0):
         """
         Wait to receive "listening" event until the end of the timeout
@@ -988,7 +986,7 @@ class Server(TestAdapterLib.Adapter):
         # try to match the template 
         evt = self.received( expected=expected, timeout=timeout )
         return evt
-    @doc_public
+    
     def isListeningFailed(self, timeout=1.0):
         """
         Wait to receive "listening failed" event until the end of the timeout
@@ -1009,7 +1007,7 @@ class Server(TestAdapterLib.Adapter):
         evt = self.received( expected=expected, timeout=timeout )
         return evt
         
-    @doc_public
+    
     def isStopped(self, timeout=1.0):
         """
         Wait to receive "stopped" event until the end of the timeout
@@ -1030,7 +1028,7 @@ class Server(TestAdapterLib.Adapter):
         evt = self.received( expected=expected, timeout=timeout )
         return evt
     
-    @doc_public
+    
     def hasClientConnection(self, timeout=1.0, clientId=None):
         """
         Wait to receive "new client connection" event until the end of the timeout
@@ -1054,7 +1052,7 @@ class Server(TestAdapterLib.Adapter):
         evt = self.received( expected=expected, timeout=timeout )
         return evt
         
-    @doc_public
+    
     def hasClientDisconnection(self, timeout=1.0, clientId=None):
         """
         Wait to receive "client disconnection" event until the end of the timeout
@@ -1077,7 +1075,7 @@ class Server(TestAdapterLib.Adapter):
         # try to match the template 
         evt = self.received( expected=expected, timeout=timeout )
         return evt
-    @doc_public
+    
     def hasClientData(self, timeout=1.0, clientId=None, data=None, versionIp=None, sourceIp=None, destinationIp=None, 
                                                     sourcePort=None, destinationPort=None, sslVersion=None, sslCipher=None):
         """

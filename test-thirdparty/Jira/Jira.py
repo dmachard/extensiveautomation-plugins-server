@@ -23,10 +23,8 @@
 
 try:
     import TestInteropLib
-    from TestInteropLib import doc_public
 except ImportError: # python3 support
     from . import TestInteropLib
-    from TestInteropLib.TestInteropLib import doc_public
     
 import requests
 import json
@@ -35,7 +33,7 @@ class Jira(TestInteropLib.InteropPlugin):
     """
     Jira plugin
     """
-    @doc_public
+    
     def __init__(self, parent, url, login, password, project, verifySsl=False, apiVersion="2", proxies={} ):
         """
         Jira interop
@@ -78,13 +76,13 @@ class Jira(TestInteropLib.InteropPlugin):
         self.__project = project
         self.__context = None
         self.__proxies = proxies
-    @doc_public    
+        
     def context(self):
         """
         Return the context
         """
         return self.__context
-    @doc_public    
+        
     def issueTypes(self, name):
         """
         Return issue type ID according to the name
@@ -122,7 +120,7 @@ class Jira(TestInteropLib.InteropPlugin):
         uri = 'rest/api/%s/issuetype' % (self.__currentApi)
         r = requests.get( "%s/%s" % (self.__url, uri),headers=headers, verify=self.__certCheck, proxies=self.__proxies)
         if r.status_code == 200: self.__context['issue-types'] = json.loads(r.text)
-    @doc_public
+    
     def signin(self):
         """
         Login to jira
@@ -186,7 +184,7 @@ class Jira(TestInteropLib.InteropPlugin):
             self.logResponse(msg="signin exception", details=tpl )
 
         return ret
-    @doc_public    
+        
     def signout(self):
         """
         Logout from jira
@@ -227,7 +225,7 @@ class Jira(TestInteropLib.InteropPlugin):
             self.logResponse(msg="sigout exception", details=tpl )
             
         return ret
-    @doc_public
+    
     def createIssue(self, summary, description, issueTypeId, assignee):
         """
         Create issue      

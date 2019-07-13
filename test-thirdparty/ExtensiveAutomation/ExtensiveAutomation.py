@@ -23,10 +23,8 @@
 
 try:
     import TestInteropLib
-    from TestInteropLib import doc_public
 except ImportError: # python3 support
     from . import TestInteropLib
-    from TestInteropLib.TestInteropLib import doc_public
     
 import os
 import requests
@@ -37,7 +35,7 @@ class ExtensiveAutomation(TestInteropLib.InteropPlugin):
     """
     ExtensiveAutomation plugin
     """
-    @doc_public
+    
     def __init__(self, parent, url, login, password, verifySsl=False, proxies={} ):
         """
         ExtensiveAutomation interop
@@ -70,7 +68,7 @@ class ExtensiveAutomation(TestInteropLib.InteropPlugin):
         self.__certCheck = verifySsl
         self.__proxies = proxies
         self.__certCheck = verifySsl
-    @doc_public
+    
     def login(self):
         """
         Login to extensiveautomation
@@ -121,7 +119,7 @@ class ExtensiveAutomation(TestInteropLib.InteropPlugin):
             self.logResponse(msg="login exception", details=tpl )
 
         return ret
-    @doc_public    
+        
     def logout(self):
         """
         Logout from extensiveautomation
@@ -162,7 +160,7 @@ class ExtensiveAutomation(TestInteropLib.InteropPlugin):
             self.logResponse(msg="logout exception", details=tpl )
             
         return ret
-    @doc_public
+    
     def addVariable(self, variableName, variableValue, projectName="Common"):
         """
         Add a variable
@@ -226,7 +224,7 @@ class ExtensiveAutomation(TestInteropLib.InteropPlugin):
             self.logResponse(msg="add variable exception", details=tpl )
            
         return ret
-    @doc_public
+    
     def searchVariable(self, variableName, projectName="Common"):
         """
         Search a variable according to the name and the project name to look-in
@@ -289,7 +287,7 @@ class ExtensiveAutomation(TestInteropLib.InteropPlugin):
             self.logResponse(msg="search variable exception", details=tpl )
            
         return ret
-    @doc_public   
+       
     def updateVariable(self, variableId, variableValue):
         """
         Update the value of a variable according to the id provided
@@ -347,7 +345,7 @@ class ExtensiveAutomation(TestInteropLib.InteropPlugin):
             self.logResponse(msg="update variable exception", details=tpl )
            
         return ret
-    @doc_public   
+       
     def searchProjectByName(self, projectName):
         """
         Search a project by name
@@ -404,7 +402,7 @@ class ExtensiveAutomation(TestInteropLib.InteropPlugin):
             self.logResponse(msg="search project by name exception", details=tpl )
            
         return ret    
-    @doc_public    
+        
     def runTest(self, testPath, projectName, testInputs=[], testAgents=[]):
         """
         Run a test
@@ -488,7 +486,7 @@ class ExtensiveAutomation(TestInteropLib.InteropPlugin):
             self.logResponse(msg="test run exception", details=tpl )
             
         return ret
-    @doc_public 
+     
     def testStatus(self, testIds=[], logEvents=True):
         """
         Follow and get the status of a test or several

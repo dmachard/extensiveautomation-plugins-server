@@ -22,7 +22,7 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
+
 from Var.SutAdapters import Hashing
 
 import sys
@@ -66,7 +66,7 @@ __NAME__="""RFC2617"""
 
 # RFC2617: Basic and Digest Access Authentication
 class Digest(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, debug=False, shared=False):
 		"""
 		Digest Access Authentication
@@ -101,7 +101,7 @@ class Digest(TestLibraryLib.Library):
 		"""	
 		return self.md5.compute(data=data)
 		
-	@doc_public
+	
 	def decode(self, challenge):
 		"""
 		Decode the challenge present in the www-authenticate header
@@ -133,7 +133,7 @@ class Digest(TestLibraryLib.Library):
 			
 		return ch
 
-	@doc_public
+	
 	def compute(self, username, password, realm, nonce, method, uri, qop=None, algo=None, body=None):
 		"""
 		Compute the challenge response according  to the rfc2617
@@ -218,7 +218,7 @@ class Digest(TestLibraryLib.Library):
 		
 		return ( self.H ( ':'.join(r_digest) ), cnonce, nc )
 
-	@doc_public
+	
 	def encode(self, username, realm, nonce, uri, response, cnonce, nc, qop=None, algo=None, opaque=None):
 		"""
 		Contructs a digest authorization header line

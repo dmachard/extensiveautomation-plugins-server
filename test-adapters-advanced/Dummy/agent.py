@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -39,7 +37,7 @@ AGENT_INITIALIZED = "AGENT_INITIALIZED"
 AGENT_TYPE_EXPECTED='dummy'
 
 class Agent(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, agent, name=None, debug=False, shared=False):
 		"""
 		My dummy adapter for agent
@@ -152,19 +150,19 @@ class Agent(TestAdapterLib.Adapter):
 		self.parent.sendAliveToAgent(adapterId=self.getAdapterId(), agentName=self.cfg['agent-name'], agentData='')
 		self.TIMER_ALIVE_AGT.restart()
 		
-	@doc_public
+	
 	def sendInitToAgent(self, data):
 		"""
 		"""
 		self.parent.sendInitToAgent(adapterId=self.getAdapterId(), agentName=self.cfg['agent-name'], agentData=data)
 		
-	@doc_public
+	
 	def sendNotifyToAgent(self, data):
 		"""
 		"""
 		self.parent.sendNotifyToAgent(adapterId=self.getAdapterId(), agentName=self.cfg['agent-name'], agentData=data)
 		
-	@doc_public
+	
 	def sendResetToAgent(self, data):
 		"""
 		"""

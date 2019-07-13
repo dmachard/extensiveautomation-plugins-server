@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -70,7 +68,7 @@ class TcpPingAgent(threading.Thread):
 
 
 class HostTCP(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, name=None, nbSyn=2, destPort=80, debug=False, shared=False):
 		"""
 		This class enable to check the status of a network element with transport TCP level.
@@ -102,7 +100,7 @@ class HostTCP(TestAdapterLib.Adapter):
 		if not os.path.exists( self.binHping ):
 			raise Exception('hping3 binary is not installed')
 			
-	@doc_public
+	
 	def doIsUp(self, host, timeout=1.0):
 		"""
 		Check if the host passed as argument is up. This check takes approximately 3 sec.
@@ -124,7 +122,7 @@ class HostTCP(TestAdapterLib.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def isUp(self, host, timeout=1.0):
 		"""
 		Check if the host passed as argument is up. This check takes approximately 3 sec.
@@ -160,7 +158,7 @@ class HostTCP(TestAdapterLib.Adapter):
 		return evt
 		
 
-	@doc_public
+	
 	def doIsDown(self, host, timeout=1.0):
 		"""
 		Check if the host passed as argument is down. This check takes approximately 3 sec.
@@ -182,7 +180,7 @@ class HostTCP(TestAdapterLib.Adapter):
 			ret = True
 		return ret
 		
-	@doc_public
+	
 	def isDown(self, host, timeout=1.0):
 		"""
 		Check if the host passed as argument is down. This check takes approximately 3 sec.
@@ -217,7 +215,7 @@ class HostTCP(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def doAreUp(self, hosts, timeout=1.0):
 		"""
 		Check if all hosts passed as argument are up. This check takes approximately 3 sec.
@@ -235,7 +233,7 @@ class HostTCP(TestAdapterLib.Adapter):
 		
 		return self.areUp(hosts=hosts, timeout=timeout)
 		
-	@doc_public
+	
 	def areUp(self, hosts, timeout=1.0):
 		"""
 		Check if all hosts passed as argument are up. This check takes approximately 3 sec.
@@ -282,7 +280,7 @@ class HostTCP(TestAdapterLib.Adapter):
 		return ret
 
 
-	@doc_public
+	
 	def doAreDown(self, hosts, timeout=1.0):
 		"""
 		Check if all hosts passed as argument are down. This check takes approximately 3 sec.
@@ -300,7 +298,7 @@ class HostTCP(TestAdapterLib.Adapter):
 		
 		return self.areDown(hosts=hosts, timeout=timeout)
 		
-	@doc_public
+	
 	def areDown(self, hosts, timeout=1.0):
 		"""
 		Check if all hosts passed as argument are down. This check takes approximately 3 sec.
@@ -346,7 +344,7 @@ class HostTCP(TestAdapterLib.Adapter):
 				
 		return ret
 
-	@doc_public
+	
 	def doPortsAreUp(self, host, ports, timeout=1.0):
 		"""
 		Check if all ports passed as argument are up for one specific host. This check takes approximately 3 sec.
@@ -367,7 +365,7 @@ class HostTCP(TestAdapterLib.Adapter):
 		
 		return self.portsAreUp(host=host, ports=ports, timeout=timeout)
 		
-	@doc_public
+	
 	def portsAreUp(self, host, ports, timeout=1.0):
 		"""
 		Check if all ports passed as argument are up for one specific host. This check takes approximately 3 sec.
@@ -416,7 +414,7 @@ class HostTCP(TestAdapterLib.Adapter):
 		return ret
 
 
-	@doc_public
+	
 	def doPortsAreDown(self, host, ports, timeout=1.0):
 		"""
 		Check if all ports passed as argument are down for one specific host. This check takes approximately 3 sec.
@@ -437,7 +435,7 @@ class HostTCP(TestAdapterLib.Adapter):
 		
 		return self.portsAreDown(host, ports=ports, timeout=timeout)
 		
-	@doc_public
+	
 	def portsAreDown(self, host, ports, timeout=1.0):
 		"""
 		Check if all ports passed as argument are down for one specific host. This check takes approximately 3 sec.

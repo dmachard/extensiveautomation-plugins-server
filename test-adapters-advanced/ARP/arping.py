@@ -25,9 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-#import TestExecutorLib.TestLibraryLib as TestLibraryLib
-
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -43,7 +40,7 @@ __NAME__="""Arping"""
 AGENT_TYPE_EXPECTED='socket'
 
 class Arping(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, debug=False, name=None, shared=False, agentSupport=False, agent=None):
 		"""
 		This class enables to send arp request
@@ -94,7 +91,7 @@ class Arping(TestAdapterLib.Adapter):
 		"""
 		self.arp.stopListening()
 		
-	@doc_public
+	
 	def ip(self, interface, sourceMac, sourceIp, destinationIp, timeout=1.0):
 		"""
 		Arping the destination ip passed as argument and wait a response.

@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 __NAME__="""WAV"""
 
@@ -43,7 +42,7 @@ WAV_UNSIGNED_8BITS		= 8
 WAV_SIGNED_16BITS		= 16
 
 class WavContainer(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self,  parent, name=None, debug=False, format=WAVE_FORMAT_PCM, 
 												channels=CHANNELS_MONO, rate=44100, bits=WAV_SIGNED_16BITS, samples=[], shared=False):
 		"""
@@ -133,7 +132,7 @@ class WavContainer(TestLibraryLib.Library):
 		wavHeader.append( struct.pack( '<i', self.DataSize ) )
 		return ''.join(wavHeader)
 
-	@doc_public
+	
 	def setDataRaw(self, dataRaw):
 		"""
 		Set raw data
@@ -150,7 +149,7 @@ class WavContainer(TestLibraryLib.Library):
 			return ''.join(self.Data)
 		else:
 			return self.Data
-	@doc_public
+	
 	def getRaw(self):
 		"""
 		Returns raw data

@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -53,7 +51,7 @@ class FakePtr(object):
 	def close(self): pass
 
 class MySQL(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, host='127.0.0.1', user='', password='', port=MYSQL_PORT, name=None, verbose=True,
 												debug=False, shared=False, agent=None, agentSupport=False, logEventSent=True, logEventReceived=True):
 		"""
@@ -292,7 +290,7 @@ class MySQL(TestAdapterLib.Adapter):
 		tpl.addRaw(msg)
 		self.logRecvEvent( shortEvt = "error", tplEvt = tpl )
 		
-	@doc_public
+	
 	def connect(self, dbName, timeout=5):
 		"""
 		Connect to the database
@@ -331,7 +329,7 @@ class MySQL(TestAdapterLib.Adapter):
 																more=templates.connected() )
 				self.logRecvEvent( shortEvt = "connected", tplEvt = self.encapsule(db_event=tpl) )
 
-	@doc_public
+	
 	def disconnect(self):
 		"""
 		Disconnect from the database
@@ -364,7 +362,7 @@ class MySQL(TestAdapterLib.Adapter):
 					self.logRecvEvent( shortEvt = "disconnected", tplEvt = self.encapsule(db_event=tpl) )
 					self.connPtr = None
 		
-	@doc_public
+	
 	def doQuery(self, query, timeout=1.0, dbName=''):
 		"""
 		Do query
@@ -403,7 +401,7 @@ class MySQL(TestAdapterLib.Adapter):
 				ret = None
 		return ret
 
-	@doc_public
+	
 	def doConnect(self, dbName, timeout=1.0):
 		"""
 		Do connect
@@ -425,7 +423,7 @@ class MySQL(TestAdapterLib.Adapter):
 			ret = False
 		return ret
 
-	@doc_public
+	
 	def doDisconnect(self, timeout=1.0):
 		"""
 		Do disconnect
@@ -444,7 +442,7 @@ class MySQL(TestAdapterLib.Adapter):
 			ret = False
 		return ret
 		
-	@doc_public
+	
 	def query(self, query, queryName=None):
 		"""
 		Query the database
@@ -528,7 +526,7 @@ class MySQL(TestAdapterLib.Adapter):
 		Function to reimplement
 		"""
 		pass	
-	@doc_public
+	
 	def isConnected(self, timeout=1.0):
 		"""
 		Waits to receive "connected" event until the end of the timeout
@@ -545,7 +543,7 @@ class MySQL(TestAdapterLib.Adapter):
 		evt = self.received( expected = self.encapsule(db_event=expected), timeout = timeout )
 		return evt
 	
-	@doc_public
+	
 	def isExecuted(self, timeout=1.0, status=None, nbChanged=None):
 		"""
 		Waits to receive "executed" event until the end of the timeout
@@ -567,7 +565,7 @@ class MySQL(TestAdapterLib.Adapter):
 		expected = templates.db(host=self.cfg['host'], port=self.cfg['port'], more=templates.executed(status=status, nbChanged=nbChanged) )
 		evt = self.received( expected = self.encapsule(db_event=expected), timeout = timeout )
 		return evt
-	@doc_public
+	
 	def isTerminated(self, timeout=1.0, nbRow=None):
 		"""
 		Waits to receive "terminated" event until the end of the timeout
@@ -586,7 +584,7 @@ class MySQL(TestAdapterLib.Adapter):
 		expected = templates.db(host=self.cfg['host'], port=self.cfg['port'], more=templates.terminated(nbRow=nbRow) )
 		evt = self.received( expected = self.encapsule(db_event=expected), timeout = timeout )
 		return evt
-	@doc_public
+	
 	def isDisconnected(self, timeout=1.0):
 		"""
 		Waits to receive "disconnected" event until the end of the timeout
@@ -603,7 +601,7 @@ class MySQL(TestAdapterLib.Adapter):
 		evt = self.received( expected = self.encapsule(db_event=expected), timeout = timeout )
 		return evt
 	
-	@doc_public
+	
 	def hasReceivedRow(self, timeout=1.0, row=None, rowIndex=None, rowMax=None):
 		"""
 		Waits to receive "response" event until the end of the timeout

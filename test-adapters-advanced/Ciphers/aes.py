@@ -22,7 +22,6 @@
 # -------------------------------------------------------------------
 
 import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 try:
 	import common
@@ -36,7 +35,7 @@ import Crypto.Cipher.AES as AESCRYPTO
 __NAME__="""AES"""
 
 class AES(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, name=None, hexKey=None, strKey=None, debug=False, shared=False):
 		"""
 		Implementation of the cipher AES
@@ -69,7 +68,7 @@ class AES(TestLibraryLib.Library):
 			self.setKey(hexKey=hexKey)
 		if strKey is not None:
 			self.setKey(strKey=strKey)
-	@doc_public		
+			
 	def encrypt (self, strData=None, hexData=None, hexdigit=False):
 		"""
 		Encrypt the string data or hexa data string and return an encrypted string
@@ -120,7 +119,7 @@ class AES(TestLibraryLib.Library):
 		
 		ret_str = ''.join(ret)	
 		return ret_str
-	@doc_public		
+			
 	def decrypt(self, strData=None, hexData=None):
 		"""
 		Decrypt the string data or hexa data string
@@ -156,7 +155,7 @@ class AES(TestLibraryLib.Library):
 		cipher_ret = self.unpad(cipher.decrypt(enc[AESCRYPTO.block_size:]))
 		
 		return cipher_ret
-	@doc_public	
+		
 	def getKey(self, strKey=True, hexKey=False):
 		"""
 		Returns the key as string or hexadecimal representation
@@ -176,7 +175,7 @@ class AES(TestLibraryLib.Library):
 		if strKey:
 			for c in self.key: key.append(chr(c))
 		return ''.join(key)
-	@doc_public
+	
 	def setKey(self, hexKey=None, strKey=None):
 		"""
 		Set the key string or hexadecimal representation passed in argument

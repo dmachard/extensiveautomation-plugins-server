@@ -25,7 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import threading
@@ -51,7 +50,7 @@ AGENT_TYPE_EXPECTED='soapui'
 
 
 class SoapUI(TestAdapter.Adapter):
-	@doc_public
+	
 	def __init__(self, parent,  agent, name=None, debug=False, shared=False):
 		"""
 		SoapUI adapter
@@ -278,7 +277,7 @@ class SoapUI(TestAdapter.Adapter):
 		tpl.addLayer(layer= layer)
 		evt = self.received( expected = tpl, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def isStepStopped(self, timeout=20.0, stepId=None):
 		"""
 		"""
@@ -291,7 +290,7 @@ class SoapUI(TestAdapter.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def isTestcaseStarted(self, timeout=20.0):
 		"""
 		Wait to receive "testcase started" event until the end of the timeout
@@ -312,7 +311,7 @@ class SoapUI(TestAdapter.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def isTestcaseStopped(self, timeout=60.0):
 		"""
 		Wait to receive "testcase stopped" event until the end of the timeout
@@ -333,7 +332,7 @@ class SoapUI(TestAdapter.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def runTest(self, projectPath, projectFile, testsuiteName, testcaseName, endpoint='', projectProperties={}):
 		"""
 		Run a testcase
@@ -373,7 +372,7 @@ class SoapUI(TestAdapter.Adapter):
 																																					testsuiteName=testsuiteName, testcaseName=testcaseName))
 		self.logSentEvent( shortEvt = "%s [%s -> %s]" % (SOAPUI_RUN_TESTCASE, testsuiteName, testcaseName) , tplEvt = tpl )
 		
-	@doc_public
+	
 	def doRunTest(self, projectPath, projectFile, testsuiteName, testcaseName, endpoint='', projectProperties={}, 
 																timeoutStart=20.0, timeoutStop=60.0):
 		"""

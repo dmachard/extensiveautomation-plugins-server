@@ -26,7 +26,6 @@ import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
 import TestExecutorLib.TestExecutorLib as TestExecutor
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 import base64
@@ -131,7 +130,7 @@ AGENT_TYPE_EXPECTED='seleniumserver'
 class NotReady(Exception): pass
 
 class Selenium(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, agent, name=None, debug=False, verbose=True, shared=False, navigId=None, waitUntil=True):
 		"""
 		Selenium adapter
@@ -546,7 +545,7 @@ class Selenium(TestAdapterLib.Adapter):
 		evt = self.received( expected = tpl, timeout = timeout )
 		return evt
 	# do functions
-	@doc_public
+	
 	def doSwitchToSession(self, sessionName):
 		"""
 		Switch to the session according to the name provided
@@ -559,7 +558,7 @@ class Selenium(TestAdapterLib.Adapter):
 			raise Exception("the session (%s) does not exists!" % sessionName )
 		return True
 		
-	@doc_public
+	
 	def doOpen(self, targetUrl, timeout=30.0, withFirefox=True, withIe=False, withChrome=False, withOpera=False, withEdge=False, useMarionette=True,
 												browserProfile=None, sessionName="default" ):
 		"""
@@ -625,7 +624,7 @@ class Selenium(TestAdapterLib.Adapter):
 			if self.isUrlLoaded(timeout=timeout, commandId=cmdId) is None:
 				ret = False
 		return ret
-	@doc_public
+	
 	def doClose(self, timeout=30.0):
 		"""
 		Close the browser
@@ -643,7 +642,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if self.isNavigStopped(timeout=timeout, commandId=cmdId) is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doCloseWindow(self, timeout=30.0):
 		"""
 		Close the current window
@@ -661,7 +660,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if self.isWindowClosed(timeout=timeout, commandId=cmdId) is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doSwitchToWindow(self, windowName, timeout=30.0):
 		"""
 		Switch to the provided window
@@ -714,7 +713,7 @@ class Selenium(TestAdapterLib.Adapter):
 				ret = False
 					
 		return ret
-	@doc_public
+	
 	def doGetPageTitle(self, timeout=10.0):
 		"""
 		Return the title of the current page
@@ -736,7 +735,7 @@ class Selenium(TestAdapterLib.Adapter):
 			elementVall = rsp.get('GUI',  'value')
 			ret = elementVall.get('value') # title of the window
 		return ret
-	@doc_public
+	
 	def doFindTextPageTitle(self, expectedText, timeout=10.0):
 		"""
 		Find the text provided as argument in the title of the current page
@@ -758,7 +757,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if rsp is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doGetPageUrl(self, timeout=10.0):
 		"""
 		Return the url of the current page
@@ -780,7 +779,7 @@ class Selenium(TestAdapterLib.Adapter):
 			elementVall = rsp.get('GUI',  'value')
 			ret = elementVall.get('value') # url of the window
 		return ret
-	@doc_public
+	
 	def doFindTextPageUrl(self, expectedText, timeout=10.0):
 		"""
 		Find the text provided as argument in the url of the current page
@@ -802,7 +801,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if rsp is None:
 			ret = False
 		return True
-	@doc_public
+	
 	def doGetPageSource(self, timeout=10.0):
 		"""
 		Return the code source of the current page
@@ -824,7 +823,7 @@ class Selenium(TestAdapterLib.Adapter):
 			elementVall = rsp.get('GUI',  'value')
 			ret = elementVall.get('value') # code source of the window
 		return ret
-	@doc_public
+	
 	def doFindTextPageSource(self, expectedText, timeout=10.0):
 		"""
 		Find the text provided as argument in the code source of the current page
@@ -846,7 +845,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if rsp is None:
 			ret = False
 		return True
-	@doc_public
+	
 	def doWaitElement(self,  timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																				location=None):
@@ -905,7 +904,7 @@ class Selenium(TestAdapterLib.Adapter):
 		rsp = self.hasElement(timeout=timeout+10, commandId=cmdId) 
 		if rsp is None: ret = False	
 		return ret
-	@doc_public
+	
 	def doWaitVisibleElement(self,  timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																				location=None):
@@ -977,7 +976,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if rsp is None: 
 			ret = False	
 		return ret
-	@doc_public
+	
 	def doWaitNotVisibleElement(self,  timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																				location=None):
@@ -1049,7 +1048,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if rsp is None: 
 			ret = False	
 		return ret
-	@doc_public
+	
 	def doWaitClickElement(self,  timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																				location=None):
@@ -1117,7 +1116,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if self.isElementClicked(timeout=timeout, commandId=cmdId)  is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doWaitVisibleClickElement(self,  timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																				location=None):
@@ -1200,7 +1199,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if self.isElementClicked(timeout=timeout, commandId=cmdId)  is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doGetText(self, timeout=10.0, name=None, tagName=None, className=None,
 																id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																location=None):
@@ -1267,7 +1266,7 @@ class Selenium(TestAdapterLib.Adapter):
 				ret = elementVall.get('value')
 				
 		return ret
-	@doc_public
+	
 	def doFindText(self, expectedText, timeout=10.0, name=None, tagName=None, className=None,
 																id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																location=None):
@@ -1339,7 +1338,7 @@ class Selenium(TestAdapterLib.Adapter):
 			return True
 		return ret
 		
-	@doc_public
+	
 	def doClickElement(self, timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, 
 																				cssSelector=None, location=None):
@@ -1402,7 +1401,7 @@ class Selenium(TestAdapterLib.Adapter):
 			if self.isElementClicked(timeout=timeout, commandId=cmdId)  is None:
 				ret = False
 		return ret
-	@doc_public
+	
 	def doDoubleClickElement(self, timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, 
 																				cssSelector=None, location=None):
@@ -1470,7 +1469,7 @@ class Selenium(TestAdapterLib.Adapter):
 					ret = False
 
 		return ret
-	@doc_public
+	
 	def doRightClickElement(self, timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, 
 																				cssSelector=None, location=None):
@@ -1538,7 +1537,7 @@ class Selenium(TestAdapterLib.Adapter):
 					ret = False
 
 		return ret
-	@doc_public
+	
 	def doHoverElement(self, timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																				location=None):
@@ -1603,7 +1602,7 @@ class Selenium(TestAdapterLib.Adapter):
 				
 		return ret
 		
-	@doc_public
+	
 	def doTypeText(self, text, timeout=10.0, name=None, tagName=None, className=None,
 																	id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																	location=None):
@@ -1672,7 +1671,7 @@ class Selenium(TestAdapterLib.Adapter):
 			if self.hasTextEntered(timeout=timeout, commandId=cmdId)  is None:
 				ret = False
 		return ret
-	@doc_public
+	
 	def doCheckLocationElement(self, x, y, timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																				location=None):
@@ -1753,7 +1752,7 @@ class Selenium(TestAdapterLib.Adapter):
 				if int(x) == int(elementX) and int(y) == int(elementY):
 					ret = True
 		return ret
-	@doc_public
+	
 	def doCheckSizeElement(self, width, height, timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																				location=None):
@@ -1835,7 +1834,7 @@ class Selenium(TestAdapterLib.Adapter):
 					ret = True
 		return ret
 
-	@doc_public
+	
 	def doTypeKey(self, key, timeout=10.0, name=None, tagName=None, className=None,
 														id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None, 
 														location=None, repeat=0):
@@ -1905,7 +1904,7 @@ class Selenium(TestAdapterLib.Adapter):
 				if self.hasTextEntered(timeout=timeout, commandId=cmdId)  is None:
 					ret = False
 		return ret
-	@doc_public
+	
 	def doMaximizeWindow(self, timeout=10.0, windowHandle='current'):
 		"""
 		Do maximize window
@@ -1926,7 +1925,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if self.isMaximized(timeout=timeout, commandId=cmdId) is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doRefreshPage(self, timeout=10.0):
 		"""
 		Do refresh page
@@ -1944,7 +1943,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if self.isRefreshed(timeout=timeout, commandId=cmdId) is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doGoBack(self, timeout=10.0):
 		"""
 		Do go back
@@ -1962,7 +1961,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if self.isGoBack(timeout=timeout, commandId=cmdId) is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doGoForward(self, timeout=10.0):
 		"""
 		Do go forward
@@ -1980,7 +1979,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if self.isGoForward(timeout=timeout, commandId=cmdId) is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doDismissAlert(self, timeout=10.0):
 		"""
 		Do dismiss alert
@@ -1998,7 +1997,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if self.isAlertDismissed(timeout=timeout, commandId=cmdId) is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doAcceptAlert(self, timeout=10.0):
 		"""
 		Do accept alert
@@ -2016,7 +2015,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if self.isAlertAccepted(timeout=timeout, commandId=cmdId) is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doGetTextAlert(self, timeout=10.0):
 		"""
 		Do get text alert
@@ -2037,7 +2036,7 @@ class Selenium(TestAdapterLib.Adapter):
 			elementVall = rsp.get('GUI',  'value')
 			ret = elementVall.get('value')
 		return ret
-	@doc_public
+	
 	def doAuthenticateAlert(self, username, password, timeout=10.0):
 		"""
 		Do authenticate alert (basic http for example)
@@ -2061,7 +2060,7 @@ class Selenium(TestAdapterLib.Adapter):
 		if self.isAlertAuthenticated(timeout=timeout, commandId=cmdId) is None:
 			ret = False
 		return ret
-	@doc_public
+	
 	def doSwitchToFrame(self, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None,
 																				location=None, timeout=10.0):
@@ -2119,7 +2118,7 @@ class Selenium(TestAdapterLib.Adapter):
 				ret = False
 		return ret
 		
-	@doc_public
+	
 	def doSwitchToNextWindow(self, timeout=10.0):
 		"""
 		Do switch to the next windows
@@ -2162,7 +2161,7 @@ class Selenium(TestAdapterLib.Adapter):
 				
 		return ret
 		
-	@doc_public
+	
 	def doClearTextElement(self, timeout=10.0, name=None, tagName=None, className=None,
 																				id=None, xpath=None, linkText=None,  partialLinkText=None, cssSelector=None, location=None):
 		"""
@@ -2225,7 +2224,7 @@ class Selenium(TestAdapterLib.Adapter):
 				ret = False
 		return ret
 		
-	@doc_public
+	
 	def doSelectByValue(self, text, timeout=10.0, name=None, tagName=None, className=None, id=None, xpath=None, linkText=None,  
 																		partialLinkText=None, cssSelector=None, location=None):
 		"""
@@ -2306,7 +2305,7 @@ class Selenium(TestAdapterLib.Adapter):
 						else:
 							ret = True
 		return ret
-	@doc_public
+	
 	def doSelectByText(self, text, timeout=10.0, name=None, tagName=None, className=None, id=None, xpath=None, linkText=None,  
 																		partialLinkText=None, cssSelector=None, location=None):
 		"""
@@ -2387,7 +2386,7 @@ class Selenium(TestAdapterLib.Adapter):
 						else:
 							ret = True
 		return ret
-	@doc_public
+	
 	def doRunJsElement(self, js, timeout=10.0, name=None, tagName=None, className=None, id=None, xpath=None, linkText=None,  
 																		partialLinkText=None, cssSelector=None, location=None):
 		"""
@@ -2472,7 +2471,7 @@ class Selenium(TestAdapterLib.Adapter):
 			if '"' in value:
 				return "'%s'" % value
 		return "\"%s\"" % value
-	@doc_public
+	
 	def doSwitchToDefaultWindow(self,  timeout=10.0):
 		"""
 		Do switch to default window
@@ -2489,7 +2488,7 @@ class Selenium(TestAdapterLib.Adapter):
 			ret = False
 		return ret
 	# function to make actions
-	@doc_public
+	
 	def getFirefoxProfile(self, profileDirectory=None):
 		"""
 		Return a firefox profile
@@ -2503,7 +2502,7 @@ class Selenium(TestAdapterLib.Adapter):
 		fp = webdriver.FirefoxProfile(profile_directory=profileDirectory)
 		return fp
 		
-	@doc_public
+	
 	def openNavig(self, desiredCapabilities, browserProfile=None, useMarionette=None, sessionName="default"):
 		"""
 		Start browser
@@ -2525,7 +2524,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.NEW_SESSION, { 'desiredCapabilities': desiredCapabilities,})
 		return cmdId
 
-	@doc_public
+	
 	def quitNavig(self):
 		"""
 		Stop browser
@@ -2536,7 +2535,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.QUIT)
 		return cmdId
 		
-	@doc_public
+	
 	def closeWindow(self):
 		"""
 		Closes the current window.
@@ -2548,7 +2547,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return cmdId
 		
 
-	@doc_public
+	
 	def loadUrl(self, url):
 		"""
 		Loads a web page in the current browser session.
@@ -2559,7 +2558,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET, {'url': url})
 		return cmdId
 		
-	@doc_public
+	
 	def getTitle(self):
 		"""
 		Gets the title of the current page.
@@ -2570,7 +2569,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_TITLE)
 		return cmdId
 		
-	@doc_public
+	
 	def getUrl(self):
 		"""
 		Gets the URL of the current page.
@@ -2581,7 +2580,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_CURRENT_URL)
 		return cmdId
 		
-	@doc_public
+	
 	def getPageSource(self):
 		"""
 		Gets the source of the current page.
@@ -2592,7 +2591,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_PAGE_SOURCE)
 		return cmdId
 		
-	@doc_public
+	
 	def implicitlyWait(self, timeout=10.0):
 		"""
 		Sets a sticky timeout to implicitly wait for an element to be found, or a command to complete. 
@@ -2610,7 +2609,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return cmdId
 		
 	# function for windows
-	@doc_public
+	
 	def maximizeWindow(self, windowHandle='current'):
 		"""
 		Maximizes the current window that webdriver is using
@@ -2624,7 +2623,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.MAXIMIZE_WINDOW, {"windowHandle": windowHandle})
 		return cmdId
 		
-	@doc_public
+	
 	def setWindowSize(self, width, height, windowHandle='current'):
 		"""
 		Sets the width and height of the current window.
@@ -2645,7 +2644,7 @@ class Selenium(TestAdapterLib.Adapter):
 																								"windowHandle": windowHandle})
 		return cmdId
 		
-	@doc_public
+	
 	def getWindowSize(self, windowHandle='current'):
 		"""
 		Gets the width and height of the current window.
@@ -2659,7 +2658,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_WINDOW_SIZE, {"windowHandle": windowHandle})
 		return cmdId
 		
-	@doc_public
+	
 	def getWindowPosition(self, windowHandle='current'):
 		"""
 		Gets the x,y position of the current window.
@@ -2673,7 +2672,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_WINDOW_POSITION, {"windowHandle": windowHandle})
 		return cmdId
 		
-	@doc_public
+	
 	def setWindowPosition(self, x, y , windowHandle='current'):
 		"""
 		Sets the x,y position of the current window.
@@ -2693,7 +2692,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.SET_WINDOW_POSITION, {'x': int(x), 'y': int(y),"windowHandle": windowHandle})
 		return cmdId
 		
-	@doc_public
+	
 	def getCurrentWindowHandle(self):
 		"""
 		Gets the handle of the current window.
@@ -2704,7 +2703,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_CURRENT_WINDOW_HANDLE)
 		return cmdId
 		
-	@doc_public
+	
 	def getAllWindowHandles(self):
 		"""
 		Get the handles of all windows within the current session.
@@ -2715,7 +2714,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_WINDOW_HANDLES)
 		return cmdId
 		
-	@doc_public
+	
 	def switchToWindow(self, windowName):
 		"""
 		Switches focus to the specified window by name or handle
@@ -2729,7 +2728,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.SWITCH_TO_WINDOW, {'name': windowName})
 		return cmdId
 
-	@doc_public
+	
 	def switchToFrame(self, reference):
 		"""
 		Switches focus to the specified window by frame or index
@@ -2743,7 +2742,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.SWITCH_TO_FRAME, {'id': reference})
 		return cmdId
 		
-	@doc_public
+	
 	def switchToDefaultFrame(self):
 		"""
 		Switch focus to the default frame.
@@ -2755,7 +2754,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return cmdId
 		
 	# functions for alert
-	@doc_public
+	
 	def dismissAlert(self):
 		"""
 		Dismiss alert
@@ -2766,7 +2765,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.DISMISS_ALERT)
 		return cmdId
 		
-	@doc_public
+	
 	def acceptAlert(self):
 		"""
 		Accept alert
@@ -2777,7 +2776,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.ACCEPT_ALERT)
 		return cmdId
 		
-	@doc_public
+	
 	def getTextAlert(self):
 		"""
 		Get the text of the alert
@@ -2788,7 +2787,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_ALERT_TEXT)
 		return cmdId
 		
-	@doc_public
+	
 	def authenticateDialog(self, username, password):
 		"""
 		Authenticate with username and password (Basic HTTP Auth for example)
@@ -2806,7 +2805,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return cmdId
 		
 	# function for navigation
-	@doc_public
+	
 	def navigBack(self):
 		"""
 		Goes one step backward in the browser history.
@@ -2817,7 +2816,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GO_BACK)
 		return cmdId
 		
-	@doc_public
+	
 	def navigForward(self):
 		"""
 		Goes one step forward in the browser history.
@@ -2828,7 +2827,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GO_FORWARD)
 		return cmdId
 		
-	@doc_public
+	
 	def refreshPage(self):
 		"""
 		Refreshes the current page.
@@ -2840,7 +2839,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return cmdId
 		
 	# function for interact with element
-	@doc_public
+	
 	def findElement(self, elementId=None, name=None, tagName=None, className=None, id=None, xpath=None, linkText=None, 
 															partialLinkText=None, cssSelector=None, location=None, more={}):
 		"""
@@ -2925,7 +2924,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.FIND_ELEMENT, params, more=more)
 		return cmdId
 		
-	@doc_public
+	
 	def findElements(self, elementId=None, name=None, tagName=None, className=None, id=None, xpath=None, linkText=None, 
 															partialLinkText=None, cssSelector=None, location=None):
 		"""
@@ -3008,7 +3007,7 @@ class Selenium(TestAdapterLib.Adapter):
 			params['id'] = elementId
 		cmdId = self.executeCommand(Command.FIND_ELEMENTS, params)
 		return cmdId
-	@doc_public
+	
 	def findChildElement(self, elementId, name=None, tagName=None, className=None, id=None, xpath=None, linkText=None, 
 															partialLinkText=None, cssSelector=None, location=None):
 		"""
@@ -3091,7 +3090,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.FIND_CHILD_ELEMENT, params)
 		return cmdId
 		
-	@doc_public
+	
 	def findChildElements(self, elementId, name=None, tagName=None, className=None, id=None, xpath=None, linkText=None, 
 															partialLinkText=None, cssSelector=None, location=None):
 		"""
@@ -3173,7 +3172,7 @@ class Selenium(TestAdapterLib.Adapter):
 		params['id'] = elementId
 		cmdId = self.executeCommand(Command.FIND_CHILD_ELEMENTS, params)
 		return cmdId
-	@doc_public
+	
 	def getTextElement(self, elementId):
 		"""
 		Get the text of the element
@@ -3187,7 +3186,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_ELEMENT_TEXT, {'id': elementId})
 		return cmdId
 		
-	@doc_public
+	
 	def getAttributeElement(self, name, elementId):
 		"""
 		Gets the given attribute or property of the element
@@ -3204,7 +3203,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_ELEMENT_ATTRIBUTE, {'id': elementId, 'name': name})
 		return cmdId
 
-	@doc_public
+	
 	def clickElement(self, elementId):
 		"""
 		Clicks on element
@@ -3218,7 +3217,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.CLICK_ELEMENT, {'id': elementId, 'button': 0})
 		return cmdId
 		
-	@doc_public
+	
 	def hoverElement(self, elementId):
 		"""
 		Moving the mouse to the middle of an element.
@@ -3232,7 +3231,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.MOVE_TO, {'element': elementId})
 		return cmdId
 		
-	@doc_public
+	
 	def getTagNameElement(self, elementId):
 		"""
 		Get tag name
@@ -3246,7 +3245,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId =self.executeCommand(Command.GET_ELEMENT_TAG_NAME, {'id': elementId})
 		return cmdId
 		
-	@doc_public
+	
 	def submitElement(self, elementId):
 		"""
 		Submits a form.
@@ -3260,7 +3259,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.SUBMIT_ELEMENT, {'id': elementId})
 		return cmdId
 
-	@doc_public
+	
 	def clearTextElement(self, elementId):
 		"""
 		Clears the text if it's a text entry element.
@@ -3274,7 +3273,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.CLEAR_ELEMENT, {'id': elementId})
 		return cmdId
 	
-	@doc_public
+	
 	def selectedElement(self, elementId):
 		"""
 		Return if the element is selected.
@@ -3289,7 +3288,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.IS_ELEMENT_SELECTED, {'id': elementId})
 		return cmdId
 
-	@doc_public
+	
 	def enabledElement(self, elementId):
 		"""
 		Return if the element is enabled.
@@ -3303,7 +3302,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.IS_ELEMENT_ENABLED, {'id': elementId})
 		return cmdId
 		
-	@doc_public
+	
 	def displayedElement(self, elementId, more={}):
 		"""
 		Whether the element is visible to a user.
@@ -3317,7 +3316,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.IS_ELEMENT_DISPLAYED, {'id': elementId}, 	more=more)
 		return cmdId
 		
-	@doc_public
+	
 	def sizeElement(self, elementId):
 		"""
 		The size of the element.
@@ -3331,7 +3330,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_ELEMENT_SIZE, {'id': elementId})
 		return cmdId
 		
-	@doc_public
+	
 	def locationElement(self, elementId):
 		"""
 		The location of the element in the renderable canvas.
@@ -3345,7 +3344,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_ELEMENT_LOCATION, {'id': elementId})
 		return cmdId
 		
-	@doc_public
+	
 	def typeTextElement(self, elementId, text):
 		"""
 		Simulates typing text into the element.
@@ -3374,7 +3373,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.SEND_KEYS_TO_ELEMENT, {'id': elementId, 'value': typing})
 		return cmdId
 		
-	@doc_public
+	
 	def typeKeyElement(self, elementId, key):
 		"""
 		Simulates typing key into the element.
@@ -3393,7 +3392,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return cmdId
 		
 
-	@doc_public
+	
 	def runJavascriptElement(self, js, elementId):
 		"""
 		Execute javascript on element
@@ -3409,7 +3408,7 @@ class Selenium(TestAdapterLib.Adapter):
 		"""
 		return self.executeScript(js, {"ELEMENT": elementId} )
 		
-	@doc_public
+	
 	def executeScript(self, script, *args):
 		"""
 		Execute javascript
@@ -3424,7 +3423,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return cmdId
 		
 	# function for mouse
-	@doc_public
+	
 	def click(self):
 		"""
 		Mouse click
@@ -3435,7 +3434,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.CLICK, {'button': 0})
 		return cmdId
 		
-	@doc_public
+	
 	def rightClick(self):
 		"""
 		Rigth click from mouse
@@ -3446,7 +3445,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.CLICK, {'button': 2})
 		return cmdId
 		
-	@doc_public
+	
 	def doubleClick(self):
 		"""
 		Double click from mouse
@@ -3457,7 +3456,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.DOUBLE_CLICK)
 		return cmdId
 		
-	@doc_public
+	
 	def clickDown(self):
 		"""
 		Mouse button down
@@ -3468,7 +3467,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.MOUSE_DOWN)
 		return cmdId
 		
-	@doc_public
+	
 	def clickUp(self):
 		"""
 		Mouse button up
@@ -3479,7 +3478,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.MOUSE_UP)
 		return cmdId
 		
-	@doc_public
+	
 	def mouseMove(self, xoffset, yoffset):
 		"""
 		Moving the mouse to an offset from current mouse position.
@@ -3491,7 +3490,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return cmdId
 		
 	# function for cookies
-	@doc_public
+	
 	def getCookies(self):
 		"""
 		Get a set of dictionaries, corresponding to cookies visible in the current session.
@@ -3502,7 +3501,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.GET_ALL_COOKIES)
 		return cmdId
 
-	@doc_public
+	
 	def deleteCookies(self):
 		"""
 		Delete all cookies in the scope of the session.
@@ -3513,7 +3512,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.DELETE_ALL_COOKIES)
 		return cmdId
 		
-	@doc_public
+	
 	def deleteCookie(self, name):
 		"""
 		Deletes a single cookie with the given name.
@@ -3524,7 +3523,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.DELETE_COOKIE, {'name': name})
 		return cmdId
 		
-	@doc_public
+	
 	def addCookie(self, cook):
 		"""
 		Adds a cookie to your current session.
@@ -3535,7 +3534,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.ADD_COOKIE, {'cookie': cook})
 		return cmdId
 	# functions for screenshots
-	@doc_public
+	
 	def getScreenshot(self):
 		"""
 		Gets the screenshot of the current window
@@ -3546,7 +3545,7 @@ class Selenium(TestAdapterLib.Adapter):
 		cmdId = self.executeCommand(Command.SCREENSHOT)
 		return cmdId
 	# function to check responses
-	@doc_public
+	
 	def isActionAccepted(self, timeout=10.0, commandName=None, commandId=None, expectedValue=None):
 		"""
 		Waits to receive "action accepted" event until the end of the timeout
@@ -3575,7 +3574,7 @@ class Selenium(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def isFrameSwitched(self, timeout=30.0, commandId=None):
 		"""
 		Waits to receive "iframe switched" event until the end of the timeout
@@ -3592,7 +3591,7 @@ class Selenium(TestAdapterLib.Adapter):
 		TestAdapterLib.check_timeout(caller=TestAdapterLib.caller(), timeout=timeout)
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.SWITCH_TO_FRAME, commandId=commandId)
-	@doc_public
+	
 	def isWindowsSwitched(self, timeout=30.0, commandId=None):
 		"""
 		Waits to receive "iwindows switched" event until the end of the timeout
@@ -3609,7 +3608,7 @@ class Selenium(TestAdapterLib.Adapter):
 		TestAdapterLib.check_timeout(caller=TestAdapterLib.caller(), timeout=timeout)
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.SWITCH_TO_WINDOW, commandId=commandId)
-	@doc_public
+	
 	def isNavigStarted(self, timeout=30.0, commandId=None):
 		"""
 		Waits to receive "navigator started" event until the end of the timeout
@@ -3627,7 +3626,7 @@ class Selenium(TestAdapterLib.Adapter):
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.NEW_SESSION, commandId=commandId)
 	
-	@doc_public
+	
 	def isNavigStopped(self, timeout=30.0, commandId=None):
 		"""
 		Waits to receive "navigator stopped" event until the end of the timeout
@@ -3644,7 +3643,7 @@ class Selenium(TestAdapterLib.Adapter):
 		TestAdapterLib.check_timeout(caller=TestAdapterLib.caller(), timeout=timeout)
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.QUIT, commandId=commandId)
-	@doc_public
+	
 	def isWindowClosed(self, timeout=30.0, commandId=None):
 		"""
 		Waits to receive "window closed" event until the end of the timeout
@@ -3662,7 +3661,7 @@ class Selenium(TestAdapterLib.Adapter):
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.CLOSE, commandId=commandId)
 		
-	@doc_public
+	
 	def isUrlLoaded(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "url loaded" event until the end of the timeout
@@ -3680,7 +3679,7 @@ class Selenium(TestAdapterLib.Adapter):
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GET, commandId=commandId)
 		
-	@doc_public
+	
 	def isMaximized(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "maximized" event until the end of the timeout
@@ -3697,7 +3696,7 @@ class Selenium(TestAdapterLib.Adapter):
 		TestAdapterLib.check_timeout(caller=TestAdapterLib.caller(), timeout=timeout)
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.MAXIMIZE_WINDOW, commandId=commandId)
-	@doc_public
+	
 	def isRefreshed(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "refreshed" event until the end of the timeout
@@ -3714,7 +3713,7 @@ class Selenium(TestAdapterLib.Adapter):
 		TestAdapterLib.check_timeout(caller=TestAdapterLib.caller(), timeout=timeout)
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.REFRESH, commandId=commandId)
-	@doc_public
+	
 	def isGoBack(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "go back" event until the end of the timeout
@@ -3731,7 +3730,7 @@ class Selenium(TestAdapterLib.Adapter):
 		TestAdapterLib.check_timeout(caller=TestAdapterLib.caller(), timeout=timeout)
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GO_BACK, commandId=commandId)
-	@doc_public
+	
 	def isGoForward(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "go forward" event until the end of the timeout
@@ -3748,7 +3747,7 @@ class Selenium(TestAdapterLib.Adapter):
 		TestAdapterLib.check_timeout(caller=TestAdapterLib.caller(), timeout=timeout)
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GO_FORWARD, commandId=commandId)
-	@doc_public
+	
 	def hasWindowHandle(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "window handle" event until the end of the timeout
@@ -3767,7 +3766,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GET_CURRENT_WINDOW_HANDLE, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def hasWindowHandles(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "window handles" event until the end of the timeout
@@ -3786,7 +3785,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GET_WINDOW_HANDLES, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def hasUrl(self, timeout=20.0, commandId=None, expectedText=None):
 		"""
 		Waits to receive "url event" until the end of the timeout
@@ -3811,7 +3810,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GET_CURRENT_URL, 
 																						commandId=commandId, expectedValue=valueLayer)
 																						
-	@doc_public
+	
 	def hasSource(self, timeout=20.0, commandId=None, expectedText=None):
 		"""
 		Waits to receive "code source" event until the end of the timeout
@@ -3836,7 +3835,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GET_PAGE_SOURCE, 
 																						commandId=commandId, expectedValue=valueLayer)
 																						
-	@doc_public
+	
 	def hasWindowTitle(self, timeout=20.0, commandId=None, expectedText=None):
 		"""
 		Waits to receive "window title" event until the end of the timeout
@@ -3861,7 +3860,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GET_TITLE, 
 																						commandId=commandId, expectedValue=valueLayer)
 																						
-	@doc_public
+	
 	def hasScreenshot(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "screenshot" event until the end of the timeout
@@ -3880,7 +3879,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.SCREENSHOT, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def hasElement(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "element" event until the end of the timeout
@@ -3899,7 +3898,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.FIND_ELEMENT, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def hasElements(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "elements" event until the end of the timeout
@@ -3917,7 +3916,7 @@ class Selenium(TestAdapterLib.Adapter):
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.FIND_ELEMENTS, 
 																						commandId=commandId)
-	@doc_public
+	
 	def hasChildElement(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "element" event until the end of the timeout
@@ -3936,7 +3935,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.FIND_CHILD_ELEMENT, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def hasChildElements(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "elements" event until the end of the timeout
@@ -3954,7 +3953,7 @@ class Selenium(TestAdapterLib.Adapter):
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.FIND_CHILD_ELEMENTS, 
 																						commandId=commandId)
-	@doc_public
+	
 	def hasTextElement(self, timeout=20.0, commandId=None, expectedText=None):
 		"""
 		Waits to receive "text element" event until the end of the timeout
@@ -3979,7 +3978,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GET_ELEMENT_TEXT, 
 																						commandId=commandId, expectedValue=valueLayer)
 																						
-	@doc_public
+	
 	def hasAttributeElement(self, timeout=20.0, commandId=None, expectedText=None):
 		"""
 		Waits to receive "text attribute" element event until the end of the timeout
@@ -4004,7 +4003,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GET_ELEMENT_ATTRIBUTE,  
 																						commandId=commandId, expectedValue=valueLayer)
 																						
-	@doc_public
+	
 	def isElementClicked(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "element clicked" event until the end of the timeout
@@ -4023,7 +4022,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.CLICK_ELEMENT, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isElementSubmitted(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "element submitted" event until the end of the timeout
@@ -4042,7 +4041,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.SUBMIT_ELEMENT, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isElementCleared(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "element cleared" event until the end of the timeout
@@ -4061,7 +4060,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.CLEAR_ELEMENT, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isElementSelected(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "element selected" event until the end of the timeout
@@ -4080,7 +4079,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.IS_ELEMENT_SELECTED, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isElementEnabled(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "element enabled" event until the end of the timeout
@@ -4099,7 +4098,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.IS_ELEMENT_ENABLED, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isElementDisplayed(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "element displayed" event until the end of the timeout
@@ -4118,7 +4117,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.IS_ELEMENT_DISPLAYED, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isElementSize(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "element size" event until the end of the timeout
@@ -4137,7 +4136,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GET_ELEMENT_SIZE, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isElementLocation(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "element location" event until the end of the timeout
@@ -4156,7 +4155,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GET_ELEMENT_LOCATION, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def hasTextEntered(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "text entered" event until the end of the timeout
@@ -4175,7 +4174,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.SEND_KEYS_TO_ELEMENT, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def hasMouseMoved(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "mouse moved" event until the end of the timeout
@@ -4194,7 +4193,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.MOVE_TO, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isClicked(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "clicked event" until the end of the timeout
@@ -4213,7 +4212,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.CLICK, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isDoubleClicked(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "double clicked" event until the end of the timeout
@@ -4232,7 +4231,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.DOUBLE_CLICK, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isClickedDown(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "clicked down" event until the end of the timeout
@@ -4251,7 +4250,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.MOUSE_DOWN, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isClickedUp(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "clicked up" event until the end of the timeout
@@ -4270,7 +4269,7 @@ class Selenium(TestAdapterLib.Adapter):
 		return self.isActionAccepted(timeout=timeout, commandName=Command.MOUSE_UP, 
 																						commandId=commandId)
 																						
-	@doc_public
+	
 	def isWait(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "wait" event until the end of the timeout
@@ -4288,7 +4287,7 @@ class Selenium(TestAdapterLib.Adapter):
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.IMPLICIT_WAIT, 
 																						commandId=commandId)
-	@doc_public
+	
 	def isAlertDismissed(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "dismiss alert" event until the end of the timeout
@@ -4306,7 +4305,7 @@ class Selenium(TestAdapterLib.Adapter):
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.DISMISS_ALERT, 
 																						commandId=commandId)
-	@doc_public
+	
 	def isAlertAccepted(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "accept alert" event until the end of the timeout
@@ -4324,7 +4323,7 @@ class Selenium(TestAdapterLib.Adapter):
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.ACCEPT_ALERT, 
 																						commandId=commandId)
-	@doc_public
+	
 	def hasTextAlert(self, timeout=20.0, commandId=None, expectedText=None):
 		"""
 		Waits to receive "text alert" event until the end of the timeout
@@ -4345,7 +4344,7 @@ class Selenium(TestAdapterLib.Adapter):
 			valueLayer.addKey(name="value", data=expectedText)
 		return self.isActionAccepted(timeout=timeout, commandName=Command.GET_ALERT_TEXT, 
 																						commandId=commandId, expectedValue=valueLayer)
-	@doc_public
+	
 	def isAlertAuthenticated(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "authenticated" event until the end of the timeout
@@ -4363,7 +4362,7 @@ class Selenium(TestAdapterLib.Adapter):
 		
 		return self.isActionAccepted(timeout=timeout, commandName=Command.SET_ALERT_CREDENTIALS, 
 																						commandId=commandId)
-	@doc_public
+	
 	def isScriptExecuted(self, timeout=20.0, commandId=None):
 		"""
 		Waits to receive "script executed" event until the end of the timeout

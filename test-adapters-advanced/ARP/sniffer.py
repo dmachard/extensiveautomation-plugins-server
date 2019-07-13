@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-#import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -44,7 +42,7 @@ __NAME__="""ARP"""
 AGENT_TYPE_EXPECTED='socket'
 
 class Sniffer(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, debug=False, name=None, senderIp=None, logEventSent=True, logEventReceived=True,
 									hideOperations=False, cacheEnabled=True, agentSupport=False, agent=None, shared=False
 							):
@@ -128,7 +126,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		"""
 		self.debug("config: %s" % self.cfg)
 
-	@doc_public
+	
 	def getCache(self):
 		"""
 		Get the content of the cache
@@ -140,7 +138,7 @@ class Sniffer(TestAdapterLib.Adapter):
 			self.warning( 'cache mechanism is disabled' )
 		return self.cache
 	
-	@doc_public
+	
 	def searchCache(self, ip):
 		"""
 		Search the mac address associated to the ip in the cache
@@ -158,7 +156,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		else:
 			return None
 			
-	@doc_public
+	
 	def setSender(self, ip):
 		"""
 		Set the sender IP
@@ -169,7 +167,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		self.senderIp = ip
 		
 	
-	@doc_public
+	
 	def startListening(self, eth, srcMac=None):
 		"""
 		Start listening 
@@ -181,14 +179,14 @@ class Sniffer(TestAdapterLib.Adapter):
 		@type srcMac: string/none
 		"""
 		return self.ether.startListening(eth=eth, srcMac=srcMac)
-	@doc_public
+	
 	def stopListening(self):
 		"""
 		Stop listening
 		"""
 		return self.ether.stopListening()
 	
-	@doc_public
+	
 	def isSniffing(self, timeout=1.0):
 		"""
 		Wait sniffing event until the end of the timeout
@@ -203,7 +201,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		
 		return self.ether.isSniffing(timeout=timeout)
 
-	@doc_public
+	
 	def isStopped(self, timeout=1.0):
 		"""
 		Wait stopped event until the end of the timeout
@@ -257,7 +255,7 @@ class Sniffer(TestAdapterLib.Adapter):
 					self.cache[ip] = mac
 				
 			
-	@doc_public
+	
 	def hasReceivedPacket(self, timeout=1.0, op=None, dstEthernet=None, srcEthernet=None, targetIp=None, senderIp=None,
 													targetMac=None, senderMac=None):
 		"""
@@ -309,7 +307,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		evt = self.received( expected = expected, timeout = timeout )
 		return evt
 		
-	@doc_public
+	
 	def sendPacket(self, hardwareType=codec.HARDWARE_TYPE, protocolType=AdapterEthernet.IPv4, 
 											op=codec.OP_REQUEST, hardwareLen=codec.HARDWARE_LEN, protocolLen=codec.PROTOCOL_LEN,
 											senderIp='0.0.0.0', senderMac='00:00:00:00:00:00',
@@ -372,7 +370,7 @@ class Sniffer(TestAdapterLib.Adapter):
 		except Exception as e:
 			raise Exception('Unable to send arp packet: %s' % str(e))
 			
-	@doc_public
+	
 	def whoHas(self, targetIp, timeout=1.0, ethernetMac=False, senderIp=None):
 		"""
 		Who has the target IP passed as argument.
@@ -427,7 +425,7 @@ class Sniffer(TestAdapterLib.Adapter):
 			
 		return rsp
 		
-	@doc_public
+	
 	def gratuitousArp(self, opRequest=False):
 		"""
 		A Gratuitous ARP could be a request or a reply. 

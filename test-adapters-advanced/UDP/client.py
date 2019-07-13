@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -50,7 +48,7 @@ AGENT_INITIALIZED = "AGENT_INITIALIZED"
 AGENT_TYPE_EXPECTED='socket'
 
 class Client(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__ (self, parent, bindIp = '', bindPort=0, name=None,
 								destinationIp='', destinationPort=0, destinationHost='',
 								socketFamily=AdapterIP.IPv4, inactivityTimeout=0.0,
@@ -185,7 +183,7 @@ class Client(TestAdapterLib.Adapter):
 		self.sourceIp = srcIp
 		self.sourcePort = srcPort		
 		
-	@doc_public
+	
 	def setSource(self, bindIp, bindPort):
 		"""
 		Set the source ip/port
@@ -199,7 +197,7 @@ class Client(TestAdapterLib.Adapter):
 		self.cfg['bind-ip'] = bindIp
 		self.cfg['bind-port'] = bindPort
 		
-	@doc_public
+	
 	def setDestination(self, destinationIp, destinationPort, destinationHost=''):
 		"""
 		Set the destination ip/port or host/port
@@ -252,7 +250,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl.addLayer(layer=layer_udp)
 		return tpl
 		
-	@doc_public
+	
 	def stopListening(self):
 		"""
 		Stop listening
@@ -404,7 +402,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl.addLayer(layer= layer)
 		evt = self.received( expected = tpl, timeout = timeout )
 		return evt
-	@doc_public
+	
 	def startListening(self):
 		"""
 		Start listening
@@ -472,13 +470,13 @@ class Client(TestAdapterLib.Adapter):
 				self.stopListening()
 			self.__mutex__.release()
 
-	@doc_public
+	
 	def startRead(self):
 		"""
 		Start read data from the socket
 		"""
 		self.isreading = True
-	@doc_public
+	
 	def stopRead(self):
 		"""
 		Stop read data on the socket
@@ -531,7 +529,7 @@ class Client(TestAdapterLib.Adapter):
 		else:
 			return  data + self.cfg['sep-out']
 			
-	@doc_public
+	
 	def sendData(self, data, to=None):
 		"""
 		Send data over the udp protocol
@@ -584,7 +582,7 @@ class Client(TestAdapterLib.Adapter):
 			self.error('Unable to send data: %s' % str(e))
 			return False
 		
-	@doc_public
+	
 	def onInactivityTimeout(self):
 		"""
 		"""
@@ -728,7 +726,7 @@ class Client(TestAdapterLib.Adapter):
 		tpl.addLayer(layer=layer_udp)
 		return tpl
 		
-	@doc_public
+	
 	def isListening(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -770,7 +768,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def isListeningFailed(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -812,7 +810,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 		
-	@doc_public
+	
 	def isStopped(self, timeout=1.0, versionIp=None, sourceIp=None, destinationIp=None, 
 											sourcePort=None, destinationPort=None):
 		"""
@@ -854,7 +852,7 @@ class Client(TestAdapterLib.Adapter):
 		evt = self.received( expected=expected, timeout=timeout )
 		return evt
 
-	@doc_public
+	
 	def hasReceivedData(self, timeout=1.0, data=None, versionIp=None, sourceIp=None, destinationIp=None, 
 													sourcePort=None, destinationPort=None):
 		"""

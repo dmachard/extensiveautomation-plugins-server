@@ -25,8 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
-from TestExecutorLib.TestExecutorLib import doc_public
 
 import sys
 
@@ -43,7 +41,7 @@ __NAME__="""Ping"""
 AGENT_TYPE_EXPECTED='socket'
 
 class Ping(TestAdapterLib.Adapter):
-	@doc_public
+	
 	def __init__(self, parent, debug=False, name=None, ipVersion=AdapterIP.IPv4, version=sniffer.ICMPv4, shared=False, 
 											agentSupport=False, agent=None ):
 		"""
@@ -102,7 +100,7 @@ class Ping(TestAdapterLib.Adapter):
 		"""
 		self.icmp.stopListening()
 		
-	@doc_public
+	
 	def ip(self, interface, source, destination, timeout=1.0, destMac=None):
 		"""
 		Ping the destination ip passed as argument and wait a response.
