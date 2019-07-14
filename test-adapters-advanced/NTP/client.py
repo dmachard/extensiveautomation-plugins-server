@@ -2,7 +2,7 @@
 # -*- coding=utf-8 -*-
 
 # -------------------------------------------------------------------
-# Copyright (c) 2010-2018 Denis Machard
+# Copyright (c) 2010-2019 Denis Machard
 # This file is part of the extensive automation project
 #
 # This library is free software; you can redistribute it and/or
@@ -40,7 +40,7 @@ except ImportError: # python3 support
 
 import time
 
-from Var.SutAdapters import IPLITE
+from Var.SutAdapters import IP as AdapterIP
 from Var.SutAdapters import UDP as AdapterUDP
 
 __NAME__="""NTP"""

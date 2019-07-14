@@ -49,7 +49,7 @@ MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.b64 = SutLibraries.Security.BASE64(parent=self, debug=input('DEBUG'))
+		self.b64 = SutAdapters.Security.BASE64(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -70,7 +70,7 @@ class AUTHENTICATION_DIGEST_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)	
 	def prepare(self):
-		self.auth = SutLibraries.Security.Digest(parent=self, debug=get('DEBUG'))
+		self.auth = SutAdapters.Security.Digest(parent=self, debug=get('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -105,7 +105,7 @@ class AUTHENTICATION_BASIC_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)
 	def prepare(self):
-		self.auth = SutLibraries.Security.Basic(parent=self, debug=get('DEBUG'))
+		self.auth = SutAdapters.Security.Basic(parent=self, debug=get('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -130,7 +130,7 @@ class AUTHENTICATION_OAUTH_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)
 	def prepare(self):
-		self.auth = SutLibraries.Security.Oauth(parent=self, debug=get('DEBUG'))
+		self.auth = SutAdapters.Security.Oauth(parent=self, debug=get('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -174,7 +174,7 @@ class CERT_01(TestCase):
 		# steps description
 		self.step1 = self.addStep(expected="result expected", description="step description", summary="step sample", enabled=True)
 	def prepare(self):
-		self.LIB_CERT = SutLibraries.Security.Certificate(parent=self, name=None, debug=False, shared=False)
+		self.LIB_CERT = SutAdapters.Security.Certificate(parent=self, name=None, debug=False, shared=False)
 		
 	def definition(self):
 		# starting initial step
@@ -203,7 +203,7 @@ class JWT_01(TestCase):
 		# steps description
 		self.step1 = self.addStep(expected="result expected", description="step description", summary="step sample", enabled=True)
 	def prepare(self):
-		self.LIB_JWT= SutLibraries.Security.JWT(parent=self, name=None, debug=False, shared=False)
+		self.LIB_JWT= SutAdapters.Security.JWT(parent=self, name=None, debug=False, shared=False)
 
 	def definition(self):
 		# starting initial step

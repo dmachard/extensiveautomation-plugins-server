@@ -11,7 +11,7 @@ class UNITS_BYTES_01(TestCase):
 		self.step1 = self.addStep(expected="result expected", description="step description", summary="step sample")
 	def prepare(self):
 		# adapters and libraries
-		self.LIB_UNITS = SutLibraries.Units.Bytes(parent=self, debug=False)
+		self.LIB_UNITS = SutAdapters.Units.Bytes(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):

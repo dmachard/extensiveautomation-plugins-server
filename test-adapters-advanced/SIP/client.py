@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # ------------------------------------------------------------------
-# Copyright (c) 2010-2018 Denis Machard
+# Copyright (c) 2010-2019 Denis Machard
 # This file is part of the extensive automation project
 #
 # This library is free software; you can redistribute it and/or
@@ -38,8 +38,7 @@ from Var.SutAdapters import IP as AdapterIP
 from Var.SutAdapters import UDP as AdapterUDP
 from Var.SutAdapters import TCP as AdapterTCP
 from Var.SutAdapters import SSL as AdapterSSL
-
-from Var.SutLibraries import Media as LibrarySDP
+from Var.SutAdapters import Media as LibrarySDP
 
 try:
 	import codec

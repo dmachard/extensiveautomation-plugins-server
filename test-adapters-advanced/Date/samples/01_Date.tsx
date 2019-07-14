@@ -17,7 +17,7 @@ class DATE_01(TestCase):
 		if self.step1.isEnabled():
 			self.step1.start()
 			
-			self.LIB_TODAY = SutLibraries.Date.Today(parent=self, name=None, debug=False, shared=False)
+			self.LIB_TODAY = SutAdapters.Date.Today(parent=self, name=None, debug=False, shared=False)
 			
 			day = self.LIB_TODAY.getDayNumber()
 			self.warning( "day=%s" % day)

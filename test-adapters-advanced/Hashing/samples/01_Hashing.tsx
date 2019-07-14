@@ -6,7 +6,7 @@ class CRC32_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.crc32 = SutLibraries.Hashing.CRC32(parent=self, debug=False)
+		self.crc32 = SutAdapters.Hashing.CRC32(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -20,7 +20,7 @@ class CRC32_02(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.crc32 = SutLibraries.Hashing.CRC32(parent=self, debug=False)
+		self.crc32 = SutAdapters.Hashing.CRC32(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -34,7 +34,7 @@ class CHECKSUM_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.checksum = SutLibraries.Hashing.Checksum(parent=self, debug=False)
+		self.checksum = SutAdapters.Hashing.Checksum(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -48,7 +48,7 @@ class CHECKSUM_02(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.checksum = SutLibraries.Hashing.Checksum(parent=self, debug=False)
+		self.checksum = SutAdapters.Hashing.Checksum(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -62,7 +62,7 @@ class MD5_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.md5 = SutLibraries.Hashing.MD5(parent=self, debug=False)
+		self.md5 = SutAdapters.Hashing.MD5(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -75,7 +75,7 @@ class MD5_02(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.md5 = SutLibraries.Hashing.MD5(parent=self, debug=False)
+		self.md5 = SutAdapters.Hashing.MD5(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -88,7 +88,7 @@ class SHA1_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.sha1 = SutLibraries.Hashing.SHA1(parent=self, debug=False)
+		self.sha1 = SutAdapters.Hashing.SHA1(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -101,7 +101,7 @@ class SHA1_02(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.sha1 = SutLibraries.Hashing.SHA1(parent=self, debug=False)
+		self.sha1 = SutAdapters.Hashing.SHA1(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -114,7 +114,7 @@ class SHA256_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.sha256 = SutLibraries.Hashing.SHA256(parent=self, debug=False)
+		self.sha256 = SutAdapters.Hashing.SHA256(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -127,7 +127,7 @@ class SHA256_02(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.sha256 = SutLibraries.Hashing.SHA256(parent=self, debug=False)
+		self.sha256 = SutAdapters.Hashing.SHA256(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -140,7 +140,7 @@ class SHA512_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.sha512 = SutLibraries.Hashing.SHA512(parent=self, debug=False)
+		self.sha512 = SutAdapters.Hashing.SHA512(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -153,7 +153,7 @@ class SHA512_02(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.sha512 = SutLibraries.Hashing.SHA512(parent=self, debug=False)
+		self.sha512 = SutAdapters.Hashing.SHA512(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -167,7 +167,7 @@ class HMAC_MD5_01(TestCase):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
 		key = '\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b'
-		self.hmac = SutLibraries.Hashing.HMAC_MD5(parent=self, key=key, debug=False)
+		self.hmac = SutAdapters.Hashing.HMAC_MD5(parent=self, key=key, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -181,7 +181,7 @@ class HMAC_MD5_02(TestCase):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
 		key = '\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b'
-		self.hmac = SutLibraries.Hashing.HMAC_MD5(parent=self, key=key, debug=False)
+		self.hmac = SutAdapters.Hashing.HMAC_MD5(parent=self, key=key, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -195,7 +195,7 @@ class HMAC_SHA1_01(TestCase):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
 		key = "Jefe"
-		self.hmac = SutLibraries.Hashing.HMAC_SHA1(parent=self, key=key, debug=False)
+		self.hmac = SutAdapters.Hashing.HMAC_SHA1(parent=self, key=key, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -209,7 +209,7 @@ class HMAC_SHA1_02(TestCase):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
 		key = "Jefe"
-		self.hmac = SutLibraries.Hashing.HMAC_SHA1(parent=self, key=key, debug=False)
+		self.hmac = SutAdapters.Hashing.HMAC_SHA1(parent=self, key=key, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -223,7 +223,7 @@ class HMAC_SHA256_01(TestCase):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
 		key = "Jefe"
-		self.hmac = SutLibraries.Hashing.HMAC_SHA256(parent=self, key=key, debug=False)
+		self.hmac = SutAdapters.Hashing.HMAC_SHA256(parent=self, key=key, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -237,7 +237,7 @@ class HMAC_SHA256_02(TestCase):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
 		key = "Jefe"
-		self.hmac = SutLibraries.Hashing.HMAC_SHA256(parent=self, key=key, debug=False)
+		self.hmac = SutAdapters.Hashing.HMAC_SHA256(parent=self, key=key, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):

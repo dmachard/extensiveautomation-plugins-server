@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # ------------------------------------------------------------------
-# Copyright (c) 2010-2018 Denis Machard
+# Copyright (c) 2010-2019 Denis Machard
 # This file is part of the extensive automation project
 #
 # This library is free software; you can redistribute it and/or
@@ -53,7 +53,7 @@ def resolved_xpath(xpath, namespace):
 	return result
 
 class XML(TestLibraryLib.Library):
-	@doc_public
+	
 	def __init__(self, parent, debug=False, coding='UTF-8', name=None, shared=False):
 		"""
 		XML coder-decoder to object
@@ -78,7 +78,7 @@ class XML(TestLibraryLib.Library):
 		self.codecD2X = Dict2Xml.Dict2Xml( coding = coding )
 		self.rootXML = None
 		self.ns = {}
-	@doc_public
+	
 	def encode (self, xml_obj):
 		"""
 		Encode a XML object  to XML raw
@@ -95,7 +95,7 @@ class XML(TestLibraryLib.Library):
 		except Exception as e:
 			self.error('failed to encode object to xml: %s' % str(e) )
 		return ret			
-	@doc_public
+	
 	def decode (self, xml_raw):
 		"""
 		Decode a XML raw to a XML object
@@ -112,7 +112,7 @@ class XML(TestLibraryLib.Library):
 		except Exception as e:
 			self.error('failed to decode xml to object: %s' % str(e) )
 		return ret	
-	@doc_public
+	
 	def validator(self, doc=None, xsd=None, docPath=None, xsdPath=None):
 		"""
 		XML Schema validator with content
@@ -167,7 +167,7 @@ class XML(TestLibraryLib.Library):
 		except Exception as e:
 			self.error("generic error on validator: %s" % e)
 		return valid
-	@doc_public
+	
 	def read(self, content, ns={}):
 		"""
 		Read XML content
@@ -183,7 +183,7 @@ class XML(TestLibraryLib.Library):
 			self.ns = ns
 		except Exception as e:
 			self.error("unable to read xml content: %s" % e)
-	@doc_public
+	
 	def getElement(self, xpath, parentElement=None):
 		"""
 		Using XPath to get element
@@ -206,7 +206,7 @@ class XML(TestLibraryLib.Library):
 			if parentElement is not None:
 				return parentElement.find(resolved_xpath(xpath, self.ns))
 			return self.rootXML.find(resolved_xpath(xpath, self.ns))
-	@doc_public
+	
 	def copyElement(self, element):
 		"""
 		Copy XML element
@@ -218,7 +218,7 @@ class XML(TestLibraryLib.Library):
 		@rtype: object
 		"""
 		return copy.deepcopy(element)
-	@doc_public	
+		
 	def getElements(self, xpath, parentElement=None):
 		"""
 		Using XPath to get all elements
@@ -241,7 +241,7 @@ class XML(TestLibraryLib.Library):
 			if parentElement is not None:
 				return parentElement.findall(resolved_xpath(xpath, self.ns))
 			return self.rootXML.findall(resolved_xpath(xpath, self.ns))
-	@doc_public
+	
 	def addElement(self, xpath, element, parentElement=None):
 		"""
 		Add XML element according to the xpath
@@ -267,7 +267,7 @@ class XML(TestLibraryLib.Library):
 			else:
 				parent = self.rootXML.find(resolved_xpath(xpath, self.ns))
 		parent.append(element)
-	@doc_public
+	
 	def delElement(self, xpath, element, parentElement=None):
 		"""
 		Delete XML element according to the xpath
@@ -293,7 +293,7 @@ class XML(TestLibraryLib.Library):
 			else:
 				parent = self.rootXML.find(resolved_xpath(xpath, self.ns))
 		parent.remove(element)
-	@doc_public
+	
 	def getText(self, xpath, element=None):
 		"""
 		Using XPath to get text
@@ -321,7 +321,7 @@ class XML(TestLibraryLib.Library):
 				el = self.rootXML.find(resolved_xpath(xpath.strip(), self.ns))
 		if el is not None: ret = el.text
 		return ret
-	@doc_public
+	
 	def setText(self, xpath, text, element=None):
 		"""
 		Using XPath to set text
@@ -354,7 +354,7 @@ class XML(TestLibraryLib.Library):
 			el.text = "%s" % text
 			ret = True
 		return ret
-	@doc_public
+	
 	def toString(self, encoding='utf-8', pretty=False):
 		"""
 		Return content to string
@@ -367,7 +367,7 @@ class XML(TestLibraryLib.Library):
 		"""
 		if self.rootXML is None: raise Exception('no xml content provided')
 		return etree.tostring(self.rootXML, pretty_print=pretty, encoding=encoding)
-	@doc_public
+	
 	def getValue(self, xpath, xml, ns={}):
 		"""
 		Get text value according to the xpath provided
@@ -397,7 +397,7 @@ class XML(TestLibraryLib.Library):
 		except Exception as e:
 			self.error('library - unable to get xml value: %s' % str(e) )
 		return None
-	@doc_public
+	
 	def getValues(self, xpath, xml, ns={}):
 		"""
 		Get all text values according to the xpath provided
@@ -428,7 +428,7 @@ class XML(TestLibraryLib.Library):
 		except Exception as e:
 			self.error('library - unable to get all xml values: %s' % str(e) )
 		return []
-	@doc_public
+	
 	def toHuman(self, content):
 		"""
 		Return XML data to human-readable form
@@ -444,7 +444,7 @@ class XML(TestLibraryLib.Library):
 			return etree.tostring(x, pretty_print = True)
 		except Exception as e:
 			self.error("unable to read xml: %s" % e)
-	@doc_public
+	
 	def isValid(self, xml):
 		"""
 		Xml is valid ?

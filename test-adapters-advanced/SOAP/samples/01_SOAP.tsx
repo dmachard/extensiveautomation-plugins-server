@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <file>
-<properties><descriptions><description><value>denis</value><key>author</key></description><description><value>02/07/2014 16:01:57</value><key>creation date</key></description><description><value>Just a basic sample.</value><key>summary</key></description><description><value>None.</value><key>prerequisites</key></description><description><value><comments /></value><key>comments</key></description><description><value>myplugins</value><key>libraries</key></description><description><value>myplugins</value><key>adapters</key></description><description><value>Writing</value><key>state</key></description><description><value>REQ_01</value><key>requirement</key></description></descriptions><inputs-parameters><parameter><description /><type>self-ip</type><name>BIND_IP</name><value>0.0.0.0 (all)</value><scope>local</scope></parameter><parameter><description /><type>bool</type><name>DEBUG</name><value>False</value><scope>local</scope></parameter><parameter><description /><type>bool</type><name>SUPPORT_AGENT</name><value>False</value><scope>local</scope></parameter><parameter><description /><type>float</type><name>TIMEOUT</name><value>5.0</value><scope>local</scope></parameter></inputs-parameters><agents><agent><description /><type /><name>AGENT_SOCKET</name><value>agent-win-sock01</value></agent></agents><probes><probe><active>False</active><args /><name>probe01</name><type>default</type></probe></probes><outputs-parameters><parameter><description /><type>float</type><name>TIMEOUT</name><value>1.0</value><scope>local</scope></parameter></outputs-parameters></properties>
+<properties><descriptions><description><value>denis</value><key>author</key></description><description><value>02/07/2014 16:01:57</value><key>creation date</key></description><description><value>Just a basic sample.</value><key>summary</key></description><description><value>None.</value><key>prerequisites</key></description><description><value><comments /></value><key>comments</key></description><description><value>myplugins</value><key>libraries</key></description><description><value>myplugins</value><key>adapters</key></description><description><value>Writing</value><key>state</key></description><description><value>REQ_01</value><key>requirement</key></description></descriptions><inputs-parameters><parameter><name>AGENT_SOCKET</name><type>json</type><description /><value>{"name": "agent.socket", "type": "socket"}</value><color /><scope>local</scope></parameter><parameter><description /><type>self-ip</type><name>BIND_IP</name><value>0.0.0.0 (all)</value><scope>local</scope></parameter><parameter><description /><type>bool</type><name>DEBUG</name><value>False</value><scope>local</scope></parameter><parameter><description /><type>bool</type><name>SUPPORT_AGENT</name><value>False</value><scope>local</scope></parameter><parameter><description /><type>float</type><name>TIMEOUT</name><value>5.0</value><scope>local</scope></parameter></inputs-parameters><agents><agent><description /><type /><name>AGENT_SOCKET</name><value>agent-win-sock01</value></agent></agents><probes><probe><active>False</active><args /><name>probe01</name><type>default</type></probe></probes><outputs-parameters><parameter><description /><type>float</type><name>TIMEOUT</name><value>1.0</value><scope>local</scope></parameter></outputs-parameters></properties>
 <testdefinition><![CDATA[
 class SOAP_WEATHER_01(TestCase):
 	## >> called on test initialization
@@ -15,7 +15,7 @@ class SOAP_WEATHER_01(TestCase):
 	def prepare(self):
 			
 		self.ADP_SOAP = SutAdapters.GlobalWeather.GlobalWeatherSoap(parent=self, name=None, debug=input('DEBUG'), shared=False, 
-				agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'), sslSupport=False, bindIp='', bindPort=0, 
+				agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'), sslSupport=False, bindIp='', bindPort=0, 
 				destinationIp='www.webservicex.com', destinationPort=80, xmlns0='http://www.webserviceX.NET',
 				xmlns1='http://schemas.xmlsoap.org/soap/envelope/', 
 				xmlns2='http://www.w3.org/2003/05/soap-envelope', 
@@ -75,7 +75,7 @@ class SOAP_WEATHER_02(TestCase):
 	def prepare(self):
 			
 		self.ADP_SOAP = SutAdapters.GlobalWeather.GlobalWeatherSoap(parent=self, name=None, debug=input('DEBUG'), shared=False, 
-				agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'), sslSupport=False, bindIp='', bindPort=0, 
+				agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'), sslSupport=False, bindIp='', bindPort=0, 
 				destinationIp='www.webservicex.com', destinationPort=80, xmlns0='http://www.webserviceX.NET',
 				xmlns1='http://schemas.xmlsoap.org/soap/envelope/', 
 				xmlns2='http://www.w3.org/2003/05/soap-envelope', 
@@ -126,7 +126,7 @@ class SOAP_WEATHER_INVALID_01(TestCase):
 	def prepare(self):
 			
 		self.ADP_SOAP = SutAdapters.GlobalWeather.GlobalWeatherSoap(parent=self, name=None, debug=input('DEBUG'), shared=False, 
-				agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'), sslSupport=False, bindIp='', bindPort=0, 
+				agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'), sslSupport=False, bindIp='', bindPort=0, 
 				destinationIp='www.webservicex.com', destinationPort=80, xmlns0='http://www.webserviceX.NET',
 				xmlns1='http://schemas.xmlsoap.org/soap/envelope/', 
 				xmlns2='http://www.w3.org/2003/05/soap-envelope', 

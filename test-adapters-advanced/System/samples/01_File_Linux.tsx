@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <file>
-<properties><descriptions><description><value>admin</value><key>author</key></description><description><value>08/05/2014 11:28:20</value><key>creation date</key></description><description><value>Just a basic sample.</value><key>summary</key></description><description><value>None.</value><key>prerequisites</key></description><description><value><comments /></value><key>comments</key></description><description><value>myplugins</value><key>libraries</key></description><description><value>myplugins</value><key>adapters</key></description><description><value>Writing</value><key>state</key></description><description><value>REQ_01</value><key>requirement</key></description></descriptions><inputs-parameters><parameter><description /><type>bool</type><name>DEBUG</name><value>False</value><scope>local</scope></parameter><parameter><description /><type>float</type><name>TIMEOUT</name><value>20</value><scope>local</scope></parameter></inputs-parameters><agents><agent><description /><type>file</type><name>AGENT_FILE_LINUX</name><value>agent-linux-file01</value></agent></agents><probes><probe><active>False</active><args /><name>probe01</name><type>default</type></probe></probes><outputs-parameters><parameter><description /><type>float</type><name>TIMEOUT</name><value>1.0</value><scope>local</scope></parameter></outputs-parameters></properties>
+<properties><descriptions><description><value>admin</value><key>author</key></description><description><value>08/05/2014 11:28:20</value><key>creation date</key></description><description><value>Just a basic sample.</value><key>summary</key></description><description><value>None.</value><key>prerequisites</key></description><description><value><comments /></value><key>comments</key></description><description><value>myplugins</value><key>libraries</key></description><description><value>myplugins</value><key>adapters</key></description><description><value>Writing</value><key>state</key></description><description><value>REQ_01</value><key>requirement</key></description></descriptions><inputs-parameters><parameter><name>AGENT_FILE_LINUX</name><type>json</type><description /><value>{"name": "agent.linux.file", "type": "file"}</value><color /><scope>local</scope></parameter><parameter><description /><type>bool</type><name>DEBUG</name><value>False</value><scope>local</scope></parameter><parameter><description /><type>float</type><name>TIMEOUT</name><value>20</value><scope>local</scope></parameter></inputs-parameters><agents><agent><description /><type>file</type><name>AGENT_FILE_LINUX</name><value>agent-linux-file01</value></agent></agents><probes><probe><active>False</active><args /><name>probe01</name><type>default</type></probe></probes><outputs-parameters><parameter><description /><type>float</type><name>TIMEOUT</name><value>1.0</value><scope>local</scope></parameter></outputs-parameters></properties>
 <testdefinition><![CDATA[# tests for linux
 class TESTCASE_GETFILE_LINUX_01(TestCase):
 	## >> called on test initialization
@@ -14,7 +14,7 @@ class TESTCASE_GETFILE_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -47,7 +47,7 @@ class TESTCASE_ISFILE_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -79,7 +79,7 @@ class TESTCASE_ISDIRECTORY_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -111,7 +111,7 @@ class TESTCASE_ISLINK_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -142,7 +142,7 @@ class TESTCASE_CHECKSUM_MD5_FILE_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -173,7 +173,7 @@ class TESTCASE_WAIT_FILE_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -204,7 +204,7 @@ class TESTCASE_WAIT_DIRECTORY_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -236,7 +236,7 @@ class TESTCASE_EXISTS_FILE_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -268,7 +268,7 @@ class TESTCASE_EXISTS_DIRECTORY_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -299,7 +299,7 @@ class TESTCASE_DELETE_FILE_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -330,7 +330,7 @@ class TESTCASE_DELETE_DIRECTORY_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -362,7 +362,7 @@ class TESTCASE_SIZE_FILE_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -393,7 +393,7 @@ class TESTCASE_SIZE_DIRECTORY_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -424,7 +424,7 @@ class TESTCASE_COPY_FILE_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -455,7 +455,7 @@ class TESTCASE_COPY_DIRECTORY_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -486,7 +486,7 @@ class TESTCASE_MOVE_DIRECTORY_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -517,7 +517,7 @@ class TESTCASE_MOVE_FILE_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -548,7 +548,7 @@ class TESTCASE_MODIFICATION_DATE_FILE_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -579,7 +579,7 @@ class TESTCASE_LIST_FILES_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):
@@ -610,7 +610,7 @@ class TESTCASE_START_FOLLOW_FILE_LINUX_01(TestCase):
 	## >> called on test preparation, adapters and libraries definitions
 	def prepare(self):
 		# adapters and libraries
-		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=agent('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
+		self.AGT_FILE = SutAdapters.System.File(parent=self, agent=input('AGENT_FILE_LINUX'),  debug=input('DEBUG'), shared=False)
 
 	## >> called on error or to cleanup the test properly
 	def cleanup(self, aborted):

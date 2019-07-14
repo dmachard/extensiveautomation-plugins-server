@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <file>
-<properties><parameters /><probes><probe><active>False</active><args>{'interfaces': [{'interface': 'any', 'filter': ''}]}</args><name>network01</name><type>network</type></probe></probes><agents><agent><value>agent-socket01</value><description /><name>AGENT</name><type /></agent></agents><descriptions><description><value>admin</value><key>author</key></description><description><value>13/06/2012</value><key>creation date</key></description><description><value>Just a basic sample.</value><key>summary</key></description><description><value>None.</value><key>prerequisites</key></description><description><value><comments /></value><key>comments</key></description><description><value>myplugins</value><key>libraries</key></description><description><value>myplugins</value><key>adapters</key></description><description><value>Writing</value><key>state</key></description><description><value>REQ_01</value><key>requirement</key></description></descriptions><outputs-parameters><parameter><value>1.0</value><description /><name>TIMEOUT</name><type>float</type><scope>local</scope></parameter></outputs-parameters><inputs-parameters><parameter><color /><description /><value>dsqdsq</value><name>BAD_PWD</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>date</value><name>CMD_SSH</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>False</value><name>DEBUG</name><type>bool</type><scope>local</scope></parameter><parameter><color /><description /><value>10.0.0.240 (eth0)</value><name>DEST_IP</name><type>self-ip</type><scope>local</scope></parameter><parameter><color /><description /><value>22</value><name>DEST_PORT</name><type>int</type><scope>local</scope></parameter><parameter><color /><description /><value>root</value><name>LOGIN</name><type>str</type><scope>local</scope></parameter><parameter><color /><description>-----BEGIN RSA PRIVATE KEY-----
+<properties><parameters /><probes><probe><active>False</active><args>{'interfaces': [{'interface': 'any', 'filter': ''}]}</args><name>network01</name><type>network</type></probe></probes><agents><agent><value>agent-socket01</value><description /><name>AGENT</name><type /></agent></agents><descriptions><description><value>admin</value><key>author</key></description><description><value>13/06/2012</value><key>creation date</key></description><description><value>Just a basic sample.</value><key>summary</key></description><description><value>None.</value><key>prerequisites</key></description><description><value><comments /></value><key>comments</key></description><description><value>myplugins</value><key>libraries</key></description><description><value>myplugins</value><key>adapters</key></description><description><value>Writing</value><key>state</key></description><description><value>REQ_01</value><key>requirement</key></description></descriptions><outputs-parameters><parameter><value>1.0</value><description /><name>TIMEOUT</name><type>float</type><scope>local</scope></parameter></outputs-parameters><inputs-parameters><parameter><name>AGENT</name><type>json</type><description /><value>{"name": "agent.ssh", "type": "ssh"}</value><color /><scope>local</scope></parameter><parameter><color /><description /><value>dsqdsq</value><name>BAD_PWD</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>date</value><name>CMD_SSH</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>False</value><name>DEBUG</name><type>bool</type><scope>local</scope></parameter><parameter><color /><description /><value>10.0.0.240 (eth0)</value><name>DEST_IP</name><type>self-ip</type><scope>local</scope></parameter><parameter><color /><description /><value>22</value><name>DEST_PORT</name><type>int</type><scope>local</scope></parameter><parameter><color /><description /><value>root</value><name>LOGIN</name><type>str</type><scope>local</scope></parameter><parameter><color /><description>-----BEGIN RSA PRIVATE KEY-----
 xxxx
 -----END RSA PRIVATE KEY-----</description><value>-----BEGIN RSA PRIVATE KEY-----
 xxxx
@@ -154,7 +154,7 @@ class TESTCASE_SSH_CLIENT_01(TestCase):
 																			destIp=input('DEST_IP'), destPort=input('DEST_PORT'), 
 																			destHost='', socketTimeout=10.0, socketFamily=4, name=None, debug=input('DEBUG'),
 																	logEventSent=True, logEventReceived=True, parentName=None, shared=False,
-																	agent=agent('AGENT'), agentSupport=input('SUPPORT_AGENT'))
+																	agent=input('AGENT'), agentSupport=input('SUPPORT_AGENT'))
 																	
 	def cleanup(self, aborted):
 		
@@ -225,7 +225,7 @@ class TESTCASE_SSH_CLIENT_02(TestCase):
 																			destIp=input('DEST_IP'), destPort=input('DEST_PORT'), 
 																			destHost='', socketTimeout=10.0, socketFamily=4, name=None, debug=input('DEBUG'),
 																	logEventSent=True, logEventReceived=True, parentName=None, shared=False,
-																	agent=agent('AGENT'), agentSupport=input('SUPPORT_AGENT'))
+																	agent=input('AGENT'), agentSupport=input('SUPPORT_AGENT'))
 	def cleanup(self, aborted):
 		pass
 
@@ -273,7 +273,7 @@ class TESTCASE_SSH_CLIENT_PRIVATE_KEY_02(TestCase):
 																			destIp=input('DEST_IP'), destPort=input('DEST_PORT'),  privateKey=input('PRIVATE_KEY'),
 																			destHost='', socketTimeout=10.0, socketFamily=4, name=None, debug=input('DEBUG'),
 																	logEventSent=True, logEventReceived=True, parentName=None, shared=False,
-																	agent=agent('AGENT'), agentSupport=input('SUPPORT_AGENT'))
+																	agent=input('AGENT'), agentSupport=input('SUPPORT_AGENT'))
 	def cleanup(self, aborted):
 		
 		self.step4.start()
@@ -319,7 +319,7 @@ class TESTCASE_SSH_NO_VERBOSE_01(TestCase):
 																								socketTimeout=10.0, socketFamily=4, name=None,  verbose=input('VERBOSE'),
 																								tcpKeepAlive=False, tcpKeepAliveInterval=30.0, debug=input('DEBUG'), 
 																								logEventSent=True, logEventReceived=True, parentName=None,
-																								shared=False, sftpSupport=False, agent=agent('AGENT'), agentSupport=input('SUPPORT_AGENT'))
+																								shared=False, sftpSupport=False, agent=input('AGENT'), agentSupport=input('SUPPORT_AGENT'))
 	def cleanup(self, aborted):
 		if aborted:
 			self.step1.setFailed(actual=aborted)

@@ -313,7 +313,7 @@ class Curl(TestAdapterLib.Adapter):
 			curl_cmd += '%{http_code},%{size_download},'
 			curl_cmd += '%{url_effective},%{remote_ip}\n"'
 	
-			curl_cmd+= '	--connect-timeout %s --max-time %s ' % ( timeout_connect, timeout_max)
+			curl_cmd+= '	--connect-timeout %s --max-time %s ' % ( int(timeout_connect), int(timeout_max) )
 			curl_cmd += ' -o "%s"' % outfile
 			
 			if body is not None:

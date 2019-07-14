@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <file>
-<properties><parameters /><probes><probe><active>False</active><args>{'interfaces': [{'interface': 'any', 'filter': ''}]}</args><name>network01</name><type>network</type></probe></probes><agents><agent><value>agent-socket01</value><description /><name>AGENT_SOCKET</name><type /></agent></agents><descriptions><description><value /><key>author</key></description><description><value /><key>creation date</key></description><description><value /><key>summary</key></description><description><value /><key>prerequisites</key></description><description><value><comments /></value><key>comments</key></description><description><value>myplugins</value><key>libraries</key></description><description><value>myplugins</value><key>adapters</key></description><description><value>Writing</value><key>state</key></description><description><value>REQ_01</value><key>requirement</key></description></descriptions><outputs-parameters><parameter><value>1.0</value><description /><name>TIMEOUT</name><type>float</type><scope>local</scope></parameter></outputs-parameters><inputs-parameters><parameter><color /><description /><value>True</value><name>DEBUG</name><type>bool</type><scope>local</scope></parameter><parameter><color /><description /><value>www.google.fr</value><name>DST_HOSTNAME</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>www.google.fr</value><name>DST_IP</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>80</value><name>DST_PORT</name><type>int</type><scope>local</scope></parameter><parameter><color /><description /><value>443</value><name>DST_PORT_SSL</name><type>int</type><scope>local</scope></parameter><parameter><color /><description /><value>localhost</value><name>DST_URL</name><type>text</type><scope>local</scope></parameter><parameter><color /><description /><value>fr.yahoo.com</value><name>HOST</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>54.201.125.134 </value><name>PROXY_IP_HTTP</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>141.255.166.42 </value><name>PROXY_IP_SOCKS4</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>62.255.82.98</value><name>PROXY_IP_SOCKS5</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>1080</value><name>PROXY_PORT</name><type>int</type><scope>local</scope></parameter><parameter><color /><description /><value>3128</value><name>PROXY_PORT_HTTP</name><type>int</type><scope>local</scope></parameter><parameter><color /><description /><value>False</value><name>SUPPORT_AGENT</name><type>bool</type><scope>local</scope></parameter><parameter><color /><description /><value>10.0</value><name>TIMEOUT</name><type>float</type><scope>local</scope></parameter></inputs-parameters></properties>
+<properties><parameters /><probes><probe><active>False</active><args>{'interfaces': [{'interface': 'any', 'filter': ''}]}</args><name>network01</name><type>network</type></probe></probes><agents><agent><value>agent-socket01</value><description /><name>AGENT_SOCKET</name><type /></agent></agents><descriptions><description><value /><key>author</key></description><description><value /><key>creation date</key></description><description><value /><key>summary</key></description><description><value /><key>prerequisites</key></description><description><value><comments /></value><key>comments</key></description><description><value>myplugins</value><key>libraries</key></description><description><value>myplugins</value><key>adapters</key></description><description><value>Writing</value><key>state</key></description><description><value>REQ_01</value><key>requirement</key></description></descriptions><outputs-parameters><parameter><value>1.0</value><description /><name>TIMEOUT</name><type>float</type><scope>local</scope></parameter></outputs-parameters><inputs-parameters><parameter><name>AGENT_SOCKET</name><type>json</type><description /><value>{"name": "agent.socket", "type": "socket"}</value><color /><scope>local</scope></parameter><parameter><color /><description /><value>True</value><name>DEBUG</name><type>bool</type><scope>local</scope></parameter><parameter><color /><description /><value>www.google.fr</value><name>DST_HOSTNAME</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>www.google.fr</value><name>DST_IP</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>80</value><name>DST_PORT</name><type>int</type><scope>local</scope></parameter><parameter><color /><description /><value>443</value><name>DST_PORT_SSL</name><type>int</type><scope>local</scope></parameter><parameter><color /><description /><value>localhost</value><name>DST_URL</name><type>text</type><scope>local</scope></parameter><parameter><color /><description /><value>fr.yahoo.com</value><name>HOST</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>54.201.125.134 </value><name>PROXY_IP_HTTP</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>141.255.166.42 </value><name>PROXY_IP_SOCKS4</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>62.255.82.98</value><name>PROXY_IP_SOCKS5</name><type>str</type><scope>local</scope></parameter><parameter><color /><description /><value>1080</value><name>PROXY_PORT</name><type>int</type><scope>local</scope></parameter><parameter><color /><description /><value>3128</value><name>PROXY_PORT_HTTP</name><type>int</type><scope>local</scope></parameter><parameter><color /><description /><value>False</value><name>SUPPORT_AGENT</name><type>bool</type><scope>local</scope></parameter><parameter><color /><description /><value>10.0</value><name>TIMEOUT</name><type>float</type><scope>local</scope></parameter></inputs-parameters></properties>
 <testdefinition><![CDATA['''
 Test Definition
 '''
@@ -17,7 +17,7 @@ class HTTP_CLIENT_CONTRUCT_TPL_FROM_RAW_01(TestCase):
 		# adapters
 		self.ADP_HTTP =  SutAdapters.HTTP.Client( parent=self, debug=input('DEBUG'), destinationIp=input('DST_URL'),
 																														destinationPort=input('DST_PORT') ,
-																														agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'))
+																														agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'))
 		
 
 		self.ADP_HTTP.connect()
@@ -67,7 +67,7 @@ class HTTP_CLIENT_RAW(TestCase):
 		# prepare adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client( parent=self, debug=input('DEBUG'), 
 																			 destinationIp=input('DST_IP'), destinationPort=input('DST_PORT'),
-																			agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+																			agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 		
 	def cleanup(self, aborted):
 		if aborted: self.step1.setFailed(actual=aborted)	
@@ -119,7 +119,7 @@ class HTTP_CLIENT_RAW2(TestCase):
 		self.ADP_HTTP = SutAdapters.HTTP.Client(
 																				parent=self, debug=input('DEBUG'), 
 																				destinationIp=input('DST_IP'), destinationPort=input('DST_PORT_SSL'),
-																				sslSupport = True, agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')
+																				sslSupport = True, agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')
 																			)
 		
 	def cleanup(self, aborted):
@@ -168,7 +168,7 @@ class HTTP_CLIENT_GET(TestCase):
 		
 		# prepare adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_IP'), destinationPort=input('DST_PORT'), 
-																		debug=input('DEBUG'), agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+																		debug=input('DEBUG'), agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 		
 	def cleanup(self, aborted):
 		pass
@@ -189,7 +189,7 @@ class HTTP_CLIENT_GET_ADD_HEADERS(TestCase):
 		
 		# prepare adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_IP'), destinationPort=input('DST_PORT'),
-										debug=input('DEBUG'), agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+										debug=input('DEBUG'), agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 		
 	def cleanup(self, aborted):
 		pass
@@ -211,7 +211,7 @@ class HTTP_CLIENT_GET_OVERWRITE_HEADERS(TestCase):
 		
 		# prepare adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_IP'), destinationPort=input('DST_PORT'), 
-									debug=input('DEBUG'), agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+									debug=input('DEBUG'), agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 		
 	def cleanup(self, aborted):
 		pass
@@ -233,7 +233,7 @@ class HTTP_CLIENT_GET_EXPECTED_01(TestCase):
 		
 		# prepare adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('HOST'), destinationPort=input('DST_PORT'), 
-											debug=input('DEBUG'), agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')	)
+											debug=input('DEBUG'), agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')	)
 		
 	def cleanup(self, aborted):
 		pass
@@ -257,7 +257,7 @@ class HTTP_CLIENT_GET_EXPECTED_02(TestCase):
 		
 		# prepare adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('HOST'), destinationPort=input('DST_PORT'), 
-													debug=input('DEBUG') , agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'))
+													debug=input('DEBUG') , agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'))
 		
 	def cleanup(self, aborted):
 		pass
@@ -282,7 +282,7 @@ class HTTP_CLIENT_POST_BODY_UTF8(TestCase):
 		
 		# configure adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_IP'), destinationPort=input('DST_PORT'), 
-											debug=input('DEBUG'), agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+											debug=input('DEBUG'), agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 		
 	def cleanup(self, aborted):
 		pass
@@ -314,7 +314,7 @@ class HTTP_CLIENT_POST_WITH_DATA_CONTENT_LENGTH(TestCase):
 		
 		# configure adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client( parent=self, destinationIp=input('DST_IP'), destinationPort=input('DST_PORT'), 
-																				debug=input('DEBUG'), agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+																				debug=input('DEBUG'), agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -338,7 +338,7 @@ class HTTP_CLIENT_GET_RESOLV_HOST(TestCase):
 		
 		# configure adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_HOSTNAME'), destinationPort=input('DST_PORT'), 
-										debug=input('DEBUG'), agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+										debug=input('DEBUG'), agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 										
 	def cleanup(self, aborted):
 		pass
@@ -363,7 +363,7 @@ class HTTP_CLIENT_GET_CLOSE(TestCase):
 		# configure adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_HOSTNAME'), destinationPort=input('DST_PORT'),
 																				httpConnection=SutAdapters.HTTP.CONN_CLOSE, debug=input('DEBUG'),
-																			agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')	)
+																			agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')	)
 	def cleanup(self, aborted):
 		if aborted: self.step1.setFailed(actual=aborted)	
 	def definition(self):
@@ -398,7 +398,7 @@ class HTTP_CLIENT_GET_KEEPALIVE(TestCase):
 		# configure adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_HOSTNAME'), destinationPort=input('DST_PORT'),
 																				httpConnection=SutAdapters.HTTP.CONN_KEEPALIVE, debug=input('DEBUG'),
-																				agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+																				agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 	def cleanup(self, aborted):
 		if aborted: self.step1.setFailed(actual=aborted)	
 	def definition(self):
@@ -425,7 +425,7 @@ class HTTP_CLIENT_MULTI_GET_CLOSE(TestCase):
 		# configure adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_HOSTNAME'),
 												destinationPort=input('DST_PORT'), debug=input('DEBUG') ,
-												agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+												agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 	def cleanup(self, aborted):
 		if aborted: self.step1.setFailed(actual=aborted)
 	def definition(self):
@@ -451,7 +451,7 @@ class HTTP_CLIENT_GET_THROUGH_SSL(TestCase):
 		# configure adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_HOSTNAME'),
 												destinationPort=input('DST_PORT_SSL'), sslSupport=True, debug=input('DEBUG'),
-											agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')	)
+											agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')	)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -472,7 +472,7 @@ class HTTP_CLIENT_MULTI_GET_CLOSE_THROUGH_SSL(TestCase):
 		# configure adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_HOSTNAME'),
 												destinationPort=input('DST_PORT_SSL'), sslSupport=True, debug=input('DEBUG'),
-											agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')	)
+											agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')	)
 	def cleanup(self, aborted):
 		if aborted: self.step1.setFailed(actual=aborted)
 	def definition(self):
@@ -497,7 +497,7 @@ class HTTP_CLIENT_MULTI_GET_KEEPALIVE_THROUGH_SSL(TestCase):
 		# configure adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_HOSTNAME'),
 												destinationPort=input('DST_PORT_SSL'), httpConnection=SutAdapters.HTTP.CONN_KEEPALIVE, 
-												sslSupport=True, debug=input('DEBUG'), agent=agent('AGENT_SOCKET'), 
+												sslSupport=True, debug=input('DEBUG'), agent=input('AGENT_SOCKET'), 
 												agentSupport=input('SUPPORT_AGENT') )
 	def cleanup(self, aborted):
 		if aborted: self.step1.setFailed("success")
@@ -525,7 +525,7 @@ class HTTP_CLIENT_GET_IMAGE_PNG(TestCase):
 			self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_HOSTNAME'),
 																				destinationPort=input('DST_PORT'), debug=input('DEBUG'),
 																				saveContent=True, truncateBody=False,
-																			agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')	)
+																			agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT')	)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -552,7 +552,7 @@ class HTTP_CLIENT_GET_AUTHENTICATION(TestCase):
 		# prepare adapter
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationIp=input('DST_URL'), destinationPort=input('DST_PORT'), 
 															debug=input('DEBUG'), supportAuthentication=True,
-															agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+															agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 		
 		# send GET request
 		rsp = self.ADP_HTTP.GET( uri="/web/index.php", host=input('DST_URL'), login='code', password='!xxxx', 
@@ -576,7 +576,7 @@ class HTTP_CLIENT_PROXY_SOCKS4_GET(TestCase):
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationHost=input('HOST'), destinationPort=input('DST_PORT'), 
 															debug=input('DEBUG'), supportAuthentication=False, sslSupport=False, proxyType=SutAdapters.TCP.PROXY_SOCKS4,
 															proxyIp=input('PROXY_IP_SOCKS4'), proxyPort=input('PROXY_PORT'), proxyEnabled=True,
-															agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'))
+															agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -599,7 +599,7 @@ class HTTP_CLIENT_PROXY_SOCKS5_GET(TestCase):
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationHost=input('HOST'), destinationPort=input('DST_PORT'), 
 															debug=input('DEBUG'), supportAuthentication=False, sslSupport=False, proxyType=SutAdapters.TCP.PROXY_SOCKS5,
 															proxyIp=input('PROXY_IP_SOCKS5'), proxyPort=input('PROXY_PORT'), proxyEnabled=True,
-															agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+															agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -622,7 +622,7 @@ class HTTP_CLIENT_PROXY_HTTP_GET(TestCase):
 		self.ADP_HTTP = SutAdapters.HTTP.Client(parent=self, destinationHost=input('HOST'), destinationPort=input('DST_PORT'), 
 															debug=input('DEBUG'), supportAuthentication=False, sslSupport=False, proxyType='http',
 															proxyIp=input('PROXY_IP_HTTP'), proxyPort=input('PROXY_PORT_HTTP'), proxyEnabled=True,
-															agent=agent('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
+															agent=input('AGENT_SOCKET'), agentSupport=input('SUPPORT_AGENT') )
 	def cleanup(self, aborted):
 		pass
 	def definition(self):

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # ------------------------------------------------------------------
-# Copyright (c) 2010-2018 Denis Machard
+# Copyright (c) 2010-2019 Denis Machard
 # This file is part of the extensive automation project
 #
 # This library is free software; you can redistribute it and/or
@@ -25,7 +25,7 @@ import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
 import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
 import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
 import TestExecutorLib.TestAdapterLib as TestAdapterLib
-# import TestExecutorLib.TestLibraryLib as TestLibraryLib
+
 import sys
 
 import struct
@@ -110,12 +110,12 @@ class DefaultPayloads(TestAdapterLib.Adapter):
 		# encode and return it
 		ret = []
 		try:
-			g711a = SutLibraries.Codecs.G711A(parent=self.testcase())
-			g711u = SutLibraries.Codecs.G711U(parent=self.testcase())
+			g711a = LibraryCodecs.G711A(parent=self.testcase())
+			g711u = LibraryCodecs.G711U(parent=self.testcase())
 			for fr in sample:
-				if self.codec == SutLibraries.Codecs.A_G711A:
+				if self.codec == LibraryCodecs.A_G711A:
 					encoded = g711a.encode(pcm_val=fr)
-				elif self.codec == SutLibraries.Codecs.A_G711U:
+				elif self.codec == LibraryCodecs.A_G711U:
 					encoded = g711u.encode(pcm_val=fr)
 				else:
 					raise Exception('codec not supported: %s' % self.codec)

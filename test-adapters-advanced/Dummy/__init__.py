@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # ------------------------------------------------------------------
-# Copyright (c) 2010-2018 Denis Machard
+# Copyright (c) 2010-2019 Denis Machard
 # This file is part of the extensive automation project
 #
 # This library is free software; you can redistribute it and/or
@@ -25,11 +25,11 @@ try:
 	from adapter import *
 	from agent import *
 	from automate import *
-    from library import *
+	from library import *
 except ImportError: # python3 support
 	from .adapter import *
 	from .agent import *
 	from .automate import *
-    from .library import *
+	from .library import *
 
 __DESCRIPTION__ = "Dummy parts"

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # ------------------------------------------------------------------
-# Copyright (c) 2010-2018 Denis Machard
+# Copyright (c) 2010-2019 Denis Machard
 # This file is part of the extensive automation project
 #
 # This library is free software; you can redistribute it and/or
@@ -67,7 +67,7 @@ class Client(TestAdapterLib.Adapter):
 	def __init__ (self, parent, debug=False, name=None,
 						bindIp = '0.0.0.0', bindPort=0, destinationIp='', destinationHost='', destinationPort=0,
 						socketFamily=AdapterIP.IPv4, logHighLevelEvents=True, logLowLevelEvents=False,
-						recordRcvSound=False, recordSndSound=False, payloadType=SutLibraries.Codecs.A_G711U, defaultSound=SOUND_SINE_1K,
+						recordRcvSound=False, recordSndSound=False, payloadType=SutAdapters.Codecs.A_G711U, defaultSound=SOUND_SINE_1K,
 						rtpVersion=2, initialSeqNumber=None, ssrcValue=None, inactivityTimeout=2.0, sessionId=None,
 						agentSupport=False, agent=None, shared=False):
 		"""
@@ -106,7 +106,7 @@ class Client(TestAdapterLib.Adapter):
 		@param recordSndSound: bufferize the sound sent and save the RTP flow in a rtp file. If the codec is supported then the flow is saved in a wave file.
 		@type recordSndSound:	boolean
 		
-		@param payloadType: SutLibraries.Codecs.A_G711U (default) | SutLibraries.Codecs.A_G711A
+		@param payloadType: SutAdapters.Codecs.A_G711U (default) | SutAdapters.Codecs.A_G711A
 		@type payloadType: intconstant		
 		
 		@param defaultSound: SutAdapters.RTP.SOUND_SINE_1K (default) | SutAdapters.RTP.SOUND_WHITE_NOISE | SutAdapters.RTP.SOUND_SILENCE
@@ -269,9 +269,9 @@ class Client(TestAdapterLib.Adapter):
 		"""
 		self.debug( 'set default data to stream' )
 		try:
-			if self.cfg['payload-type'] == SutLibraries.Codecs.A_G711U:
+			if self.cfg['payload-type'] == SutAdapters.Codecs.A_G711U:
 				self.defaultPayloads.setCodec( codec=self.cfg['payload-type'] )
-			elif self.cfg['payload-type'] == SutLibraries.Codecs.A_G711A:
+			elif self.cfg['payload-type'] == SutAdapters.Codecs.A_G711A:
 				self.defaultPayloads.setCodec( codec=self.cfg['payload-type'] )
 			else:
 				raise Exception( 'payload type not supported: %s' % self.cfg['payload-type'] )
@@ -395,7 +395,7 @@ class Client(TestAdapterLib.Adapter):
 		@param defaultSound: SutAdapters.RTP.SOUND_SINE_1K | SutAdapters.RTP.SOUND_WHITE_NOISE | SutAdapters.RTP.SOUND_SILENCE
 		@type defaultSound: intconstant/none
 		
-		@param payloadType: SutLibraries.Codecs.A_G711U (default payload type) | SutLibraries.Codecs.A_G711A
+		@param payloadType: SutAdapters.Codecs.A_G711U (default payload type) | SutAdapters.Codecs.A_G711A
 		@type payloadType: intconstant
 		"""
 		self.debug( 'reconfigure' )

@@ -2,7 +2,7 @@
 # -*- coding=utf-8 -*-
 
 # -------------------------------------------------------------------
-# Copyright (c) 2010-2018 Denis Machard
+# Copyright (c) 2010-2019 Denis Machard
 # This file is part of the extensive automation project
 #
 # This library is free software; you can redistribute it and/or
@@ -25,7 +25,6 @@ import TestExecutorLib.TestValidatorsLib as TestValidators
 import TestExecutorLib.TestTemplatesLib as TestTemplates
 import TestExecutorLib.TestOperatorsLib as TestOperators
 import TestExecutorLib.TestAdapterLib as TestAdapter
-# import TestExecutorLib.TestLibraryLib as TestLibrary
 
 import sys
 import struct

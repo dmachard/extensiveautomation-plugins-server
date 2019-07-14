@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # ------------------------------------------------------------------
-# Copyright (c) 2010-2018 Denis Machard
+# Copyright (c) 2010-2019 Denis Machard
 # This file is part of the extensive automation project
 #
 # This library is free software; you can redistribute it and/or
@@ -24,10 +24,8 @@
 try:
 	from libxml import XML
 	from libjson import JSON
-#	from libexcel import EXCEL
 except ImportError: # python3 support
 	from .libxml import XML
 	from .libjson import JSON
-#	from .libexcel import EXCEL
 
 __DESCRIPTION__ = "Encoder and decorder for text format"

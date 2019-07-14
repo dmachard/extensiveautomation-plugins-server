@@ -6,7 +6,7 @@ class TIMESTAMP_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)				
 	def prepare(self):
-		self.timetools = SutLibraries.Time.Timestamp(parent=self, debug=False)
+		self.timetools = SutAdapters.Time.Timestamp(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -20,7 +20,7 @@ class TIMESTAMP_DELTA_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.timetools = SutLibraries.Time.Timestamp(parent=self, debug=False)
+		self.timetools = SutAdapters.Time.Timestamp(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -33,7 +33,7 @@ class TIMESTAMP_FROM_DATE_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.timetools = SutLibraries.Time.Timestamp(parent=self, debug=False)
+		self.timetools = SutAdapters.Time.Timestamp(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -47,7 +47,7 @@ class TIMESTAMP_TO_HUMAN_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.timetools = SutLibraries.Time.Timestamp(parent=self, debug=False)
+		self.timetools = SutAdapters.Time.Timestamp(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):

@@ -11,7 +11,7 @@ class SESSIONID_01(TestCase):
 		self.step1 = self.addStep(expected="result expected", description="step description", summary="step sample")
 	def prepare(self):
 
-		self.ADP_SESSSIONID = SutLibraries.Identifiers.SessionID(parent=self, debug=False)
+		self.ADP_SESSSIONID = SutAdapters.Identifiers.SessionID(parent=self, debug=False)
 
 	def cleanup(self, aborted):
 		pass
@@ -32,7 +32,7 @@ class UUID_01(TestCase):
 		self.step1 = self.addStep(expected="result expected", description="step description", summary="step sample")
 	def prepare(self):
 
-		self.ADP_UUIDS = SutLibraries.Identifiers.UUIDS(parent=self, debug=False)
+		self.ADP_UUIDS = SutAdapters.Identifiers.UUIDS(parent=self, debug=False)
 
 	def cleanup(self, aborted):
 		pass

@@ -11,7 +11,7 @@ class COMPRESS_GZIP_01(TestCase):
 		self.step1 = self.addStep(expected="result expected", description="step description", summary="step sample")
 	def prepare(self):
 		# adapters and libraries
-		self.LIB_GZIP = SutLibraries.Compression.GZIP(parent=self, debug=False)
+		self.LIB_GZIP = SutAdapters.Compression.GZIP(parent=self, debug=False)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):

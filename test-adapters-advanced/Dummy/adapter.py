@@ -2,7 +2,7 @@
 # -*- coding=utf-8 -*-
 
 # ------------------------------------------------------------------
-# Copyright (c) 2010-2018 Denis Machard
+# Copyright (c) 2010-2019 Denis Machard
 # This file is part of the extensive automation project
 #
 # This library is free software; you can redistribute it and/or
@@ -35,8 +35,6 @@ from Libs.PyXmlDict import Dict2Xml
 # Example to import adapter or library from the generic branch
 from Var.SutAdapters import WEB
 from Var.SutAdapters import DataExchange
-#AdapterWEB= sys.modules['SutAdapters.%s.WEB' % TestAdapterLib.getVersionGeneric()]
-#LibraryCodecs =  sys.modules['SutLibraries.%s.Codecs' % TestLibraryLib.getVersionGeneric()]
 
 # Name of the adapter
 __NAME__="""DUMMY"""

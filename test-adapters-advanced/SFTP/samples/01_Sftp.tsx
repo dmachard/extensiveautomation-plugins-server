@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <file>
-<properties><descriptions><description><value>admin</value><key>author</key></description><description><value>06/09/2015 11:11:47</value><key>creation date</key></description><description><value>Just a basic sample.</value><key>summary</key></description><description><value>None.</value><key>prerequisites</key></description><description><value><comments /></value><key>comments</key></description><description><value>myplugins</value><key>libraries</key></description><description><value>myplugins</value><key>adapters</key></description><description><value>Writing</value><key>state</key></description><description><value>REQ_01</value><key>requirement</key></description></descriptions><inputs-parameters><parameter><color /><description /><type>bool</type><name>DEBUG</name><value>False</value><scope>local</scope></parameter><parameter><description /><type>self-ip</type><name>DEST_IP</name><value>10.0.0.240 (eth0)</value><scope>local</scope></parameter><parameter><description /><type>int</type><name>DEST_PORT</name><value>22</value><scope>local</scope></parameter><parameter><description /><type>str</type><name>LOGIN</name><value>root</value><scope>local</scope></parameter><parameter><description>-----BEGIN RSA PRIVATE KEY-----
+<properties><descriptions><description><value>admin</value><key>author</key></description><description><value>06/09/2015 11:11:47</value><key>creation date</key></description><description><value>Just a basic sample.</value><key>summary</key></description><description><value>None.</value><key>prerequisites</key></description><description><value><comments /></value><key>comments</key></description><description><value>myplugins</value><key>libraries</key></description><description><value>myplugins</value><key>adapters</key></description><description><value>Writing</value><key>state</key></description><description><value>REQ_01</value><key>requirement</key></description></descriptions><inputs-parameters><parameter><name>AGENT</name><type>json</type><description /><value>{"name": "agent.ssh", "type": "ssh"}</value><color /><scope>local</scope></parameter><parameter><color /><description /><type>bool</type><name>DEBUG</name><value>False</value><scope>local</scope></parameter><parameter><description /><type>self-ip</type><name>DEST_IP</name><value>10.0.0.240 (eth0)</value><scope>local</scope></parameter><parameter><description /><type>int</type><name>DEST_PORT</name><value>22</value><scope>local</scope></parameter><parameter><description /><type>str</type><name>LOGIN</name><value>root</value><scope>local</scope></parameter><parameter><description>-----BEGIN RSA PRIVATE KEY-----
 xxxxx
 -----END RSA PRIVATE KEY-----</description><type>str</type><name>PRIVATE_KEY</name><value>-----BEGIN RSA PRIVATE KEY-----
 xxxxx
@@ -19,7 +19,7 @@ class TESTCASE_SFTP_01(TestCase):
 
 			self.SFTP_ADP = SutAdapters.SFTP.Client(parent=self, login=input('LOGIN'), password=input('PWD'), bindIp='', bindPort=0, 
 																				destIp=input('DEST_IP'), destPort=input('DEST_PORT'), debug=input('DEBUG'),
-																				agent=agent('AGENT'), agentSupport=input('SUPPORT_AGENT') )
+																				agent=input('AGENT'), agentSupport=input('SUPPORT_AGENT') )
 
 
 	def cleanup(self, aborted):
@@ -91,7 +91,7 @@ class TESTCASE_SFTP_PRIVATEKEY_02(TestCase):
 
 			self.SFTP_ADP = SutAdapters.SFTP.Client(parent=self, login=input('LOGIN'), privateKey=input('PRIVATE_KEY'), bindIp='', bindPort=0, 
 																				destIp=input('DEST_IP'), destPort=input('DEST_PORT'), debug=input('DEBUG'),
-																			agent=agent('AGENT'), agentSupport=input('SUPPORT_AGENT') 	)
+																			agent=input('AGENT'), agentSupport=input('SUPPORT_AGENT') 	)
 
 	def cleanup(self, aborted):
 		pass
@@ -157,7 +157,7 @@ class TESTCASE_SFTP_REGEXP_01(TestCase):
 			self.ADP = SutAdapters.SFTP.Client(parent=self, destIp=input('DEST_IP'), destPort=input('DEST_PORT'), bindIp='', bindPort=0,
 																												login=input('LOGIN'), password=input('PWD'), privateKey=None,
 																												name=None, debug=input('DEBUG'),
-																												shared=False, agent=agent('AGENT'), agentSupport=input('SUPPORT_AGENT') ,
+																												shared=False, agent=input('AGENT'), agentSupport=input('SUPPORT_AGENT') ,
 																												verbose=input('VERBOSE'))
 	def cleanup(self, aborted):
 		pass

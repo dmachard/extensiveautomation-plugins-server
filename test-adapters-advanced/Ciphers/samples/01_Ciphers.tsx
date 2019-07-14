@@ -6,7 +6,7 @@ class CIPHER_BLOWFISH_ECB_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)		
 	def prepare(self):
-		self.ciph = SutLibraries.Ciphers.Blowfish(parent=self, debug=input('DEBUG'))
+		self.ciph = SutAdapters.Ciphers.Blowfish(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -32,7 +32,7 @@ class CIPHER_BLOWFISH_ECB_02(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)	
 	def prepare(self):
-		self.ciph = SutLibraries.Ciphers.Blowfish(parent=self, debug=input('DEBUG'))
+		self.ciph = SutAdapters.Ciphers.Blowfish(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -58,7 +58,7 @@ class CIPHER_BLOWFISH_CBC_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)	
 	def prepare(self):
-		self.ciph = SutLibraries.Ciphers.Blowfish(parent=self, debug=input('DEBUG'), mode=SutLibraries.Ciphers.MODE_CBC)
+		self.ciph = SutAdapters.Ciphers.Blowfish(parent=self, debug=input('DEBUG'), mode=SutAdapters.Ciphers.MODE_CBC)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -84,7 +84,7 @@ class CIPHER_RC4_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)	
 	def prepare(self):
-		self.ciph = SutLibraries.Ciphers.RC4(parent=self, debug=input('DEBUG'))
+		self.ciph = SutAdapters.Ciphers.RC4(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -110,7 +110,7 @@ class CIPHER_RC4_02(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)	
 	def prepare(self):
-		self.ciph = SutLibraries.Ciphers.RC4(parent=self, debug=input('DEBUG'))
+		self.ciph = SutAdapters.Ciphers.RC4(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -136,7 +136,7 @@ class CIPHER_RC4_03(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)	
 	def prepare(self):
-		self.ciph = SutLibraries.Ciphers.RC4(parent=self, debug=input('DEBUG'))
+		self.ciph = SutAdapters.Ciphers.RC4(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -162,7 +162,7 @@ class CIPHER_RC4_04(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)	
 	def prepare(self):
-		self.ciph = SutLibraries.Ciphers.RC4(parent=self, debug=input('DEBUG'))
+		self.ciph = SutAdapters.Ciphers.RC4(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -187,7 +187,7 @@ class OPENSSL_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)	
 	def prepare(self):
-		self.openssl = SutLibraries.Ciphers.OpenSSL(parent=self, debug=input('DEBUG'))
+		self.openssl = SutAdapters.Ciphers.OpenSSL(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -224,7 +224,7 @@ class RSA_01(TestCase):
 		# steps description
 		self.step1 = self.addStep(expected="result expected", description="step description", summary="step sample", enabled=True)
 	def prepare(self):
-		self.LIB_RSA = SutLibraries.Ciphers.RSA(parent=self, name=None, debug=False, shared=False)
+		self.LIB_RSA = SutAdapters.Ciphers.RSA(parent=self, name=None, debug=False, shared=False)
 
 	def definition(self):
 		# starting initial step

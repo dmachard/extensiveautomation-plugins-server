@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <file>
-<properties><descriptions><description><key>author</key><value>admin</value></description><description><key>creation date</key><value>23/06/2019 21:42:03</value></description><description><key>summary</key><value>Just a basic sample.</value></description><description><key>prerequisites</key><value>None.</value></description><description><key>comments</key><value><comments /></value></description><description><key>libraries</key><value>deprecated</value></description><description><key>adapters</key><value>deprecated</value></description><description><key>state</key><value>Writing</value></description><description><key>requirement</key><value>REQ_01</value></description></descriptions><probes><probe><active>False</active><args /><name>probe01</name><type>default</type></probe></probes><inputs-parameters><parameter><type>bool</type><name>DEBUG</name><description /><value>False</value><color /><scope>local</scope></parameter><parameter><type>float</type><name>TIMEOUT</name><description /><value>10.0</value><color /><scope>local</scope></parameter><parameter><type>bool</type><name>VERBOSE</name><description /><value>True</value><color /><scope>local</scope></parameter></inputs-parameters><outputs-parameters><parameter><type>float</type><name>TIMEOUT</name><description /><value>60.0</value><color /><scope>local</scope></parameter></outputs-parameters><agents><agent><name>AGENT</name><description /><value>agent-dummy01</value><type>dummy</type></agent></agents></properties>
+<properties><descriptions><description><key>author</key><value>admin</value></description><description><key>creation date</key><value>23/06/2019 21:42:03</value></description><description><key>summary</key><value>Just a basic sample.</value></description><description><key>prerequisites</key><value>None.</value></description><description><key>comments</key><value><comments /></value></description><description><key>libraries</key><value>deprecated</value></description><description><key>adapters</key><value>deprecated</value></description><description><key>state</key><value>Writing</value></description><description><key>requirement</key><value>REQ_01</value></description></descriptions><probes><probe><active>False</active><args /><name>probe01</name><type>default</type></probe></probes><inputs-parameters><parameter><type>bool</type><name>DEBUG</name><description /><value>False</value><color /><scope>local</scope></parameter><parameter><name>RECORD_SOUND</name><type>text</type><description /><value /><color /><scope>local</scope></parameter><parameter><name>SRC_IP</name><type>text</type><description /><value /><color /><scope>local</scope></parameter><parameter><name>SRC_PORT_RTP</name><type>text</type><description /><value /><color /><scope>local</scope></parameter><parameter><type>float</type><name>TIMEOUT</name><description /><value>10.0</value><color /><scope>local</scope></parameter><parameter><type>bool</type><name>VERBOSE</name><description /><value>True</value><color /><scope>local</scope></parameter></inputs-parameters><outputs-parameters><parameter><type>float</type><name>TIMEOUT</name><description /><value>60.0</value><color /><scope>local</scope></parameter></outputs-parameters><agents><agent><name>AGENT</name><description /><value>agent-dummy01</value><type>dummy</type></agent></agents></properties>
 <testdefinition><![CDATA[
 class RTP_01(TestCase):	
 	def description(self):
 		# steps definition 
-		self.step1 = self.addStep( description = "sending and receiving audio", expected = "audio received" )
+		self.step1 = self.addStep(expected="result expected", description="step description", summary="step sample", enabled=True)	
 
 	def prepare(self):
 
 		# Initialize the sip adapter
 		self.rtp = SutAdapters.RTP.Client( parent=self, 
-																										debug=get('DEBUG'), 
-																										bindIp=get('SRC_IP'), 
-																										bindPort=get('SRC_PORT_RTP'), 
+																										debug=input('DEBUG'), 
+																										bindIp=input('SRC_IP'), 
+																										bindPort=input('SRC_PORT_RTP'), 
 																										logLowLevelEvents=True, 
-																										recordRcvSound=get('RECORD_SOUND'), 
-																										recordSndSound=get('RECORD_SOUND'), 
+																										recordRcvSound=input('RECORD_SOUND'), 
+																										recordSndSound=input('RECORD_SOUND'), 
 																										defaultSound=SutAdapters.RTP.SOUND_WHITE_NOISE	, 
-																										payloadType=SutLibraries.Codecs.A_G711U ) 
+																										payloadType=SutAdapters.Codecs.A_G711U ) 
 
 		self.rtp.startListening()
-		rtpListening = self.rtp.isListening( timeout=get('TIMEOUT') )
+		rtpListening = self.rtp.isListening( timeout=input('TIMEOUT') )
 		if not rtpListening:
 			self.step1.setFailed( actual = "RTP not listening")
 			self.abort()
@@ -30,7 +30,7 @@ class RTP_01(TestCase):
 	def cleanup(self, aborted):
 		# stop rtp
 		self.rtp.stopListening()		
-		rtpStopped = self.rtp.isStopped( timeout=get('TIMEOUT') )
+		rtpStopped = self.rtp.isStopped( timeout=input('TIMEOUT') )
 		if not rtpStopped:
 			self.abort( 'RTP not stopped' )
 				
@@ -42,14 +42,14 @@ class RTP_01(TestCase):
 		# start sending rtp
 		self.rtp.startSending()
 		
-		if not self.rtp.hasStartedReceiving(timeout=get('TIMEOUT')):
+		if not self.rtp.hasStartedReceiving(timeout=input('TIMEOUT')):
 			self.step1.setFailed( actual =  'no audio received' )
 		else:
 			self.info( 'audio received', bold=True )
 			self.step1.setPassed( actual = 'audio received' )
 	
 		# wait
-		self.wait( get('CALL_DURATION') ) 
+		self.wait( input('CALL_DURATION') ) 
 
 		# stop sending rtp
 		self.rtp.stopSending()			

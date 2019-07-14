@@ -6,7 +6,7 @@ class XML_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.xml = SutLibraries.DataExchange.XML(parent=self, debug=input('DEBUG'))
+		self.xml = SutAdapters.DataExchange.XML(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -58,7 +58,7 @@ class XML_XSD_VALID_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.xml = SutLibraries.DataExchange.XML(parent=self, debug=input('DEBUG'))
+		self.xml = SutAdapters.DataExchange.XML(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -73,22 +73,24 @@ class XML_XSD_INVALID_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.xml = SutLibraries.DataExchange.XML(parent=self, debug=input('DEBUG'))
+		self.xml = SutAdapters.DataExchange.XML(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
 		self.step1.start()
-		
+
 		valid = self.xml.validator(doc=input('XML_DOC_INVALID'), xsd=input('XSD_DOC'))
-		self.warning( "%s" % valid)
-		
-		self.step1.setPassed(actual="pass")
-		
+		self.info( "result: %s" % valid)
+		if valid:
+			self.step1.setFailed(actual="pass")
+		else:
+			self.step1.setPassed(actual="invalid doc")
+			
 class XML_XPATH_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.xml = SutLibraries.DataExchange.XML(parent=self, debug=input('DEBUG'))
+		self.xml = SutAdapters.DataExchange.XML(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -116,7 +118,7 @@ class XML_XPATH_02(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.xml = SutLibraries.DataExchange.XML(parent=self, debug=input('DEBUG'))
+		self.xml = SutAdapters.DataExchange.XML(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -650,7 +652,7 @@ class XML_PRETTY_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.xml = SutLibraries.DataExchange.XML(parent=self, debug=input('DEBUG'))
+		self.xml = SutAdapters.DataExchange.XML(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -669,7 +671,7 @@ class JSON_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.json = SutLibraries.DataExchange.JSON(parent=self, debug=input('DEBUG'))
+		self.json = SutAdapters.DataExchange.JSON(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -698,7 +700,7 @@ class JSON_XPATH_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.json = SutLibraries.DataExchange.JSON(parent=self, debug=input('DEBUG'))
+		self.json = SutAdapters.DataExchange.JSON(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -728,7 +730,7 @@ class JSON_PRETTY_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.json = SutLibraries.DataExchange.JSON(parent=self, debug=input('DEBUG'))
+		self.json = SutAdapters.DataExchange.JSON(parent=self, debug=input('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -752,68 +754,7 @@ class JSON_PRETTY_01(TestCase):
 		self.info( "%s" % ret, raw=True)
 
 		self.step1.setPassed(actual="pass")
-class EXCEL_READING_01(TestCase):
-	def description(self):
-		# testcase description
-		self.setPurpose(purpose="Testcase sample")
-	
-		# steps description
-		self.step1 = self.addStep(expected="result expected", description="step description", summary="step sample", enabled=True)
-	
-	def prepare(self):
-			self.LIB_EXCEL = SutLibraries.DataExchange.EXCEL(parent=self, debug=False, name=None)
-			
-	def cleanup(self, aborted):
-		pass
-	
-	def definition(self):
-		# starting initial step
-		if self.step1.isEnabled():
-			self.step1.start()
-			self.step1.setPassed(actual="success")
-			
-			# old format
-			cell = self.LIB_EXCEL.readCell(content=input('EXCEL_XLS'), column=1, row=3, worksheet='Feuil1')
-			self.warning( cell )
-			
-			cells = self.LIB_EXCEL.readColumn(content=input('EXCEL_XLS'), column=1, worksheet='Feuil1')
-			self.warning( cells )
-	
-			cells = self.LIB_EXCEL.readRow(content=input('EXCEL_XLS'), row=1, worksheet='Feuil1')
-			self.warning( cells )
-class EXCEL_WRITING_01(TestCase):
-	def description(self):
-		# testcase description
-		self.setPurpose(purpose="Testcase sample")
-	
-		# steps description
-		self.step1 = self.addStep(expected="result expected", description="step description", summary="step sample", enabled=True)
-	
-	def prepare(self):
-			self.LIB_EXCEL = SutLibraries.DataExchange.EXCEL(parent=self, debug=False, name=None)
-			
-	def cleanup(self, aborted):
-		if aborted: self.step1.setFailed(actual=aborted)
-	
-	def definition(self):
-		# starting initial step
-		if self.step1.isEnabled():
-			self.step1.start()
-			
-			
-			workbook=self.LIB_EXCEL.createWorkbook(sheetName="example")
-			if workbook is  None:
-				self.abort("unable to prepare a workbook")
-				
-			cr = True
-			for i in xrange(2):
-				cr &=self.LIB_EXCEL.addRaw(workbook=workbook, rowid=i, rcontent=[1.1, 2, 3])
-				if not cr: self.abort("unable to write line: %s" % i )
-				
-			cr=self.LIB_EXCEL.saveFile(workbook=workbook, filepath="%s/example.xls" % Private(self).getPath() )
-			if not cr: self.abort("unable to save file")
-
-			self.step1.setPassed(actual="success")]]></testdefinition>
+]]></testdefinition>
 <testexecution><![CDATA[
 XML_01(suffix=None).execute()
 XML_XPATH_01(suffix=None).execute()
@@ -826,9 +767,6 @@ JSON_01(suffix=None).execute()
 JSON_XPATH_01(suffix=None).execute()
 JSON_PRETTY_01(suffix=None).execute()
 
-
-
-EXCEL_READING_01(suffix=None).execute()
-EXCEL_WRITING_01(suffix=None).execute()]]></testexecution>
+]]></testexecution>
 <testdevelopment>1386106601.54</testdevelopment>
 </file>

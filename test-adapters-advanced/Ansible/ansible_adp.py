@@ -2,7 +2,7 @@
 # -*- coding=utf-8 -*-
 
 # -------------------------------------------------------------------
-# Copyright (c) 2017-2018 Denys Bortovets and Denis Barleben
+# Copyright (c) 2017-2019 Denys Bortovets and Denis Barleben
 # This file is part of the extensive automation project
 #
 # This library is free software; you can redistribute it and/or

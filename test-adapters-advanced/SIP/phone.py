@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # ------------------------------------------------------------------
-# Copyright (c) 2010-2018 Denis Machard
+# Copyright (c) 2010-2019 Denis Machard
 # This file is part of the extensive automation project
 #
 # This library is free software; you can redistribute it and/or
@@ -733,7 +733,7 @@ class Phone(TestAdapterLib.Adapter):
 		@param playSound: SutAdapters.RTP.SOUND_SINE_1K (default) | SutAdapters.RTP.SOUND_WHITE_NOISE | SutAdapters.RTP.SOUND_SILENCE
 		@type playSound: integer
 		
-		@param codecSound: prefered codec to use: SutLibraries.Codecs.A_G711U (default) | SutLibraries.Codecs.A_G711A
+		@param codecSound: prefered codec to use: SutAdapters.Codecs.A_G711U (default) | SutAdapters.Codecs.A_G711A
 		@type codecSound: integer	
 		
 		@param headers: additional headers or overwrites existing in the INVITE request

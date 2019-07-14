@@ -12,7 +12,7 @@ class CHARTJS_01(TestCase):
 		self.step3= self.addStep(expected="pie chart", description="step description", summary="step sample", enabled=True)
 	def prepare(self):
 		# adapters and libraries
-		self.LIB_CHART = SutLibraries.Media.ChartJS(parent=self, name=None, debug=False)
+		self.LIB_CHART = SutAdapters.Media.ChartJS(parent=self, name=None, debug=False)
 	def definition(self):
 		# starting initial step
 		if self.step1.isEnabled():
@@ -61,7 +61,7 @@ class IMAGES_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.img = SutLibraries.Media.Image(parent=self, debug=get('DEBUG'))
+		self.img = SutAdapters.Media.Image(parent=self, debug=get('DEBUG'))
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -76,7 +76,7 @@ class DIALTONES_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.tonesGen = SutLibraries.Media.DialTones(parent=self, debug=get('DEBUG'), rate=8000, volume=100)
+		self.tonesGen = SutAdapters.Media.DialTones(parent=self, debug=get('DEBUG'), rate=8000, volume=100)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -109,29 +109,29 @@ class DIALTONES_02(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.tonesGen = SutLibraries.Media.DialTones(parent=self, debug=get('DEBUG'), rate=8000, volume=100)
+		self.tonesGen = SutAdapters.Media.DialTones(parent=self, debug=get('DEBUG'), rate=8000, volume=100)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
 		self.step1.start()
 
-		samples = self.tonesGen.busyTone(country=SutLibraries.Media.UE)
-		samples = self.tonesGen.busyTone(country=SutLibraries.Media.US)
-		samples = self.tonesGen.busyTone(country=SutLibraries.Media.UK)
+		samples = self.tonesGen.busyTone(country=SutAdapters.Media.UE)
+		samples = self.tonesGen.busyTone(country=SutAdapters.Media.US)
+		samples = self.tonesGen.busyTone(country=SutAdapters.Media.UK)
 		self.info( samples )
 		
-		samples = self.tonesGen.dialTone(country=SutLibraries.Media.UE)
-		samples = self.tonesGen.dialTone(country=SutLibraries.Media.US)
-		samples = self.tonesGen.dialTone(country=SutLibraries.Media.UK)
+		samples = self.tonesGen.dialTone(country=SutAdapters.Media.UE)
+		samples = self.tonesGen.dialTone(country=SutAdapters.Media.US)
+		samples = self.tonesGen.dialTone(country=SutAdapters.Media.UK)
 		
-		samples = self.tonesGen.ringbackTone(country=SutLibraries.Media.UE)
-		samples = self.tonesGen.ringbackTone(country=SutLibraries.Media.US)
-		samples = self.tonesGen.ringbackTone(country=SutLibraries.Media.UK)
+		samples = self.tonesGen.ringbackTone(country=SutAdapters.Media.UE)
+		samples = self.tonesGen.ringbackTone(country=SutAdapters.Media.US)
+		samples = self.tonesGen.ringbackTone(country=SutAdapters.Media.UK)
 
-		samples = self.tonesGen.specialInformationTone(code=SutLibraries.Media.SIT_RO)
-		samples = self.tonesGen.specialInformationTone(code=SutLibraries.Media.SIT_RO2)
-		samples = self.tonesGen.specialInformationTone(code=SutLibraries.Media.SIT_VC)
-		samples = self.tonesGen.specialInformationTone(code=SutLibraries.Media.SIT_NC)
+		samples = self.tonesGen.specialInformationTone(code=SutAdapters.Media.SIT_RO)
+		samples = self.tonesGen.specialInformationTone(code=SutAdapters.Media.SIT_RO2)
+		samples = self.tonesGen.specialInformationTone(code=SutAdapters.Media.SIT_VC)
+		samples = self.tonesGen.specialInformationTone(code=SutAdapters.Media.SIT_NC)
 		
 		self.step1.setPassed(actual="pass")
 		
@@ -139,7 +139,7 @@ class NOISE_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.noisesGen = SutLibraries.Media.Noise(parent=self, debug=get('DEBUG'), rate=500, amplitude=100, bits=SutLibraries.Media.SIGNED_16BITS)
+		self.noisesGen = SutAdapters.Media.Noise(parent=self, debug=get('DEBUG'), rate=500, amplitude=100, bits=SutAdapters.Media.SIGNED_16BITS)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -157,7 +157,7 @@ class WAVE_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.wavesGen = SutLibraries.Media.Waves(parent=self, debug=get('DEBUG'), rate=500, amplitude=100, bits=SutLibraries.Media.SIGNED_16BITS)
+		self.wavesGen = SutAdapters.Media.Waves(parent=self, debug=get('DEBUG'), rate=500, amplitude=100, bits=SutAdapters.Media.SIGNED_16BITS)
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -180,7 +180,7 @@ class WAV_CONTAINER_01(TestCase):
 	def description(self):
 		self.step1 = self.addStep(expected="ok", description="set as pass", summary="set as pass", enabled=True)			
 	def prepare(self):
-		self.wav = SutLibraries.Media.WavContainer(parent=self, debug=get('DEBUG'), format=1, channels=1, rate=44100, bits=16, samples=[])
+		self.wav = SutAdapters.Media.WavContainer(parent=self, debug=get('DEBUG'), format=1, channels=1, rate=44100, bits=16, samples=[])
 	def cleanup(self, aborted):
 		pass
 	def definition(self):
@@ -293,7 +293,7 @@ a=fmtp:97 profile-level-id=4D0028;sprop-parameter-sets=Z00AKBpZUAoAtyA=,aENuPIA=
 a=mid:227796888
 m=control 0 tcp 0"""
 			
-		sdp = SutLibraries.Media.SDP( parent=self, debug=get('DEBUG') ) 
+		sdp = SutAdapters.Media.SDP( parent=self, debug=get('DEBUG') ) 
 		a = TestAdapter.Adapter(parent=self, name='mtp', debug=False)
 		
 		sdp_test = sdp.sdpCodec.decode(sdp=sdp1)
