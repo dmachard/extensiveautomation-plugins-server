@@ -1,4 +1,0 @@
-python-lxml
-python-ply
-python-decorator
-python-six

@@ -26,10 +26,18 @@ import TestExecutorLib.TestLibraryLib as TestLibraryLib
 from Libs.PyXmlDict import Dict2Xml
 from Libs.PyXmlDict import Xml2Dict
 
-import xml.etree.ElementTree as ET
-import lxml                                                                     
-from lxml import etree 
-
+try:
+    import xml.etree.ElementTree as ET
+except Exception as e:
+    import cElementTree as ET
+    
+LXML_INSTALLED=True
+try:
+    import lxml                                                                     
+    from lxml import etree 
+except ImportError:
+    LXML_INSTALLED=False
+    
 try:
   import StringIO
 except ImportError: # support python 3
@@ -134,7 +142,9 @@ class XML(TestLibraryLib.Library):
 		"""
 		if doc is None and xsd is None and docPath is None and xsdPath is None:
 			raise Exception("no arguments are empty")
-			
+		if not LXML_INSTALLED:
+			raise Exception("lxml library missing on the system")
+
 		valid = False
 		self.debug( "xml doc:\n%s"  % doc )
 		self.debug( "xsd:\n%s" % xsd )
@@ -179,8 +189,11 @@ class XML(TestLibraryLib.Library):
 		@type ns: dict
 		"""
 		try:
-			self.rootXML = etree.fromstring(content)
-			self.ns = ns
+			if not LXML_INSTALLED:
+				self.rootXML = ET.fromstring(content)
+			else:    
+				self.rootXML = etree.fromstring(content)
+				self.ns = ns
 		except Exception as e:
 			self.error("unable to read xml content: %s" % e)
 	
@@ -384,6 +397,9 @@ class XML(TestLibraryLib.Library):
 		@return: the value on match, None otherwise
 		@rtype: string or none if not found
 		"""
+		if not LXML_INSTALLED:
+			raise Exception("lxml library missing on the system")
+
 		try:
 			rootXML = etree.XML(xml)
 			findXML = etree.XPath(xpath, namespaces=ns)
@@ -414,6 +430,9 @@ class XML(TestLibraryLib.Library):
 		@return: all values on match, empty list otherwise
 		@rtype: list
 		"""
+		if not LXML_INSTALLED:
+			raise Exception("lxml library missing on the system")
+
 		try:
 			rootXML = etree.XML(xml)
 			findXML= etree.XPath(xpath, namespaces=ns)
@@ -440,8 +459,12 @@ class XML(TestLibraryLib.Library):
 		@rtype: string
 		"""
 		try:
-			x = etree.fromstring(content)
-			return etree.tostring(x, pretty_print = True)
+			if LXML_INSTALLED:
+				x = etree.fromstring(content)
+				return etree.tostring(x, pretty_print = True)
+			else:
+				x = ET.fromstring(content)
+				return ET.tostring(x)
 		except Exception as e:
 			self.error("unable to read xml: %s" % e)
 	
@@ -456,7 +479,10 @@ class XML(TestLibraryLib.Library):
 		@rtype: boolean
 		"""
 		try:
-			rootXML = etree.XML(xml)
+			if LXML_INSTALLED:
+				rootXML = etree.XML(xml)
+			else:
+				rootXML = ET.XML(xml)
 			del rootXML
 			return True
 		except Exception as e:
