@@ -1,0 +1,4 @@
+lxml
+jsonpath_ng
+xlrd
+xlwt

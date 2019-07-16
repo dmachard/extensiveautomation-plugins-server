@@ -1,0 +1,5 @@
+pyasn1
+pyasn1_modules
+pycryptodomex
+pysmi
+pysnmp

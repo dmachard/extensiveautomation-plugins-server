@@ -1,0 +1,4 @@
+curl
+ncat
+nmap
+openssl
