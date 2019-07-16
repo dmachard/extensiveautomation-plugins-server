@@ -1,2 +1,0 @@
-python-psycopg2
-MySQL-python

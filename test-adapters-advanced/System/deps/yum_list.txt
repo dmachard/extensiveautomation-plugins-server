@@ -1,4 +1,0 @@
-curl
-ncat
-nmap
-openssl
