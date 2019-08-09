@@ -8,12 +8,12 @@ Installation depuis les sources
 
         git clone https://github.com/ExtensiveAutomation/extensiveautomation-plugins-server.git
         
-2. Copier le plugin que vous voulez utiliser dans le répertoire `Var/SutAdapters` du serveur
+2. Copier le plugin que vous voulez utiliser dans le répertoire `src/ea/sutadapters` du serveur
     
-        cp -rf test-adapters-extra/DNS/ /home/extensiveautomation/Var/SutAdapters
+        cp -rf DNS/ /home/extensiveautomation/src/ea/sutadapters
 
         
 3. Exécuter la commande `--install_adapter` pour installer les dépendances associées au plugin
 
-        cd /home/extensiveautomation/
-        python extensiveautomation --install_adapter DNS
+        cd /home/extensiveautomation/src/
+        python extensiveautomation.py --install_adapter DNS
